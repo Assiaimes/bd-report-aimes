@@ -904,6 +904,7 @@ const REPORTS = [
       ]}
     ],
     notes:[
+      ['Values from SharePoint pitch budgets','Weighted values added 17 Oct for 5 awaiting pitches with no NetSuite value, taken from the "Final price to client (w/o VAT)" in each pitch budget on SharePoint × the project probability: 26_234 Misk (SAR 9.56M), 26_366 KSAAL (8.30M), 26_376 Emkan (5.14M — 55% margin, to verify), 26_375 Madinah (3.45M), 26_384 AlUla Rome (2.54M). Labelled "da pitch budget SharePoint" — to reconcile with NetSuite.'],
       ['Metrics transparency','PDF n°38 reports 33 submitted · 1 won (3.03%) · 10 lost (30.3%) · 22 no update — unchanged vs n°37. Dashboard shows 34 submitted · 2 won (5.9%) · 10 lost (29.4%) · 22 awaiting — includes Public Art Abu Dhabi (26_374, convention since W23) and Oman 26_385 (counted from n°32).'],
       ['Quiet week, busy fortnight','No submissions this week, but three deadlines fall in the next two weeks: Expo 2030 PQQ (13 Oct), Diriyah (20 Oct), MOC Framework (24 Oct).'],
       ['Date changes','26_391 Diriyah moved 9 → 20 Oct (second extension). 26_394 Expo 2030 PQQ is now 13 Oct vs 10 Oct in n°37 — the PDF does not label it an extension; shown as a date change (⏱ 1×).'],
@@ -2323,10 +2324,10 @@ const PROJECTS = [
   { id:'26_374', name:'Public Art Abu Dhabi (Biennale)', client:'DCT Abu Dhabi', value:4200000, prob:75,
     weeks:['','','','','','','','','','','','','','','','','','','','','h','h','h','h','','','','','','','','','','','','',''],
     events:[{w:20,t:'h',d:'Won — in negotiation (final terms)'},{w:21,t:'h',d:'Kapwani Kiwanga quote + draft schedule after site visit; contract finalization'},{w:22,t:'h',d:'Revised cost estimates for all 4 artists APPROVED by client'},{w:23,t:'h',d:'Nari Ward cost estimate reviewed & approved — approval complete for all 4 artists (Kiwanga AED 825,341 · Senatore AED 1,093,861 · Clottey AED 752,783 · Nari Ward AED 1,264,038, excl. VAT)'}] },
-  { id:'26_375', name:'Madinah Rock Display Project', client:'PMBS Museum for Arabic Calligraphy', prob:10, subDate:'2026-07-14',
+  { id:'26_375', name:'Madinah Rock Display Project', client:'PMBS Museum for Arabic Calligraphy', value:345035, prob:10, valueSrc:'da pitch budget SharePoint · price w/o VAT SAR 3,450,349 × 10% · 26_373 Madinah budget (current sheet) · to reconcile with NetSuite', subDate:'2026-07-14',
     weeks:['','','','','','','','','','','','','','','','','','','','','','a','a','u','s','','a','a','','','','','','','','',''],
     events:[{w:24,t:'s',d:'TP+FP submitted 14 Jul — 2 concept options: SAR 3.34M / 2.48M'}] },
-  { id:'26_376', name:'Money 20/20 — Emkan Booth Production 2026', client:'Emkan', prob:25, subDate:'2026-07-02',
+  { id:'26_376', name:'Money 20/20 — Emkan Booth Production 2026', client:'Emkan', value:1285159, prob:25, valueSrc:'da pitch budget SharePoint · price w/o VAT SAR 5,140,635 × 25% · 26_376 Emkan budget — margin 55%, to verify · to reconcile with NetSuite', subDate:'2026-07-02',
     weeks:['','','','','','','','','','','','','','','','','','','','','','','s','','','','','','','','','','','','','',''],
     events:[{w:22,t:'s',d:'Submitted 2 Jul (Ref#3307)'}] },
   { id:'26_378', name:'Leonardo da Vinci Exhibition Presentation', client:'Proactive Proposal', prob:10,
@@ -2343,7 +2344,7 @@ const PROJECTS = [
     weeks:['','','','','','','','','','','','','','','','','','','','','s','','','','','','','','','','','','','','','',''],
     events:[{w:20,t:'s',d:'TP+FP submitted 19 Jun'}] },
   // ── NEW DEADLINES POST W20 ──────────────────────
-  { id:'26_366', name:'Permanent Arabic Language Exhibitions', client:'KSAAL', partner:'Hwadi', prob:10, subDate:'2026-06-18',
+  { id:'26_366', name:'Permanent Arabic Language Exhibitions', client:'KSAAL', partner:'Hwadi', value:830247, prob:10, valueSrc:'da pitch budget SharePoint · price w/o VAT SAR 8,302,468 × 10% · 26_366 KSAAL budget · to reconcile with NetSuite', subDate:'2026-06-18',
     weeks:['','','','','','','','','','','','','','','','','','a','u','u','s','','','','','','a','','','','','','','','','',''],
     events:[{w:20,t:'s',d:'Submitted 18 Jun'}] },
   { id:'26_367', name:'Int\'l Event Support / Culinary Arts', client:'MOC', partner:'Hwadi', extensions:1,  prob:25, subDate:'2026-06-10',
@@ -2352,7 +2353,7 @@ const PROJECTS = [
   { id:'26_369', name:'Int\'l Film Criticism Conference 2026', client:'MOC', partner:'Hwadi (lead)', prob:10, subDate:'2026-06-14',
     weeks:['','','','','','','','','','','','','','','','','','','a','u','s','','','','','','','','','','','','','','','',''],
     events:[{w:20,t:'s',d:'Submitted 14 Jun (Hwadi-led)'}] },
-  { id:'26_234', name:'Public Art Commission Program', client:'Misk Foundation', prob:10, subDate:'2026-06-10',
+  { id:'26_234', name:'Public Art Commission Program', client:'Misk Foundation', value:956005, prob:10, valueSrc:'da pitch budget SharePoint · price w/o VAT SAR 9,560,049 × 10% · 26_364 Misk budget · to reconcile with NetSuite', subDate:'2026-06-10',
     weeks:['','','','','','','','','','','','','','','','','a','a','u','s','','','','','','','','','','','','','','','','',''],
     events:[{w:19,t:'s',d:'Submitted 10 Jun'}] },
   { id:'26_368', name:'District 11 — Urban Core Office Architect', client:'Qiddiya', partner:'BIG', prob:10, subDate:'2026-06-09',
@@ -2376,7 +2377,7 @@ const PROJECTS = [
   { id:'26_383', name:'Saudi National Museum Activation & Operations', client:'MOC', extensions:1, value:1070554, prob:25, subDate:'2026-08-23',
     weeks:['','','','','','','','','','','','','','','','','','','','','','','','','','','','a','u','s','','','','','','',''],
     events:[{w:29,t:'s',d:'Submitted 23 Aug — TP+FP · contract value SAR 4,282,215'}] },
-  { id:'26_384', name:'AlUla, Wonder of Arabia — Rome Exhibition Concept', client:'Afalula', extensions:1, prob:25, subDate:'2026-10-02',
+  { id:'26_384', name:'AlUla, Wonder of Arabia — Rome Exhibition Concept', client:'Afalula', extensions:1, value:635838, prob:25, valueSrc:'da pitch budget SharePoint · price w/o VAT SAR 2,543,353 × 25% · 26_384 AlUla Rome budget · to reconcile with NetSuite', subDate:'2026-10-02',
     weeks:['','','','','','','','','','','','','','','','','','','','','','','','','','','','a','a','a','a','a','a','u','u','s',''],
     events:[{w:35,t:'s',d:'Submitted 2 Oct — TP+FP · contract value ~EUR 597,385 (SAR value TBC)'}] },
   { id:'26_385', name:'BIG x Aimes — Almadina Azarqa Masterplan, Oman', client:'Grand Blue City Dev. SAOC', partner:'BIG', prob:25, subDate:'2026-08-18',
@@ -2747,7 +2748,7 @@ function renderMasterGantt(){
 
     const weekCols = WEEK_LABELS.map((w,i)=>`<div class="week-col${i===WEEK_LABELS.length-1?' current':''}" data-widx="${i}" data-pid="${p.id}"></div>`).join('');
 
-    const valueLabel = p.value ? `<span class="mg-value">${formatValue(p.value)} SAR wtd</span>` : '';
+    const valueLabel = p.value ? `<span class="mg-value" ${p.valueSrc?`title="${p.valueSrc}"`:''}>${formatValue(p.value)} SAR wtd${p.valueSrc?' · pitch budget':''}</span>` : '';
     const carryFlag = p.carryover ? `<span class="mg-flag">2025 carry-over</span>` : '';
 
     html += `<div class="mg-row" data-pid="${p.id}">
