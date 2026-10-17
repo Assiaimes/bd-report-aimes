@@ -7,6 +7,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600;9..144,700&family=JetBrains+Mono:wght@400;500;600&family=Inter+Tight:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 64 64%27%3E%3Crect width=%2764%27 height=%2764%27 rx=%2712%27 fill=%27%230a1628%27/%3E%3Ccircle cx=%2728%27 cy=%2738%27 r=%2716%27 fill=%27%23f4f1ea%27/%3E%3Ccircle cx=%2750%27 cy=%2716%27 r=%276%27 fill=%27%23c8a951%27/%3E%3C/svg%3E">
 <style>
 :root{
   --ink:#0a1628; --ink-2:#1a2942;
@@ -599,6 +600,109 @@ kbd.hint{font-family:'JetBrains Mono',monospace;font-size:9px;background:rgba(24
 .stack-table th.sortable.desc::after{content:' ↓';opacity:1}
 .clickable-proj{cursor:pointer}
 .clickable-proj:hover{color:var(--accent-deep)!important;text-decoration:underline;text-decoration-color:var(--accent);text-underline-offset:3px}
+
+/* ═══ Brand logo ═══ */
+.aimes-logo{display:block;height:20px;width:auto;color:var(--paper)}
+.aimes-logo--mast{height:28px;color:var(--ink)}
+.nav-brand{padding:16px 22px}
+
+/* ═══ Readability (all screens) ═══ */
+:root{--ink-2:#3a4659}                 /* softer secondary text, still AA contrast on paper */
+body{font-variant-numeric:tabular-nums}
+.aging-table th,.eb-tag,.eb-col h4,.eb-col li .eb-meta{font-size:10.5px}
+.aging-table .ag-id,.aging-table .ag-client,.aging-table .ag-note,.client-chips .chip{font-size:11px}
+.aging-table td{font-size:13px}
+.title-block .sub strong{font-size:20px;line-height:1.45;max-width:72ch;margin-left:auto}
+
+/* ═══ Tablet ═══ */
+@media (max-width:900px){
+  .title-block{flex-direction:column;align-items:flex-start;gap:14px}
+  .title-block .sub{text-align:left}
+  .title-block .sub strong{margin-left:0}
+}
+
+/* ═══ Mobile ≤ 640px ═══ */
+@media (max-width:640px){
+  html,body{font-size:15px}
+  body{padding:10px 12px 64px}
+  .grain{display:none}                 /* texture lowers contrast on small screens */
+  .wrap{overflow-x:clip}
+
+  /* Top nav: logo + search row, tabs as full-width segmented row */
+  .topnav{margin-bottom:18px;border-radius:6px}
+  .nav-brand{padding:14px 16px;flex:1}
+  .nav-search{order:2;margin:0 12px 0 0;flex:0 1 52%}
+  .nav-search input,.nav-search input:focus{width:100%;font-size:14px;padding:10px 10px 10px 30px}
+  .nav-search kbd,.nav-search .kbd{display:none}
+  .nav-tabs{order:3;flex:0 0 100%;border-top:1px solid rgba(244,241,234,.1)}
+  .nav-tab{flex:1;padding:14px 4px;font-size:10.5px;letter-spacing:.06em;min-height:48px;white-space:nowrap;justify-content:center;text-align:center}
+  .topnav > :last-child:not(.nav-tabs):not(.nav-search):not(.nav-brand){display:none}
+
+  /* Report selector & executive briefing */
+  .selector-trigger{min-width:0;width:100%}
+  .exec-brief-head{flex-wrap:wrap;gap:10px;padding:14px 16px}
+  .exec-brief-head .eb-title{flex:1 1 100%;order:-1;font-size:17px;line-height:1.35}
+  .eb-copy{padding:10px 14px;font-size:11px;min-height:40px}
+  .exec-brief-body{padding:0 16px 16px}
+
+  /* Deadline radar: swipeable cards */
+  .radar-item{min-width:78%;scroll-snap-align:start}
+  .radar-items,.radar-track{scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch}
+
+  /* Masthead & title */
+  .masthead{align-items:flex-start;gap:14px}
+  .meta{display:grid;grid-template-columns:1fr 1fr;gap:10px 16px;width:100%}
+  .title-block h1,.tl-page-title{font-size:36px;line-height:1.05}
+  .title-block .sub strong{font-size:17px;line-height:1.5}
+
+  /* KPI tiles */
+  .kpis,.bignum-row{grid-template-columns:1fr 1fr}
+  .kpi{padding:14px}
+
+  /* Filters / chips: bigger tap targets */
+  .chip{padding:9px 14px;font-size:13px;min-height:40px}
+  .filter-bar,.filters{flex-wrap:wrap;gap:8px}
+  .search{min-width:0;width:100%;margin-left:0;font-size:15px;padding:10px 12px}
+
+  /* Sections */
+  .section-head{flex-wrap:wrap;gap:6px 10px}
+  .section-count{margin-left:0;flex-basis:100%}
+  .dash-card{padding:16px}
+
+  /* Aging tracker → stacked cards (no clipped columns) */
+  .aging-table thead{display:none}
+  .aging-table,.aging-table tbody{display:block}
+  .aging-table tr{display:grid;grid-template-columns:1fr auto;gap:4px 12px;padding:14px 14px;border-bottom:1px solid var(--line)}
+  .aging-table td{display:block;padding:0;border:0;text-align:left!important;font-size:13px}
+  .aging-table td:nth-child(1){grid-column:1 / -1}
+  .aging-table td:nth-child(2){grid-column:1}
+  .aging-table td:nth-child(3){grid-column:2;text-align:right!important}
+  .aging-table td:nth-child(4){grid-column:1}
+  .aging-table td:nth-child(5){grid-column:2;justify-self:end}
+  .aging-table td:nth-child(4)::before{content:'Weighted · ';font-family:'JetBrains Mono',monospace;font-size:10.5px;color:var(--ink-2);text-transform:uppercase;letter-spacing:.06em}
+  .aging-table tr:hover td{background:transparent}
+  .aging-table .ag-name{font-size:15px}
+
+  /* Client feedback tracker */
+  .client-row-head{grid-template-columns:1fr auto;gap:8px 12px;padding:14px}
+  .client-chips{grid-column:1 / -1;order:3;flex-wrap:wrap}
+  .client-toggle{grid-column:2;grid-row:1}
+
+  /* Tables: allow horizontal scroll instead of squashing */
+  .stack-table{font-size:13px}
+  .dash-card:has(.stack-table){overflow-x:auto}
+  .stack-table th,.stack-table td{padding:10px 8px}
+
+  /* Gantt / timelines */
+  .mg-row{grid-template-columns:140px 1fr}
+  .gantt-header,.gantt-row{grid-template-columns:120px repeat(3,1fr)}
+
+  /* Dossier modal full-screen */
+  .dossier{width:100%!important;max-width:100%!important;height:100%;max-height:100%!important;border-radius:0!important;margin:0!important}
+  .dossier-meta{grid-template-columns:1fr 1fr}
+
+  .foot{flex-direction:column;gap:6px;text-align:center}
+}
 </style>
 </head>
 <body>
@@ -606,7 +710,7 @@ kbd.hint{font-family:'JetBrains Mono',monospace;font-size:9px;background:rgba(24
 <div class="wrap">
 
   <div class="topnav">
-    <div class="nav-brand"><div class="nav-mark"></div><div class="nav-name">Aimes</div></div>
+    <div class="nav-brand"><svg class="aimes-logo" viewBox="0 0 445.74 106.04" role="img" aria-label="Aimes" fill="currentColor"><path d="M40.51,28.87h13.44l22.29,59.59h-13.6l-4.51-13.27h-22.29l-4.67,13.27h-13.27l22.62-59.59ZM39.25,65.43h15.44l-7.51-21.87h-.17l-7.76,21.87Z"/><path d="M107.97,38.64h-11.85v-9.76h11.85v9.76ZM96.12,45.31h11.85v43.15h-11.85v-43.15Z"/><path d="M127.86,45.31h11.18v5.84h.17c3.09-4.42,7.6-7.01,13.19-7.01s10.27,2,12.6,7.18c2.5-3.76,7.01-7.18,13.02-7.18,9.18,0,15.77,4.26,15.77,15.44v28.88h-11.85v-24.46c0-5.76-.5-10.52-7.26-10.52s-7.93,5.51-7.93,10.93v24.04h-11.85v-24.21c0-5.01.33-10.77-7.18-10.77-2.34,0-8.01,1.5-8.01,9.93v25.04h-11.85v-43.15Z"/><path d="M225.62,68.6c.33,7.51,4.01,10.93,10.6,10.93,4.76,0,8.6-2.92,9.35-5.59h10.43c-3.34,10.18-10.43,14.52-20.2,14.52-13.6,0-22.04-9.35-22.04-22.7s8.93-22.79,22.04-22.79c14.69,0,21.78,12.35,20.95,25.62h-31.13ZM244.9,61.09c-1.08-6.01-3.67-9.18-9.43-9.18-7.51,0-9.68,5.84-9.85,9.18h19.28Z"/><path d="M287.97,73.28c.08,5.18,4.42,7.26,9.1,7.26,3.42,0,7.76-1.34,7.76-5.51,0-3.59-4.92-4.84-13.44-6.68-6.84-1.5-13.69-3.92-13.69-11.52,0-11.02,9.51-13.86,18.78-13.86s18.11,3.17,19.03,13.77h-11.27c-.33-4.59-3.84-5.84-8.1-5.84-2.67,0-6.59.5-6.59,4.01,0,4.26,6.68,4.84,13.44,6.43,6.93,1.59,13.69,4.09,13.69,12.1,0,11.35-9.85,15.02-19.7,15.02s-19.78-3.76-20.28-15.19h11.27Z"/><path d="M429.06,21.29c0,5.49-4.45,9.94-9.94,9.94s-9.94-4.45-9.94-9.94,4.45-9.94,9.94-9.94,9.94,4.45,9.94,9.94Z"/><circle cx="386.3" cy="58.63" r="29.83"/></svg></div>
     <div class="nav-tabs">
       <button class="nav-tab active" data-page="reports">Reports <span class="badge">37</span></button>
       <button class="nav-tab" data-page="timelines">Timelines</button>
@@ -2520,8 +2624,7 @@ function renderReport(r){
   return `
     <div class="masthead">
       <div style="display:flex;align-items:center;gap:12px">
-        <div style="width:32px;height:32px;border-radius:50%;background:radial-gradient(circle at 30% 30%, var(--accent), var(--ink) 80%)"></div>
-        <div style="font-family:'Fraunces',serif;font-weight:500;font-size:24px;letter-spacing:-.02em">Aimes</div>
+        <svg class="aimes-logo aimes-logo--mast" viewBox="0 0 445.74 106.04" role="img" aria-label="Aimes" fill="currentColor"><path d="M40.51,28.87h13.44l22.29,59.59h-13.6l-4.51-13.27h-22.29l-4.67,13.27h-13.27l22.62-59.59ZM39.25,65.43h15.44l-7.51-21.87h-.17l-7.76,21.87Z"/><path d="M107.97,38.64h-11.85v-9.76h11.85v9.76ZM96.12,45.31h11.85v43.15h-11.85v-43.15Z"/><path d="M127.86,45.31h11.18v5.84h.17c3.09-4.42,7.6-7.01,13.19-7.01s10.27,2,12.6,7.18c2.5-3.76,7.01-7.18,13.02-7.18,9.18,0,15.77,4.26,15.77,15.44v28.88h-11.85v-24.46c0-5.76-.5-10.52-7.26-10.52s-7.93,5.51-7.93,10.93v24.04h-11.85v-24.21c0-5.01.33-10.77-7.18-10.77-2.34,0-8.01,1.5-8.01,9.93v25.04h-11.85v-43.15Z"/><path d="M225.62,68.6c.33,7.51,4.01,10.93,10.6,10.93,4.76,0,8.6-2.92,9.35-5.59h10.43c-3.34,10.18-10.43,14.52-20.2,14.52-13.6,0-22.04-9.35-22.04-22.7s8.93-22.79,22.04-22.79c14.69,0,21.78,12.35,20.95,25.62h-31.13ZM244.9,61.09c-1.08-6.01-3.67-9.18-9.43-9.18-7.51,0-9.68,5.84-9.85,9.18h19.28Z"/><path d="M287.97,73.28c.08,5.18,4.42,7.26,9.1,7.26,3.42,0,7.76-1.34,7.76-5.51,0-3.59-4.92-4.84-13.44-6.68-6.84-1.5-13.69-3.92-13.69-11.52,0-11.02,9.51-13.86,18.78-13.86s18.11,3.17,19.03,13.77h-11.27c-.33-4.59-3.84-5.84-8.1-5.84-2.67,0-6.59.5-6.59,4.01,0,4.26,6.68,4.84,13.44,6.43,6.93,1.59,13.69,4.09,13.69,12.1,0,11.35-9.85,15.02-19.7,15.02s-19.78-3.76-20.28-15.19h11.27Z"/><path d="M429.06,21.29c0,5.49-4.45,9.94-9.94,9.94s-9.94-4.45-9.94-9.94,4.45-9.94,9.94-9.94,9.94,4.45,9.94,9.94Z"/><circle cx="386.3" cy="58.63" r="29.83"/></svg>
       </div>
       <div class="meta">
         <div><span>Document</span>BD Weekly Report</div>
