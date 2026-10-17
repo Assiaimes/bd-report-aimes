@@ -8,6 +8,13 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600;9..144,700&family=JetBrains+Mono:wght@400;500;600&family=Inter+Tight:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 64 64%27%3E%3Crect width=%2764%27 height=%2764%27 rx=%2712%27 fill=%27%230a1628%27/%3E%3Ccircle cx=%2728%27 cy=%2738%27 r=%2716%27 fill=%27%23f4f1ea%27/%3E%3Ccircle cx=%2750%27 cy=%2716%27 r=%276%27 fill=%27%23c8a951%27/%3E%3C/svg%3E">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="manifest" href="/manifest.webmanifest">
+<meta name="theme-color" content="#0a1628">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Aimes BD">
 <style>
 :root{
   --ink:#0a1628; --ink-2:#1a2942;
@@ -703,6 +710,24 @@ body{font-variant-numeric:tabular-nums}
 
   .foot{flex-direction:column;gap:6px;text-align:center}
 }
+
+/* ═══ 1 · Sans-serif for long reading text (serif stays for headings) ═══ */
+.title-block .sub strong{font-family:'Inter Tight',sans-serif;font-weight:500;letter-spacing:-.005em}
+.note,.card-detail,.loss-banner .note,.wp-hero .note{font-family:'Inter Tight',sans-serif;font-style:normal}
+
+/* ═══ 2 · Status dot at a glance ═══ */
+.status-dot{display:inline-block;width:9px;height:9px;border-radius:50%;margin-right:7px;vertical-align:1px;flex:none}
+.aging-table .ag-name::before{content:'';display:inline-block;width:9px;height:9px;border-radius:50%;margin-right:8px;vertical-align:1px;background:var(--stall)}
+.aging-table tr.critical .ag-name::before{background:var(--urgent)}
+.aging-table tr.watch .ag-name::before{background:var(--warn)}
+.aging-table tr.normal .ag-name::before{background:var(--ok)}
+.dot-legend{display:flex;gap:16px;padding:12px 16px 0;flex-wrap:wrap;font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--ink-2);margin:0 0 12px}
+.dot-legend span{display:inline-flex;align-items:center}
+
+/* ═══ 3 · Installed-app (Add to Home Screen) safe areas ═══ */
+@media (display-mode: standalone){
+  body{padding-top:calc(env(safe-area-inset-top) + 10px);padding-bottom:calc(env(safe-area-inset-bottom) + 40px)}
+}
 </style>
 </head>
 <body>
@@ -878,6 +903,7 @@ body{font-variant-numeric:tabular-nums}
         <span class="section-count">Sorted by wait time · oldest submissions first · who to chase</span>
       </div>
       <div class="dash-card" style="padding:0;overflow:hidden">
+        <div class="dot-legend"><span><i class="status-dot" style="background:var(--urgent)"></i>Chase now</span><span><i class="status-dot" style="background:var(--warn)"></i>Monitor</span><span><i class="status-dot" style="background:var(--ok)"></i>Recent</span></div>
         <table class="aging-table">
           <thead><tr>
             <th>Pitch</th><th>Client</th><th class="r">Submitted</th><th class="r">Weighted value</th><th>Priority</th>

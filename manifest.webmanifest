@@ -1,0 +1,12 @@
+{
+  "name": "Aimes — BD Weekly Report",
+  "short_name": "Aimes BD",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#f4f1ea",
+  "theme_color": "#0a1628",
+  "icons": [
+    { "src": "/icon-192.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "/icon-512.png", "sizes": "512x512", "type": "image/png" }
+  ]
+}
