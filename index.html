@@ -3070,11 +3070,11 @@ function fmtDate(iso){
 const UPCOMING_DEADLINES = [
   { id:'26_372', name:'Awareness Trips Visual Arts', client:'MOC', date:'2026-06-30', tbc:false, done:true },
   { id:'26_376', name:'Emkan Booth — Money 20/20', client:'Emkan', date:'2026-07-02', tbc:false, done:true },
-  { id:'—', name:'Al Waleemah Festival 2026', client:'MOC', date:'2026-07-09', tbc:false },
+  { id:'—', name:'Al Waleemah Festival 2026', client:'MOC', date:'2026-07-09', tbc:false, done:true },
   { id:'26_357', name:'Sikka 2027 — revised financial proposal', client:'DCAA', date:'2026-07-13', tbc:false, done:true },
   { id:'26_375', name:'Madinah Rock Display Project', client:'PMBS Museum', date:'2026-07-14', tbc:false, done:true },
   { id:'26_377', name:'Banan 4 — Saudi Intl Handicrafts Week', client:'MOC', date:'2026-07-15', tbc:false, done:true },
-  { id:'26_368', name:'District 11 — commercial clarification', client:'Qiddiya · BIG', date:'2026-07-20', tbc:false },
+  { id:'26_368', name:'District 11 — commercial clarification', client:'Qiddiya · BIG', date:'2026-07-20', tbc:false, done:true },
   { id:'26_379', name:'Incense Road — deadline for inquiries', client:'Afalula', date:'2026-07-23', tbc:false, done:true },
   { id:'26_379', name:'Design Preactivation — Incense Road AlUla', client:'Afalula', date:'2026-07-26', tbc:false, done:true },
   { id:'26_381', name:'Venice Architecture Biennale 2027', client:'MOC', date:'2026-08-06', tbc:false, done:true },
@@ -3799,7 +3799,7 @@ function buildBriefing(){
   // Key facts from headline + notes
   const facts = latest.headline.split('·').map(s=>s.trim()).filter(Boolean).slice(0,4);
   // Deadlines (not done)
-  const dls = UPCOMING_DEADLINES.filter(d=>!d.done).slice(0,5);
+  const dls = UPCOMING_DEADLINES.filter(d=>!d.done && new Date(d.date) >= REF_DATE).slice(0,5);
   // Chase list: awaiting, sorted by age, top 4 with value first
   const chase = PROJECTS.filter(p=>!p.carryover && getProjectStatus(p)==='awaiting' && p.subDate)
     .map(p=>({p, days:daysBetween(new Date(p.subDate), REF_DATE)}))
