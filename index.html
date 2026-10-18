@@ -766,7 +766,7 @@ body{font-variant-numeric:tabular-nums}
     <div class="exec-brief" id="execBrief">
       <div class="exec-brief-head" id="execBriefHead">
         <span class="eb-tag">EXEC BRIEFING</span>
-        <span class="eb-title" id="ebTitle">This Week at a Glance</span>
+        <span class="eb-title" id="ebTitle">Executive Briefing</span>
         <button class="eb-copy" id="ebCopy" title="Copy summary for WhatsApp / email">📋 COPY SUMMARY</button>
         <span class="eb-chevron">▼</span>
       </div>
@@ -859,7 +859,7 @@ body{font-variant-numeric:tabular-nums}
       <div class="dash-card">
         <div class="dash-card-head">
           <h3 class="dash-card-title">Project Lifecycle Macros</h3>
-          <span class="dash-card-meta">Pipeline aggregates · H1 2026</span>
+          <span class="dash-card-meta">Pipeline aggregates · 2026 YTD</span>
         </div>
         <div id="lifecycleMacros" class="lifecycle-macros"></div>
       </div>
@@ -917,7 +917,7 @@ body{font-variant-numeric:tabular-nums}
       <div class="section-head">
         <span class="section-num">§ OV.03</span>
         <h2 class="section-title">Win / Loss Reasons Log</h2>
-        <span class="section-count">Accumulated learnings from weekly reports · H1 2026</span>
+        <span class="section-count">Accumulated learnings from weekly reports · 2026 YTD</span>
       </div>
       <div id="reasonsLog" class="reasons-log"></div>
     </div>
@@ -3114,13 +3114,13 @@ function renderDeadlineRadar(){
       <div class="radar-days">${label}</div>
       <div class="radar-pid">${d.id} · ${d.client}</div>
       <div class="radar-name">${d.name}</div>
-      <div class="radar-date">${d.done ? 'Submitted ' + fmtDate(d.date) : 'Due ' + fmtDate(d.date)}${d.tbc ? ' <span class="radar-tbc">· TBC</span>' : ''}</div>
+      <div class="radar-date">${d.done ? (/(meeting|Q&A|session|inquiries|confirmation|decision)/i.test(d.name) ? 'Held ' : 'Submitted ') + fmtDate(d.date) : 'Due ' + fmtDate(d.date)}${d.tbc ? ' <span class="radar-tbc">· TBC</span>' : ''}</div>
     </div>`;
   }).join('');
   el.innerHTML = `
     <div class="radar-head">
       <span class="radar-title">Deadline Radar</span>
-      <span class="radar-sub">Submissions due this reporting week · ${within.length} deadlines</span>
+      <span class="radar-sub">Last 3 weeks · next 3 weeks from report date · ${within.filter(d=>!d.done).length} open · ${within.filter(d=>d.done).length} done</span>
     </div>
     <div class="radar-items">${items}</div>
   `;
@@ -3504,7 +3504,7 @@ function renderClientList(){
   // Sort clients: by total value desc, then by submission count
   const clients = Object.values(clientMap).map(c => {
     const totalValue = c.projects.reduce((s,p)=>s+(p.value||0), 0);
-    const submitted = c.projects.filter(p => ['won','lost','awaiting'].includes(p.status));
+    const submitted = c.projects.filter(p => ['won','lost','awaiting'].includes(p.status) || (p.status==='declined' && (p.events||[]).some(e=>e.t==='s')));
     return { ...c, totalValue, nSubmitted: submitted.length };
   }).sort((a,b) => {
     if(b.totalValue !== a.totalValue) return b.totalValue - a.totalValue;
@@ -3530,7 +3530,7 @@ function renderClientList(){
       lost > 0 ? `<span class="chip lost"><b>${lost}</b> lost</span>` : '',
       awaiting > 0 ? `<span class="chip pending"><b>${awaiting}</b> awaiting</span>` : '',
       active > 0 ? `<span class="chip"><b>${active}</b> active</span>` : '',
-      declined > 0 ? `<span class="chip declined"><b>${declined}</b> ${declined===1?'declined':'declined'}</span>` : ''
+      declined > 0 ? `<span class="chip declined"><b>${declined}</b> cancelled/declined</span>` : ''
     ].filter(Boolean).join('');
 
     const valFmt = formatValue(c.totalValue);
@@ -3549,7 +3549,7 @@ function renderClientList(){
         <span class="cp-id">${p.id}</span>
         <span class="cp-name clickable-proj" data-pid="${p.id}">${p.name}${p.partner?` <span style="color:var(--accent-deep);font-size:10px">· w/ ${p.partner}</span>`:''}${detail ? `<span class="cp-detail">${detail}</span>` : ''}</span>
         <span class="cp-value">${valLabel}</span>
-        <span class="cp-status">${p.status === 'awaiting' ? 'NO REPLY' : p.status === 'negotiation' ? 'IN NEGOTIATION' : p.status}</span>
+        <span class="cp-status">${p.status === 'awaiting' ? 'NO REPLY' : p.status === 'negotiation' ? 'IN NEGOTIATION' : p.status === 'declined' ? 'CANCELLED / DECLINED' : p.status}</span>
       </li>`;
     }).join('');
 
@@ -3722,7 +3722,7 @@ function openDossier(pid){
   const p = PROJECTS.find(x=>x.id===pid);
   if(!p) return;
   const st = getProjectStatus(p);
-  const stTxt = {won:'Won / In negotiation',negotiation:'In negotiation',awaiting:'Awaiting reply',active:'Active',lost:'Lost',declined:'Declined',stalled:'Stalled'}[st]||st;
+  const stTxt = {won:'Won / In negotiation',negotiation:'In negotiation',awaiting:'Awaiting reply',active:'Active',lost:'Lost',declined:'Cancelled / declined',stalled:'Stalled'}[st]||st;
   const strip = p.weeks.map((w,i)=>`<div class="ds-cell ${w||''}" title="W${WEEK_LABELS[i].num}${w?' · '+(STATE_LABEL[w]||w):''}"></div>`).join('');
   const stripLbl = p.weeks.map((w,i)=> i%3===0?`<span>W${WEEK_LABELS[i].num}</span>`:'<span></span>').join('');
   const evts = (p.events||[]).map(e=>`<div class="de"><span class="de-w">W${WEEK_LABELS[e.w].num}</span><span>${e.d}</span></div>`).join('') || '<div class="de"><span style="color:var(--stall);font-style:italic">No milestone events logged — see weekly reports for narrative.</span></div>';
@@ -3843,7 +3843,7 @@ function buildSummaryText(latest, dls, chase){
   lines.push('📞 *To chase:*');
   chase.forEach(x=>lines.push(`• ${x.p.id} ${x.p.name}${x.p.value?' — '+formatValue(x.p.value)+' SAR wtd':''} (since ${fmtDate(x.p.subDate)})`));
   lines.push('');
-  lines.push(`_Full dashboard: aimes-bd-2026.netlify.app_`);
+  lines.push(`_Full dashboard: bd-report-aimes.vercel.app_`);
   return lines.join('\n');
 }
 
