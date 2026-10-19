@@ -392,7 +392,7 @@ tr.normal .ag-priority{background:var(--stall)}
 .tl-page-sub{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-2);margin-bottom:40px}
 
 .master-gantt{background:var(--paper);border:1px solid var(--line-strong);box-shadow:var(--shadow);overflow-x:auto;border-radius:2px}
-.mg-row{display:grid;grid-template-columns:280px 1fr;border-bottom:1px solid var(--line);min-height:62px;min-width:3880px}
+.mg-row{display:grid;grid-template-columns:280px 1fr;border-bottom:1px solid var(--line);min-height:62px;min-width:3980px}
 .mg-row.month-band{min-height:28px;background:var(--ink);color:var(--accent);border-bottom:1px solid rgba(255,255,255,.15)}
 .mg-row.month-band .mg-cell-name{border-right-color:rgba(255,255,255,.1);padding:0;background:var(--ink)}
 .mg-month-row{position:relative;height:28px}
@@ -408,7 +408,7 @@ tr.normal .ag-priority{background:var(--stall)}
 .mg-value{color:var(--accent-deep);font-weight:600}
 .mg-flag{color:var(--stall);font-style:italic;text-transform:none;letter-spacing:0;font-size:9px}
 .mg-ext{display:inline-block;background:rgba(214,139,58,.16);color:#8a5a1f;font-size:8.5px;padding:1px 6px;border-radius:2px;letter-spacing:.03em;text-transform:none;font-weight:600}
-.mg-cell-tl{position:relative;display:grid;grid-template-columns:repeat(37,1fr);min-width:3600px}
+.mg-cell-tl{position:relative;display:grid;grid-template-columns:repeat(38,1fr);min-width:3700px}
 .mg-row.head .mg-cell-tl > div{padding:14px 0;text-align:center;border-right:1px solid rgba(255,255,255,.1);font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.1em;cursor:pointer;transition:background .15s}
 .mg-row.head .mg-cell-tl > div:hover{background:rgba(200,169,81,.18)}
 .mg-row.head .mg-cell-tl > div:last-child{border-right:none}
@@ -741,7 +741,7 @@ body{font-variant-numeric:tabular-nums}
   <div class="topnav">
     <div class="nav-brand"><svg class="aimes-logo" viewBox="0 0 445.74 106.04" role="img" aria-label="Aimes" fill="currentColor"><path d="M40.51,28.87h13.44l22.29,59.59h-13.6l-4.51-13.27h-22.29l-4.67,13.27h-13.27l22.62-59.59ZM39.25,65.43h15.44l-7.51-21.87h-.17l-7.76,21.87Z"/><path d="M107.97,38.64h-11.85v-9.76h11.85v9.76ZM96.12,45.31h11.85v43.15h-11.85v-43.15Z"/><path d="M127.86,45.31h11.18v5.84h.17c3.09-4.42,7.6-7.01,13.19-7.01s10.27,2,12.6,7.18c2.5-3.76,7.01-7.18,13.02-7.18,9.18,0,15.77,4.26,15.77,15.44v28.88h-11.85v-24.46c0-5.76-.5-10.52-7.26-10.52s-7.93,5.51-7.93,10.93v24.04h-11.85v-24.21c0-5.01.33-10.77-7.18-10.77-2.34,0-8.01,1.5-8.01,9.93v25.04h-11.85v-43.15Z"/><path d="M225.62,68.6c.33,7.51,4.01,10.93,10.6,10.93,4.76,0,8.6-2.92,9.35-5.59h10.43c-3.34,10.18-10.43,14.52-20.2,14.52-13.6,0-22.04-9.35-22.04-22.7s8.93-22.79,22.04-22.79c14.69,0,21.78,12.35,20.95,25.62h-31.13ZM244.9,61.09c-1.08-6.01-3.67-9.18-9.43-9.18-7.51,0-9.68,5.84-9.85,9.18h19.28Z"/><path d="M287.97,73.28c.08,5.18,4.42,7.26,9.1,7.26,3.42,0,7.76-1.34,7.76-5.51,0-3.59-4.92-4.84-13.44-6.68-6.84-1.5-13.69-3.92-13.69-11.52,0-11.02,9.51-13.86,18.78-13.86s18.11,3.17,19.03,13.77h-11.27c-.33-4.59-3.84-5.84-8.1-5.84-2.67,0-6.59.5-6.59,4.01,0,4.26,6.68,4.84,13.44,6.43,6.93,1.59,13.69,4.09,13.69,12.1,0,11.35-9.85,15.02-19.7,15.02s-19.78-3.76-20.28-15.19h11.27Z"/><path d="M429.06,21.29c0,5.49-4.45,9.94-9.94,9.94s-9.94-4.45-9.94-9.94,4.45-9.94,9.94-9.94,9.94,4.45,9.94,9.94Z"/><circle cx="386.3" cy="58.63" r="29.83"/></svg></div>
     <div class="nav-tabs">
-      <button class="nav-tab active" data-page="reports">Reports <span class="badge">37</span></button>
+      <button class="nav-tab active" data-page="reports">Reports <span class="badge">38</span></button>
       <button class="nav-tab" data-page="timelines">Timelines</button>
       <button class="nav-tab" data-page="overall">Overall Data</button>
     </div>
@@ -759,7 +759,7 @@ body{font-variant-numeric:tabular-nums}
         <span class="report-bar-label">Viewing</span>
         <div class="report-selector" id="selector">
           <button class="selector-trigger" id="trigger">
-            <span class="trigger-num" id="triggerNum">N° 38</span>
+            <span class="trigger-num" id="triggerNum">N° 39</span>
             <span class="trigger-text" id="triggerText">27 Sep – 1 Oct 2026 · Latest</span>
           </button>
           <div class="selector-menu" id="selectorMenu"></div>
@@ -782,7 +782,7 @@ body{font-variant-numeric:tabular-nums}
 
   <div class="page" data-page="timelines">
     <h1 class="tl-page-title">Project <em>Lifecycles</em></h1>
-    <p class="tl-page-sub">Submission cadence + master timeline · 4 Jan – 8 Oct 2026 · 37 reporting weeks (W02 missing)</p>
+    <p class="tl-page-sub">Submission cadence + master timeline · 4 Jan – 15 Oct 2026 · 38 reporting weeks (W02 missing)</p>
 
     <div class="section">
       <div class="section-head">
@@ -841,10 +841,10 @@ body{font-variant-numeric:tabular-nums}
 
   <div class="page" data-page="overall">
     <h1 class="tl-page-title">Cycle <em>2026</em></h1>
-    <p class="tl-page-sub">Aggregate Performance · 4 Jan – 8 Oct · 37 weeks reporting (H1 2026 + W25–W38)</p>
+    <p class="tl-page-sub">Aggregate Performance · 4 Jan – 15 Oct · 38 weeks reporting (H1 2026 + W25–W39)</p>
 
     <div class="bignum-row">
-      <div class="bignum-cell"><span class="lbl">Total Submissions YTD</span><span class="val">34</span><span class="delta">across 37 reporting weeks · +0 in W38 (last: +2 in W37)</span></div>
+      <div class="bignum-cell"><span class="lbl">Total Submissions YTD</span><span class="val">34</span><span class="delta">across 38 reporting weeks · +0 in W39 (last: +2 in W37)</span></div>
       <div class="bignum-cell won"><span class="lbl">Wins</span><span class="val">2</span><span class="delta">5.9% · Red Sea + Abu Dhabi (in negotiation)</span></div>
       <div class="bignum-cell lost"><span class="lbl">Losses</span><span class="val">10</span><span class="delta">29.4% loss rate · none since W34</span></div>
       <div class="bignum-cell pending"><span class="lbl">Awaiting decision</span><span class="val">22</span><span class="delta">64.7% of submitted</span></div>
@@ -974,7 +974,7 @@ body{font-variant-numeric:tabular-nums}
       <div class="dash-card">
         <div class="dash-card-head">
           <h3 class="dash-card-title">All Tracked Projects · 2026</h3>
-          <span class="dash-card-meta">61 entries (incl. 2025 carry-overs)</span>
+          <span class="dash-card-meta">65 entries (incl. 2025 carry-overs)</span>
         </div>
         <table class="stack-table">
           <thead><tr><th class="sortable" data-col="name" onclick="sortProjectTable('name')">Project</th><th class="sortable" data-col="client" onclick="sortProjectTable('client')">Client</th><th class="sortable" data-col="status" onclick="sortProjectTable('status')">Status</th><th class="r sortable" data-col="first" onclick="sortProjectTable('first')">First seen</th></tr></thead>
@@ -987,10 +987,10 @@ body{font-variant-numeric:tabular-nums}
           <span class="dash-card-meta">Cumulative outcomes</span>
         </div>
         <div class="funnel">
-          <div class="funnel-step" style="background:var(--ink);width:100%"><div><div class="lbl">Tracked opportunities</div></div><div style="text-align:right"><div class="val">61</div><div class="pct">100%</div></div></div>
-          <div class="funnel-step" style="background:var(--accent-deep);width:56%"><div><div class="lbl">Submitted (2026 cycle)</div></div><div style="text-align:right"><div class="val">34</div><div class="pct">56% of tracked</div></div></div>
-          <div class="funnel-step" style="background:var(--warn);width:37%"><div><div class="lbl">Awaiting</div></div><div style="text-align:right"><div class="val">22</div><div class="pct">65% of subs</div></div></div>
-          <div class="funnel-step" style="background:var(--lost);width:17%"><div><div class="lbl">Lost</div></div><div style="text-align:right"><div class="val">10</div><div class="pct">29% of subs</div></div></div>
+          <div class="funnel-step" style="background:var(--ink);width:100%"><div><div class="lbl">Tracked opportunities</div></div><div style="text-align:right"><div class="val">65</div><div class="pct">100%</div></div></div>
+          <div class="funnel-step" style="background:var(--accent-deep);width:52%"><div><div class="lbl">Submitted (2026 cycle)</div></div><div style="text-align:right"><div class="val">34</div><div class="pct">52% of tracked</div></div></div>
+          <div class="funnel-step" style="background:var(--warn);width:34%"><div><div class="lbl">Awaiting</div></div><div style="text-align:right"><div class="val">22</div><div class="pct">65% of subs</div></div></div>
+          <div class="funnel-step" style="background:var(--lost);width:15%"><div><div class="lbl">Lost</div></div><div style="text-align:right"><div class="val">10</div><div class="pct">29% of subs</div></div></div>
           <div class="funnel-step" style="background:var(--won);width:10%"><div><div class="lbl">Won (in negotiation)</div></div><div style="text-align:right"><div class="val">2</div><div class="pct">5.9% of subs</div></div></div>
         </div>
         <p style="margin-top:18px;font-size:12px;color:var(--ink-2);font-style:italic;line-height:1.5">Conversion under pressure: 22 of 34 submissions still pending. Five submissions in five weeks (Westfield ×2, KKIA at SAR 30.8M, Villa Hegra, AlUla Rome) lift the base to 34 while 26_343 Etihad (DCAA, SAR 7.7M wtd, chased since March) is cancelled by the client, but the loss rate stays above 30% after W34 (Sikka, Dubai Youth, Al Fahidi — all without documented reasons). Aging pipeline plus undocumented losses is the pattern of the cycle.</p>
@@ -1000,7 +1000,7 @@ body{font-variant-numeric:tabular-nums}
 
   <div class="foot">
     <div>Aimes · BD Weekly · Internal · Cycle 2026</div>
-    <div>37 reports archived · W01 → W38 · 2026</div>
+    <div>38 reports archived · W01 → W39 · 2026</div>
   </div>
 </div>
 
@@ -1009,8 +1009,59 @@ body{font-variant-numeric:tabular-nums}
 </div>
 <script>
 const REPORTS = [
+  // W39 — 11 Oct - 15 Oct 2026 (built from tenders@ mailbox — no PDF)
+  { num:39, week:'11 – 15 Oct 2026', latest:true, source:'mailbox',
+    headline:'0 SUBMITTED · 26_394 Expo 2030 PQQ submitted 13 Oct (JV w/ Athr, Exhibition Design Only) · 26_363 Dubai Art Residency CANCELLED by DCAA · 26_234 Misk: revised proposal requested — scope cut 5 → 2 artists, due 31 Oct · NEW: Diriyah RFI Museum Development Public Artworks (Ariba) · 2 RSG Ariba invitations — Shura Central & East Hotel 1 Artworks Consultancy · CBK Kuwait Museum Content Creation (via City Kuwait / KCPC) · 26_391 Diriyah due 20 Oct · 26_395 MOWC due 24 Oct',
+    metrics:{ subWeek:0, subYTD:34, won:2, lost:10, noUpd:22, wonRate:'5.9%', lostRate:'29.4%', noUpdRate:'64.7%', delta:'0' },
+    timeline:{ cols:['18 – 24 Oct','25 – 31 Oct','01 – 07 Nov'], rows:[
+      ['26_391 · Diriyah Co.','Diriyah Public Art Consultancy Framework',[{c:0,t:'DUE 20/10 · EXT',k:'deadline'}]],
+      ['26_395 · MOC','Framework Agreement — Artwork Loans & Acquisitions (Museum of World Cultures)',[{c:0,t:'DUE 24/10',k:'deadline'}]],
+      ['26_234 · Misk','Public Art Commission Program — revised proposal (2 artists)',[{c:1,t:'DUE 31/10',k:'deadline'}]],
+      ['RSG R07/R08 · Red Sea Global','Shura Central & East Hotel 1 — Artworks Consultancy (Ariba)',[{c:0,t:'DEADLINE TBC · ARIBA',k:'ontrack'}]],
+      ['CBK · Central Bank of Kuwait','Old HQ Museum — Content Creation package',[{c:0,t:'IN-PERSON MEETING',k:'ontrack'},{c:1,t:'PROPOSAL · TBC',k:'ontrack'}]]
+    ]},
+    cards:[
+      {id:'26_394',title:'Expo 2030 PQQ — Exhibition Design',client:'Expo 2030 Riyadh · JV w/ Athr',status:'ontrack',deadline:'PQQ submitted 13 Oct 2026',countdown:'awaiting',cd:'',ext:'10 Oct → 13 Oct',detail:'Pre-qualification submitted on time on 13 October as a Joint Venture Aimes × Athr Gallery for the Exhibition Design Only category under RF-0157 (portal receipt: Response 55296). Deadline had been extended by 4 hours on the day. PQQ — not counted as a submission.'},
+      {id:'26_363',title:'Dubai Art Residency — Development Structuring & Implementation',client:'DCAA',status:'lost',deadline:'Cancelled by client · 12 Oct',countdown:'CANCELLED',cd:'lost',detail:'RFQ 786864 cancelled by Dubai Culture on 12 October. Submitted 21 May (SAR 3.18M wtd), BAFO 2 Jul. Bank guarantee release raised and tender-fee refund in progress with DCAA procurement (refund receipt sent 18 Oct). Stays in the submission base as no update, not counted as a loss — same treatment as Etihad 26_343.'},
+      {id:'26_234',title:'Public Art Commission Program (MAR-NEG-1082)',client:'Misk Foundation',status:'urgent',deadline:'Revised proposal due 31 Oct 2026',countdown:'upcoming',cd:'urgent',ext:'Negotiation extended → 31 Oct',detail:'Misk Art Institute requested a revised proposal following a scope reduction from five artists to two (artworks now selected). Revised proposal to include updated production and installation costs, technical recommendations for mural preservation (paint on wall vs. panel) and relevant project references. Artwork installation design remains under client review. Internally: Michelle + Jim to compile production costs after the Al Ain opening (23 Oct).'},
+      {id:'26_391',title:'Diriyah Public Art Consultancy Services Framework',client:'Diriyah Company',status:'urgent',deadline:'20 Oct 2026 · extended',countdown:'upcoming',cd:'urgent',detail:'Ariba amendment notification received 13 October (PW-FA26-074). Technical and Financial Proposals in progress for submission on 20 October — with Katy and Faisal (Athr).'},
+      {id:'26_395',title:'Framework Agreement — Artwork Loans & Acquisitions + Operational & Logistics Services (Museum of World Cultures)',client:'MOC',status:'urgent',deadline:'Due 24 Oct 2026',countdown:'upcoming',cd:'urgent',detail:'MoC answers to bidder clarifications received on Ariba (Doc257985616, 18 Oct). Portal and administrative documents to be completed; Hasenkamp partnership decision pending.'},
+      {id:'26_388',title:'Villa Hegra Programming',client:'Villa Hegra',status:'ontrack',deadline:'Submitted 1 Oct · award postponed',countdown:'awaiting',cd:'',detail:'Client consultant (Tasama, 12 Oct) reports the password on the technical proposal file does not work — correct password requested as a matter of urgency. Award date postponed from 10 October, new date TBC.'},
+      {id:'26_393',title:'RCRC PQQ — RACS (Art Conservation, Preservation & Collection Registrar)',client:'RCRC · JV w/ Athr',status:'ontrack',deadline:'PQQ submitted 1 Oct · clarifications',countdown:'awaiting',cd:'',detail:'RCRC clarifications received 14 October; financial data compiled with LOAs masked. Manal contacted four Saudi firms (Dussur, QWA, Dar Al Riyadh, ECEC) for a MOMRA-classified partner; Benedetta reached out to SAK Consulting and Richmond/Edge (18 Oct).'},
+      {id:'26_353',title:'Red Sea Artwork Package',client:'RSG · In Negotiation',status:'won',deadline:'Shura Agreement — confirmation requested by 12 Oct',countdown:'IN NEGOTIATION',cd:'won',detail:'Final Shura Agreement sent 11 October with confirmation requested by 12 October, 1:00 PM KSA, before issue for signature. No confirmation email visible in tenders@ — to verify with Benedetta.'},
+      {id:'26_392',title:'King Fahd Glorious Qur\'an Printing Complex — Technical Proposal',client:'KFGQPC · w/ Athr',status:'ontrack',deadline:'TBC',countdown:'upcoming',cd:'',detail:'Financial model updated after the 15 October working session and shared with Linda. Technical proposal structure with the Athr team ongoing.'},
+      {id:'DGDA_RFI',title:'RFI — Museum Development Public Artworks',client:'Diriyah Company',status:'ontrack',deadline:'Deadline TBC (Ariba)',countdown:'upcoming',cd:'',detail:'New Ariba invitation from Diriyah Procurement (Doc257942015, 18 Oct, contact Mohammed Aldahmash). Forwarded by Katy; context and scope to be confirmed on the portal — possibly linked to the public art strategy work. Go/no-go pending.'},
+      {id:'RSG_R07',title:'R07-HC1D26 — Shura Central Hotel 1 — Artworks Consultancy Package',client:'Red Sea Global',status:'ontrack',deadline:'Deadline TBC (Ariba)',countdown:'upcoming',cd:'',detail:'Ariba invitation received 15 October (Doc267154876); event opened 16 October. Deadline and documents to be captured on the portal — bid/no-bid this week. High fit: artworks consultancy with an existing RSG relationship (26_353).'},
+      {id:'RSG_R08',title:'R08-HE1D26 — Shura East Hotel 1 — Artworks Consultancy Package',client:'Red Sea Global',status:'ontrack',deadline:'Deadline TBC (Ariba)',countdown:'upcoming',cd:'',detail:'Ariba invitation received 15 October (Doc267201144); event opened 16 October. Same scope family as R07 — to be assessed together.'},
+      {id:'CBK',title:'CBK Old HQ Museum — Content Creation, Design, Production & Integration',client:'Central Bank of Kuwait · via City Kuwait / KCPC',status:'ontrack',deadline:'Proposal · deadline TBC',countdown:'upcoming',cd:'',detail:'Two routes in parallel: City Kuwait (contractor) proposed a collaboration on 15 Oct — interest confirmed, portfolio shared, conference call 16 Oct, full Scope of Work received 17 Oct (3 design phases + strategic/operational planning, staffing, business modelling); KCPC also invited Aimes directly (14 Oct, Tender No. 4/2024-2025). In-person meeting being arranged (Piero to Kuwait City, or Dubai). Bid code and route to be confirmed by Ignacio.'}
+    ],
+    pipeline:[
+      {head:'Pipeline Opportunities',count:6,items:[
+        ['Al Mashaer public art — Kidana / Makkah pitch','One Works returned signed NDA + proposal template (12 Oct) · Counterspace (Sumayya Vally) accepted the Curatorial Lead invitation — 5–6 people, 11 months · fee proposal for Katy\'s review','active','Team building'],
+        ['NPUAE 2027 — Exhibition Construction RFP','Signed NDA acknowledged by National Pavilion UAE (15 Oct) · RFP to follow','awaiting','NDA signed'],
+        ['UAE Pavilion — Venice','NDA received, signature in progress','awaiting','NDA'],
+        ['Expo 2030 Riyadh — Swiss Pavilion','Interest expressed to the Swiss Embassy (13 Oct): exhibition experience + established KSA presence','awaiting','Interest sent'],
+        ['Aramco Stadium — Art Curation & Production','Credentials and portfolio sent to Aramco Stadium (12 Oct)','awaiting','Credentials sent'],
+        ['Dubai Police — public tender list','List of tenders closing 19 Oct – 31 Dec 2026 received via procurement@ (16 Oct) — to review for culture/events lots','awaiting','To review']
+      ]},
+      {head:'Submitted RFPs / General Updates',count:4,items:[
+        ['26_343 Etihad Museum RFQ 774594','Tender-fee refund approved by DCAA — funds within 5 working days (11 Oct)','active','Refund'],
+        ['26_358 Aldar Curatorial & Collections','Kate Matar (Aldar Art & Culture Advisor) leaving — programme did not proceed as planned; relationship kept at personal level','lost','Stalled'],
+        ['MOC — SAP Business Network POs','PO 4500002882 issued then cancelled; PO 4500000822 changed (14 Oct) — both awaiting response','active','Action'],
+        ['Aramco vendor profile','GOSI certificate (vendor 0010118729) expires 21 Oct — renewal required before auto-verification','active','Admin · 21 Oct']
+      ]}
+    ],
+    notes:[
+      ['Metrics transparency','No PDF n°39 received: this report is built from the tenders@ mailbox (11–19 Oct), per Benedetta\'s instruction that email exchanges feed the BD report. Dashboard unchanged at 34 submitted · 2 won (5.9%) · 10 lost (29.4%) · 22 awaiting — Expo 2030 PQQ is a pre-qualification (not counted); Dubai Art Residency cancelled by the client stays in the base as no update (same as Etihad in n°37). PDF-equivalent: 33 · 1 · 10 · 22.'],
+      ['Items after 15 Oct included','Misk revision request (18 Oct), Diriyah RFI (18 Oct), CBK scope of work (17 Oct), RSG Ariba events (15–16 Oct) and the Aldar update (15 Oct) are included here so the dashboard is current; they will not be repeated in n°40.'],
+      ['ID conflict — CBK','Manal\'s Teams space for the CBK Kuwait museum uses 26_356, which is already Westfield by Cenomi in NetSuite/dashboard. Tracked here as "CBK" until a bid code is confirmed.'],
+      ['Red Sea — unverified confirmation','The Shura Agreement confirmation requested by 12 Oct 13:00 KSA is not visible in tenders@. Deadline left open in the radar as PAST until confirmed.'],
+      ['New RSG events — deadlines on Ariba','R07-HC1D26 and R08-HE1D26 deadlines are portal-only (OTP-gated) and shown as TBC; both at 10% pending bid/no-bid.'],
+      ['Villa Hegra — evaluability risk','Evaluator cannot open the technical proposal (password issue, 12 Oct). Not yet confirmed as resolved in tenders@.']
+    ]
+  },
   // W38 — 4 - 8 Oct 2026
-  { num:38, week:'4 – 8 Oct 2026', latest:true,
+  { num:38, week:'4 – 8 Oct 2026',
     headline:'0 SUBMITTED · NEW MOC RFP 26_395 Framework Agreement — Artwork Loans & Acquisitions (due 24 Oct, Hasenkamp partnership considered) · 26_391 Diriyah extended again → 20 Oct · 26_394 Expo 2030 PQQ due 13 Oct (Athr documents received) · 26_353 Red Sea: final Shura Agreement for confirmation by 12 Oct · new leads: Swiss Pavilion (Expo 2030) + Aramco Stadium art curation',
     metrics:{ subWeek:0, subYTD:34, won:2, lost:10, noUpd:22, wonRate:'5.9%', lostRate:'29.4%', noUpdRate:'64.7%', delta:'0' },
     timeline:{ cols:['11 – 20 Oct','21 – 31 Oct','01 – 07 Nov'], rows:[
@@ -2387,7 +2438,8 @@ const KPI_HISTORY = [
   { w:35, sub:31, won:2, lost:10, noUpd:19 },
   { w:36, sub:32, won:2, lost:10, noUpd:20 },
   { w:37, sub:34, won:2, lost:10, noUpd:22 },
-  { w:38, sub:34, won:2, lost:10, noUpd:22 }
+  { w:38, sub:34, won:2, lost:10, noUpd:22 },
+  { w:39, sub:34, won:2, lost:10, noUpd:22 }
 ];
 
 const SUBMISSIONS_PER_WEEK = [
@@ -2395,7 +2447,7 @@ const SUBMISSIONS_PER_WEEK = [
   { w:6, sub:1 }, { w:7, sub:1 }, { w:8, sub:0 },
   { w:9, sub:1 }, { w:10, sub:0 }, { w:11, sub:2 }, { w:12, sub:1 },
   { w:13, sub:0 }, { w:14, sub:0 }, { w:15, sub:2 }, { w:16, sub:0 },
-  { w:17, sub:0 }, { w:18, sub:2 }, { w:19, sub:2 }, { w:20, sub:1 }, { w:21, sub:3 }, { w:22, sub:4 }, { w:23, sub:1 }, { w:24, sub:2 }, { w:25, sub:0 }, { w:26, sub:2 }, { w:27, sub:0 }, { w:28, sub:1 }, { w:29, sub:1 }, { w:30, sub:0 }, { w:31, sub:1 }, { w:32, sub:1 }, { w:33, sub:0 }, { w:34, sub:0 }, { w:35, sub:2 }, { w:36, sub:1 }, { w:37, sub:2 }, { w:38, sub:0 }
+  { w:17, sub:0 }, { w:18, sub:2 }, { w:19, sub:2 }, { w:20, sub:1 }, { w:21, sub:3 }, { w:22, sub:4 }, { w:23, sub:1 }, { w:24, sub:2 }, { w:25, sub:0 }, { w:26, sub:2 }, { w:27, sub:0 }, { w:28, sub:1 }, { w:29, sub:1 }, { w:30, sub:0 }, { w:31, sub:1 }, { w:32, sub:1 }, { w:33, sub:0 }, { w:34, sub:0 }, { w:35, sub:2 }, { w:36, sub:1 }, { w:37, sub:2 }, { w:38, sub:0 }, { w:39, sub:0 }
 ];
 
 // Project journey across 20 reporting weeks (W01..W21, W02 missing from records)
@@ -2405,174 +2457,182 @@ const SUBMISSIONS_PER_WEEK = [
 const PROJECTS = [
   // ── 2026 SUBMITTED PITCHES ─────────────────────
   { id:'26_353', name:'Red Sea Artwork Package', client:'Red Sea Global', extensions:4,  value:13896289, prob:75, subDate:'2026-03-30',
-    weeks:['','','','','','','','a','u','u','a','a','u','u','s','s','a','h','a','a','','','','h','','','','','','','','','','','','',''],
+    weeks:['','','','','','','','a','u','u','a','a','u','u','s','s','a','h','a','a','','','','h','','','','','','','','','','','','','',''],
     events:[{w:10,t:'s',d:'Submitted ~30 Mar'},{w:14,t:'s',d:'Final submitted 29 Apr'},{w:15,t:'s',d:'Final v2 submitted 7 May'},{w:17,t:'h',d:'Entered negotiation — preferred bidder, BOQ ongoing'}] },
   { id:'26_354', name:'Dubai Fest. Youth Performing Arts', client:'DCAA', value:1719441, prob:25, subDate:'2026-03-26',
-    weeks:['','','','','a','a','a','a','a','s','','','a','a','a','u','s','','','','','','','','','','','','','','','','l','','','',''],
+    weeks:['','','','','a','a','a','a','a','s','','','a','a','a','u','s','','','','','','','','','','','','','','','','l','','','','',''],
     events:[{w:9,t:'s',d:'Submitted 26 Mar'},{w:15,t:'s',d:'Resubmitted (post-republish)'},{w:32,t:'l',d:'Not Awarded — reported n°34 (10 Sep)'}] },
   { id:'26_355', name:'Museums & Heritage 3-yr Retainer', client:'DCAA', extensions:1,  value:228050, prob:25, subDate:'2026-03-26',
-    weeks:['','','','','','','a','u','a','s','','','','','','','','','','','','','','l','','','','','','','','','','','','',''],
+    weeks:['','','','','','','a','u','a','s','','','','','','','','','','','','','','l','','','','','','','','','','','','','',''],
     events:[{w:9,t:'s',d:'Submitted 26 Mar'},{w:23,t:'l',d:'Not Awarded — bid bond release initiated'}] },
   { id:'26_343', name:'Etihad Museum Public Space', client:'DCAA', extensions:3,  value:7701984, prob:25, subDate:'2026-03-02',
-    weeks:['a','a','a','a','a','a','a','s','a','a','a','a','a','a','','','','','','','','','','','','','','','','','','','','','','c',''],
+    weeks:['a','a','a','a','a','a','a','s','a','a','a','a','a','a','','','','','','','','','','','','','','','','','','','','','','c','',''],
     events:[{w:7,t:'s',d:'Submitted 02 Mar 2026'}] },
   { id:'26_350', name:'MAC — Museum of Contemporary Art Panamá', client:'ADS74 collab',
-    weeks:['','','','a','a','a','a','a','a','','','','','','','','','','','','','','','','','','','','','','','','','','','',''] },
+    weeks:['','','','a','a','a','a','a','a','','','','','','','','','','','','','','','','','','','','','','','','','','','','',''] },
   { id:'26_351', name:'HYKAL — Aimes Collaboration', client:'Al-Jouf & Qassim Museums',
-    weeks:['','','','a','a','','','','a','','','','','','','','','','','','','','','','','','','','','','','','','','','',''] },
+    weeks:['','','','a','a','','','','a','','','','','','','','','','','','','','','','','','','','','','','','','','','','',''] },
   { id:'26_356', name:'Westfield by Cenomi — Jeddah & Riyadh', client:'Cenomi Centers', value:5131370, prob:25, subDate:'2026-04-23',
-    weeks:['','','','','','','','','a','a','a','a','a','s','','','','','','','','','','','','','','','','','','','','','','',''],
+    weeks:['','','','','','','','','a','a','a','a','a','s','','','','','','','','','','','','','','','','','','','','','','','',''],
     events:[{w:13,t:'s',d:'Submitted 23 Apr'}] },
   { id:'26_357', name:'Sikka 2027 — Event Planning', client:'DCAA', extensions:2,  value:10794819, prob:25, subDate:'2026-05-11',
-    weeks:['','','','','','','','','','a','a','a','a','a','a','u','s','','','','','','','u','s','a','','','','','','','l','','','',''],
+    weeks:['','','','','','','','','','a','a','a','a','a','a','u','s','','','','','','','u','s','a','','','','','','','l','','','','',''],
     events:[{w:16,t:'s',d:'Submitted 11 May'},{w:24,t:'s',d:'Revised BOQ submitted 13 Jul · client meeting to review BOQ & commercial'},{w:32,t:'l',d:'Not Awarded — reported n°34 (10 Sep)'}] },
   { id:'26_358', name:'Aldar Curatorial & Collections', client:'Aldar Development', value:335073, prob:25, subDate:'2026-04-17',
-    weeks:['','','','','','','','','','','','u','u','s','a','','','','','','','','','','l','','','','','','','','','','','',''],
+    weeks:['','','','','','','','','','','','u','u','s','a','','','','','','','','','','l','','','','','','','','','','','','',''],
     events:[{w:13,t:'s',d:'Technical submitted 17 Apr'},{w:14,t:'s',d:'Commercial submitted'},{w:24,t:'l',d:'Not Awarded'}] },
   { id:'26_361', name:'Public Art Strategy', client:'Aldar Development', value:115896, prob:25, subDate:'2026-05-10',
-    weeks:['','','','','','','','','','','','','','','u','u','s','','','','','','','','l','','','','','','','','','','','',''],
+    weeks:['','','','','','','','','','','','','','','u','u','s','','','','','','','','l','','','','','','','','','','','','',''],
     events:[{w:16,t:'s',d:'Submitted 10 May'},{w:24,t:'l',d:'Not Awarded'}] },
   { id:'26_362', name:'Curatorial Dev. & Exhibition Design', client:'DCAA', extensions:1,
-    weeks:['','','','','','','','','','','','','','','','','a','u','c','','','','','','','','','','','','','','','','','',''] },
+    weeks:['','','','','','','','','','','','','','','','','a','u','c','','','','','','','','','','','','','','','','','','',''] },
   { id:'26_363', name:'Dubai Art Residency', client:'DCAA', value:3179872, prob:25, subDate:'2026-05-21',
-    weeks:['','','','','','','','','','','','','','','','','','s','a','','','','s','','','','a','','','','','','','','','',''],
+    weeks:['','','','','','','','','','','','','','','','','','s','a','','','','s','','','','a','','','','','','','','','','','c'],
     events:[{w:17,t:'s',d:'Submitted 21 May'},{w:22,t:'s',d:'BAFO revised commercial submitted 2 Jul'}] },
   { id:'26_365', name:'Red Palace Art Package', client:'Diriyah Biennale Foundation', value:483915,
-    weeks:['','','','','','','','','','','','','','','','','','s','l','','','','','','','','','','','','','','','','','',''],
+    weeks:['','','','','','','','','','','','','','','','','','s','l','','','','','','','','','','','','','','','','','','',''],
     events:[{w:17,t:'s',d:'Submitted 18 May'},{w:18,t:'l',d:'Not awarded'}] },
   { id:'26_349', name:'Villa Hegra x Asia Now', client:'Afalula',
-    weeks:['','','','a','s','a','a','a','a','s','a','a','a','a','l','','','','','','','','','','','','','','','','','','','','','',''],
+    weeks:['','','','a','s','a','a','a','a','s','a','a','a','a','l','','','','','','','','','','','','','','','','','','','','','','',''],
     events:[{w:4,t:'s',d:'Submitted TP+FP 11 Feb'},{w:9,t:'s',d:'Refloated — resubmitted 23 Mar'},{w:14,t:'l',d:'Not awarded'}] },
   { id:'26_352', name:'Traditional Arts Festival', client:'MOC', extensions:1,
-    weeks:['','','','','a','s','a','a','a','l','','','','','','','','','','','','','','','','','','','','','','','','','','',''],
+    weeks:['','','','','a','s','a','a','a','l','','','','','','','','','','','','','','','','','','','','','','','','','','','',''],
     events:[{w:5,t:'s',d:'Submitted 15 Feb'},{w:9,t:'l',d:'LOST'}] },
   { id:'Paris', name:'Cultural Activations in the City of Paris', client:'MOC', prob:25, subDate:'2026-06-04',
-    weeks:['','','','','','','','','','','','','','','','','','','s','a','','','','','','','','','','','','','','','','',''],
+    weeks:['','','','','','','','','','','','','','','','','','','s','a','','','','','','','','','','','','','','','','','',''],
     events:[{w:18,t:'s',d:'Resubmitted 4 Jun'}] },
   { id:'26_370', name:'Vision 2030 Exhibition & Accompanying Programs', client:'MOC', partner:'Hwadi', prob:10, subDate:'2026-06-24',
-    weeks:['','','','','','','','','','','','','','','','','','','','a','u','s','','','s','a','','','','c','','','','','','',''],
+    weeks:['','','','','','','','','','','','','','','','','','','','a','u','s','','','s','a','','','','c','','','','','','','',''],
     events:[{w:21,t:'s',d:'Submitted 24 Jun'},{w:24,t:'s',d:'Revised commercial submitted — discount as requested by client'}] },
   { id:'26_372', name:'Awareness Trips in the Visual Arts Sector 2026', client:'MOC', prob:25, extensions:1, subDate:'2026-06-30',
-    weeks:['','','','','','','','','','','','','','','','','','','','','a','a','s','','','','c','','','','','','','','','',''],
+    weeks:['','','','','','','','','','','','','','','','','','','','','a','a','s','','','','c','','','','','','','','','','',''],
     events:[{w:22,t:'s',d:'Submitted 30 Jun'}] },
   { id:'26_374', name:'Public Art Abu Dhabi (Biennale)', client:'DCT Abu Dhabi', value:4200000, prob:75,
-    weeks:['','','','','','','','','','','','','','','','','','','','','h','h','h','h','','','','','','','','','','','','',''],
+    weeks:['','','','','','','','','','','','','','','','','','','','','h','h','h','h','','','','','','','','','','','','','',''],
     events:[{w:20,t:'h',d:'Won — in negotiation (final terms)'},{w:21,t:'h',d:'Kapwani Kiwanga quote + draft schedule after site visit; contract finalization'},{w:22,t:'h',d:'Revised cost estimates for all 4 artists APPROVED by client'},{w:23,t:'h',d:'Nari Ward cost estimate reviewed & approved — approval complete for all 4 artists (Kiwanga AED 825,341 · Senatore AED 1,093,861 · Clottey AED 752,783 · Nari Ward AED 1,264,038, excl. VAT)'}] },
   { id:'26_375', name:'Madinah Rock Display Project', client:'PMBS Museum for Arabic Calligraphy', value:345035, prob:10, valueSrc:'da pitch budget SharePoint · price w/o VAT SAR 3,450,349 × 10% · 26_373 Madinah budget (current sheet) · to reconcile with NetSuite', subDate:'2026-07-14',
-    weeks:['','','','','','','','','','','','','','','','','','','','','','a','a','u','s','','a','a','','','','','','','','',''],
+    weeks:['','','','','','','','','','','','','','','','','','','','','','a','a','u','s','','a','a','','','','','','','','','',''],
     events:[{w:24,t:'s',d:'TP+FP submitted 14 Jul — 2 concept options: SAR 3.34M / 2.48M'}] },
   { id:'26_376', name:'Money 20/20 — Emkan Booth Production 2026', client:'Emkan', value:1285159, prob:25, valueSrc:'da pitch budget SharePoint · price w/o VAT SAR 5,140,635 × 25% · 26_376 Emkan budget — margin 55%, to verify · to reconcile with NetSuite', subDate:'2026-07-02',
-    weeks:['','','','','','','','','','','','','','','','','','','','','','','s','','','','','','','','','','','','','',''],
+    weeks:['','','','','','','','','','','','','','','','','','','','','','','s','','','','','','','','','','','','','','',''],
     events:[{w:22,t:'s',d:'Submitted 2 Jul (Ref#3307)'}] },
   { id:'26_378', name:'Leonardo da Vinci Exhibition Presentation', client:'Proactive Proposal', prob:10,
-    weeks:['','','','','','','','','','','','','','','','','','','','','','','a','a','st','st','st','st','','','','','','','','',''] },
+    weeks:['','','','','','','','','','','','','','','','','','','','','','','a','a','st','st','st','st','','','','','','','','','',''] },
   { id:'RCU_Rome', name:'Archaeological Exhibition in Rome (w/ Monod Mostre)', client:'RCU', prob:10,
-    weeks:['','','','','','','','','','','','','','','','','','','','','','','a','a','a','a','a','a','a','','','','','','','',''] },
+    weeks:['','','','','','','','','','','','','','','','','','','','','','','a','a','a','a','a','a','a','','','','','','','','',''] },
   { id:'HC_Venice', name:'Glass Residency Program — Venice (Sep)', client:'KSA / Int\'l', prob:10,
-    weeks:['','','','','','','','','','','','','','','','','','','','','','a','a','a','a','st','a','a','','c','','','','','','',''] },
+    weeks:['','','','','','','','','','','','','','','','','','','','','','a','a','a','a','st','a','a','','c','','','','','','','',''] },
   { id:'HC_Paris', name:'Salon du Patrimoine Culturel — Paris (Oct-Nov)', client:'KSA / Int\'l', prob:10,
-    weeks:['','','','','','','','','','','','','','','','','','','','','','a','a','a','a','a','a','a','','','','','','','','',''] },
+    weeks:['','','','','','','','','','','','','','','','','','','','','','a','a','a','a','a','a','a','','','','','','','','','',''] },
   { id:'HC_China', name:'Cultural Relations — China (Nov)', client:'KSA / Int\'l', prob:10,
-    weeks:['','','','','','','','','','','','','','','','','','','','','','a','a','a','a','a','c','','','','','','','','','',''] },
+    weeks:['','','','','','','','','','','','','','','','','','','','','','a','a','a','a','a','c','','','','','','','','','','',''] },
   { id:'AlUlaHorse', name:'Contemporary Art Exhibition AlUla (Horse Exhibition)', client:'Afalula', prob:10, subDate:'2026-06-19',
-    weeks:['','','','','','','','','','','','','','','','','','','','','s','','','','','','','','','','','','','','','',''],
+    weeks:['','','','','','','','','','','','','','','','','','','','','s','','','','','','','','','','','','','','','','',''],
     events:[{w:20,t:'s',d:'TP+FP submitted 19 Jun'}] },
   // ── NEW DEADLINES POST W20 ──────────────────────
   { id:'26_366', name:'Permanent Arabic Language Exhibitions', client:'KSAAL', partner:'Hwadi', value:830247, prob:10, valueSrc:'da pitch budget SharePoint · price w/o VAT SAR 8,302,468 × 10% · 26_366 KSAAL budget · to reconcile with NetSuite', subDate:'2026-06-18',
-    weeks:['','','','','','','','','','','','','','','','','','a','u','u','s','','','','','','a','','','','','','','','','',''],
+    weeks:['','','','','','','','','','','','','','','','','','a','u','u','s','','','','','','a','','','','','','','','','','',''],
     events:[{w:20,t:'s',d:'Submitted 18 Jun'}] },
   { id:'26_367', name:'Int\'l Event Support / Culinary Arts', client:'MOC', partner:'Hwadi', extensions:1,  prob:25, subDate:'2026-06-10',
-    weeks:['','','','','','','','','','','','','','','','','','a','a','s','a','','','','','','c','','','','','','','','','',''],
+    weeks:['','','','','','','','','','','','','','','','','','a','a','s','a','','','','','','c','','','','','','','','','','',''],
     events:[{w:19,t:'s',d:'Submitted 10 Jun (w/ Hwadi)'}] },
   { id:'26_369', name:'Int\'l Film Criticism Conference 2026', client:'MOC', partner:'Hwadi (lead)', prob:10, subDate:'2026-06-14',
-    weeks:['','','','','','','','','','','','','','','','','','','a','u','s','','','','','','','','','','','','','','','',''],
+    weeks:['','','','','','','','','','','','','','','','','','','a','u','s','','','','','','','','','','','','','','','','',''],
     events:[{w:20,t:'s',d:'Submitted 14 Jun (Hwadi-led)'}] },
-  { id:'26_234', name:'Public Art Commission Program', client:'Misk Foundation', value:956005, prob:10, valueSrc:'da pitch budget SharePoint · price w/o VAT SAR 9,560,049 × 10% · 26_364 Misk budget · to reconcile with NetSuite', subDate:'2026-06-10',
-    weeks:['','','','','','','','','','','','','','','','','a','a','u','s','','','','','','','','','','','','','','','','',''],
+  { id:'26_234', name:'Public Art Commission Program', client:'Misk Foundation', extensions:1, value:956005, prob:10, valueSrc:'da pitch budget SharePoint · price w/o VAT SAR 9,560,049 × 10% · 26_364 Misk budget · to reconcile with NetSuite', subDate:'2026-06-10',
+    weeks:['','','','','','','','','','','','','','','','','a','a','u','s','','','','','','','','','','','','','','','','','','u'],
     events:[{w:19,t:'s',d:'Submitted 10 Jun'}] },
   { id:'26_368', name:'District 11 — Urban Core Office Architect', client:'Qiddiya', partner:'BIG', prob:10, subDate:'2026-06-09',
-    weeks:['','','','','','','','','','','','','','','','','','','u','s','','','','','u','','','','','','','','','','','',''],
+    weeks:['','','','','','','','','','','','','','','','','','','u','s','','','','','u','','','','','','','','','','','','',''],
     events:[{w:19,t:'s',d:'Submitted to BIG 9 Jun'}] },
   // ── NEW OPPORTUNITIES — JUL 2026 ────────────────
   { id:'26_377', name:'Banan 4 — Saudi International Handicrafts Week', client:'MOC', prob:10,
-    weeks:['','','','','','','','','','','','','','','','','','','','','','','','a','s','','c','','','','','','','','','',''],
+    weeks:['','','','','','','','','','','','','','','','','','','','','','','','a','s','','c','','','','','','','','','','',''],
     events:[{w:24,t:'s',d:'TP+FP submitted — project value SAR 62.3M incl. VAT (PDF n°26 states 18 Jul; date TBC)'}] },
   { id:'26_379', name:'Design Preactivation Museum of the Incense Road AlUla', client:'Afalula', prob:10, subDate:'2026-07-26',
     events:[{w:26,t:'s',d:'Submitted 26 Jul — TP+FP · revised TP resubmitted after client review'},{w:27,t:'l',d:'Lost — reported in n°29 (6 Aug)'}],
-    weeks:['','','','','','','','','','','','','','','','','','','','','','','','a','a','u','s','l','','','','','','','','',''] },
+    weeks:['','','','','','','','','','','','','','','','','','','','','','','','a','a','u','s','l','','','','','','','','','',''] },
   { id:'26_380', name:'Passages of Light AlUla', client:'RCU & Italian Embassy', prob:10,
-    weeks:['','','','','','','','','','','','','','','','','','','','','','','','','','a','a','a','a','a','','','','','','a','a'],
+    weeks:['','','','','','','','','','','','','','','','','','','','','','','','','','a','a','a','a','a','','','','','','a','a',''],
     events:[] },
   { id:'26_381', name:'Venice Architecture Biennale 2027', client:'MOC', prob:10, subDate:'2026-08-06',
-    weeks:['','','','','','','','','','','','','','','','','','','','','','','','','','a','u','s','','','','','','','','',''],
+    weeks:['','','','','','','','','','','','','','','','','','','','','','','','','','a','u','s','','','','','','','','','',''],
     events:[{w:27,t:'s',d:'Submitted 6 Aug — TP+FP'}] },
   { id:'26_382', name:'Villa Hegra Architecture Graduate Exchange Program', client:'Villa Hegra', extensions:1, prob:10,
-    weeks:['','','','','','','','','','','','','','','','','','','','','','','','','','','u','c','','','','','','','','',''] },
+    weeks:['','','','','','','','','','','','','','','','','','','','','','','','','','','u','c','','','','','','','','','',''] },
   { id:'26_383', name:'Saudi National Museum Activation & Operations', client:'MOC', extensions:1, value:1070554, prob:25, subDate:'2026-08-23',
-    weeks:['','','','','','','','','','','','','','','','','','','','','','','','','','','','a','u','s','','','','','','',''],
+    weeks:['','','','','','','','','','','','','','','','','','','','','','','','','','','','a','u','s','','','','','','','',''],
     events:[{w:29,t:'s',d:'Submitted 23 Aug — TP+FP · contract value SAR 4,282,215'}] },
   { id:'26_384', name:'AlUla, Wonder of Arabia — Rome Exhibition Concept', client:'Afalula', extensions:1, value:635838, prob:25, valueSrc:'da pitch budget SharePoint · price w/o VAT SAR 2,543,353 × 25% · 26_384 AlUla Rome budget · to reconcile with NetSuite', subDate:'2026-10-02',
-    weeks:['','','','','','','','','','','','','','','','','','','','','','','','','','','','a','a','a','a','a','a','u','u','s',''],
+    weeks:['','','','','','','','','','','','','','','','','','','','','','','','','','','','a','a','a','a','a','a','u','u','s','',''],
     events:[{w:35,t:'s',d:'Submitted 2 Oct — TP+FP · contract value ~EUR 597,385 (SAR value TBC)'}] },
   { id:'26_385', name:'BIG x Aimes — Almadina Azarqa Masterplan, Oman', client:'Grand Blue City Dev. SAOC', partner:'BIG', prob:25, subDate:'2026-08-18',
-    weeks:['','','','','','','','','','','','','','','','','','','','','','','','','','','','a','u','s','s','','','','','',''],
+    weeks:['','','','','','','','','','','','','','','','','','','','','','','','','','','','a','u','s','s','','','','','','',''],
     events:[{w:30,t:'s',d:'Submission entered in the KPI base (report n°32) — all materials delivered via BIG by the 18 Aug deadline'}] },
   { id:'26_386', name:'Al Fahidi Fort — VVIP Event', client:'Talent (UAE)', prob:10,
-    weeks:['','','','','','','','','','','','','','','','','','','','','','','','','','','','','a','a','a','a','l','','','',''],
+    weeks:['','','','','','','','','','','','','','','','','','','','','','','','','','','','','a','a','a','a','l','','','','',''],
     events:[{w:32,t:'l',d:'Not Awarded — reported n°34 (10 Sep); no proposal submitted (pre-proposal stage: FAQ received, site visit pending)'}] },
   { id:'26_387', name:'Event District IO Ground Break', client:'DIEZ', extensions:1, prob:10,
-    weeks:['','','','','','','','','','','','','','','','','','','','','','','','','','','','','a','a','c','','','','','',''] },
+    weeks:['','','','','','','','','','','','','','','','','','','','','','','','','','','','','a','a','c','','','','','','',''] },
   { id:'26_388', name:'Villa Hegra Programming', client:'Villa Hegra', value:2167645, prob:25, subDate:'2026-10-01',
-    weeks:['','','','','','','','','','','','','','','','','','','','','','','','','','','','','','a','a','a','a','a','u','s',''],
+    weeks:['','','','','','','','','','','','','','','','','','','','','','','','','','','','','','a','a','a','a','a','u','s','',''],
     events:[{w:35,t:'s',d:'Submitted 1 Oct — TP+FP · contract value ~SAR 8,670,579'}] },
   { id:'WestfieldRA', name:'Westfield Riyadh Art Strategy — Cultural Impact x Aimes', client:'Cenomi Centers', partner:'Cultural Impact', extensions:1, value:2871495, prob:25, subDate:'2026-09-17',
-    weeks:['','','','','','','','','','','','','','','','','','','','','','','','','','','','','','a','u','a','a','s','','',''],
+    weeks:['','','','','','','','','','','','','','','','','','','','','','','','','','','','','','a','u','a','a','s','','','',''],
     events:[{w:33,t:'s',d:'Submitted 17 Sep — TP+FP · contract value SAR 11,485,981 (PDF ID 26_387)'}] },
   { id:'26_389', name:'Westfield Jeddah Opening Events', client:'Cenomi Centers', extensions:1, prob:25, subDate:'2026-09-15',
-    weeks:['','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','a','a','a','s','','',''],
+    weeks:['','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','a','a','a','s','','','',''],
     events:[{w:33,t:'s',d:'Submitted 15 Sep — premium budget SAR 22,703,963 · lean budget SAR 3,097,726'}] },
   { id:'26_390', name:'KKIA Art Framework Agreement', client:'RAC', extensions:1, value:7703684, prob:25, subDate:'2026-09-27',
-    weeks:['','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','a','a','u','s','',''],
+    weeks:['','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','a','a','u','s','','',''],
     events:[{w:34,t:'s',d:'Submitted 27 Sep — TP+FP · total contract value SAR 30,814,737 (counted in report n°36)'}] },
   { id:'26_391', name:'Diriyah Public Art Consultancy Services Framework', client:'Diriyah Company', extensions:2, prob:10,
-    weeks:['','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','a','a','a','a','u','u'] },
+    weeks:['','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','a','a','a','a','u','u','u'] },
   { id:'26_392', name:'King Fahd Glorious Qur\'an Printing Complex — Technical Proposal', client:'KFGQPC', partner:'Athr', prob:10,
-    weeks:['','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','a','a','a','a'] },
+    weeks:['','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','a','a','a','a','a'] },
   { id:'26_394', name:'Expo 2030 PQQ — Exhibition Design', client:'Expo 2030 Riyadh', partner:'Athr (JV TBC)', extensions:1, prob:10,
-    weeks:['','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','u','u'] },
+    weeks:['','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','u','u','s'] },
   { id:'26_393', name:'RCRC PQQ — RACS (Art Conservation, Preservation & Collection Registrar)', client:'RCRC', partner:'Athr (JV)', extensions:1, prob:10,
-    weeks:['','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','u','u','s',''] },
+    weeks:['','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','u','u','s','',''] },
   { id:'26_395', name:'Framework Agreement — Artwork Loans & Acquisitions + Operational & Logistics Services (Museum of World Cultures)', client:'MOC', partner:'Hasenkamp (TBC)', prob:10,
-    weeks:['','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','a'] },
+    weeks:['','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','a','u'] },
+  { id:'DGDA_RFI', name:'RFI — Museum Development Public Artworks', client:'Diriyah Company', prob:10,
+    weeks:['','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','a'] },
+  { id:'RSG_R07', name:'R07-HC1D26 — Shura Central Hotel 1 — Artworks Consultancy Package', client:'Red Sea Global', prob:10,
+    weeks:['','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','a'] },
+  { id:'RSG_R08', name:'R08-HE1D26 — Shura East Hotel 1 — Artworks Consultancy Package', client:'Red Sea Global', prob:10,
+    weeks:['','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','a'] },
+  { id:'CBK', name:'CBK Old HQ Museum — Content Creation, Design, Production & Integration (Kuwait)', client:'Central Bank of Kuwait', partner:'City Kuwait / KCPC (route TBC)', prob:10,
+    weeks:['','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','a'] },
   // ── 2025 CARRY-OVER OUTCOMES ────────────────────
   { id:'25_332', name:'International Symposium on Electronic Arts', client:'Pre-tracking',
-    weeks:['','','l','w','w','w','l','','','','','','','','','','','','','','','','','','','','','','','','','','','','','',''],
+    weeks:['','','l','w','w','w','l','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','',''],
     events:[{w:2,t:'l',d:'Initially marked lost (W04)'},{w:3,t:'w',d:'Reclassified — curatorial scope awarded'},{w:6,t:'l',d:'Final loss — pricing above budget (W08)'}],
     carryover:true },
   { id:'25_334', name:'KSPF Art Strategy Development', client:'Pre-tracking',
-    weeks:['','','','','','','l','','','','','','','','','','','','','','','','','','','','','','','','','','','','','',''],
+    weeks:['','','','','','','l','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','',''],
     events:[{w:6,t:'l',d:'LOST — awarded to UAP'}],
     carryover:true },
   { id:'25_330', name:'KSA Regional Identities', client:'MOC', value:821122,
-    weeks:['a','a','','','','','','','a','a','a','','','','','','','','','','','','','','','','c','','','','','','','','','',''],
+    weeks:['a','a','','','','','','','a','a','a','','','','','','','','','','','','','','','','c','','','','','','','','','','',''],
     carryover:true },
   // ── CANCELLED / WITHDRAWN ──────────────────────
   { id:'26_346', name:'Al Fahidi Fort Rehabilitation', client:'DCAA',
-    weeks:['','a','c','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','',''] },
+    weeks:['','a','c','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','',''] },
   { id:'26_348', name:'Arabian Leopard Day — Stone Image', client:'Lavernksa',
-    weeks:['','','a','c','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','',''] },
+    weeks:['','','a','c','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','',''] },
   { id:'PQQ', name:'Riyadh Art PQQ — Op & Conservation', client:'RCRC',
-    weeks:['','','','','','','','','','','','','','','','a','a','a','','','','','','','','','','','','','','','','','','',''] },
+    weeks:['','','','','','','','','','','','','','','','a','a','a','','','','','','','','','','','','','','','','','','','',''] },
   { id:'Tunisia', name:'Activation in Tunisia', client:'Heritage Commission',
-    weeks:['','','','','','','','','a','c','','','','','','','','','','','','','','','','','','','','','','','','','','',''] },
+    weeks:['','','','','','','','','a','c','','','','','','','','','','','','','','','','','','','','','','','','','','','',''] },
   { id:'CLM', name:'City Living Museum (25_318)', client:'Elevate mena', value:6311714,
-    weeks:['a','a','st','st','st','st','st','st','st','st','st','','','','','','','','','','','','','','','','','','','','','','','','','',''],
+    weeks:['a','a','st','st','st','st','st','st','st','st','st','','','','','','','','','','','','','','','','','','','','','','','','','','',''],
     carryover:true },
   { id:'25_335', name:'Al Madina Lights Festival', client:'Rise Arabia', value:1423905,
-    weeks:['','a','a','st','st','st','st','st','st','st','st','','','','','','','','','','','','','','','','','','','','','','','','','',''],
+    weeks:['','a','a','st','st','st','st','st','st','st','st','','','','','','','','','','','','','','','','','','','','','','','','','','',''],
     carryover:true },
   { id:'Qiddiya', name:'Qiddiya Artwork Fabrication', client:'Qiddiya',
-    weeks:['st','st','st','st','st','st','st','st','st','st','st','','','','','','','','','','','','','','','','','','','','','','','','','',''] }
+    weeks:['st','st','st','st','st','st','st','st','st','st','st','','','','','','','','','','','','','','','','','','','','','','','','','','',''] }
 ];
 
 const WEEK_LABELS = [
@@ -2585,7 +2645,7 @@ const WEEK_LABELS = [
   { num:14, range:'12 Apr' }, { num:15, range:'19 Apr' },
   { num:16, range:'26 Apr' }, { num:17, range:'3 May' },
   { num:18, range:'10 May' }, { num:19, range:'17 May' },
-  { num:20, range:'31 May' }, { num:21, range:'7 Jun' }, { num:22, range:'14 Jun' }, { num:23, range:'21 Jun' }, { num:24, range:'28 Jun' }, { num:25, range:'5 Jul' }, { num:26, range:'12 Jul' }, { num:27, range:'19 Jul' }, { num:28, range:'26 Jul' }, { num:29, range:'2 Aug' }, { num:30, range:'9 Aug' }, { num:31, range:'16 Aug' }, { num:32, range:'23 Aug' }, { num:33, range:'30 Aug' }, { num:34, range:'6 Sep' }, { num:35, range:'13 Sep' }, { num:36, range:'20 Sep' }, { num:37, range:'27 Sep' }, { num:38, range:'4 Oct' }
+  { num:20, range:'31 May' }, { num:21, range:'7 Jun' }, { num:22, range:'14 Jun' }, { num:23, range:'21 Jun' }, { num:24, range:'28 Jun' }, { num:25, range:'5 Jul' }, { num:26, range:'12 Jul' }, { num:27, range:'19 Jul' }, { num:28, range:'26 Jul' }, { num:29, range:'2 Aug' }, { num:30, range:'9 Aug' }, { num:31, range:'16 Aug' }, { num:32, range:'23 Aug' }, { num:33, range:'30 Aug' }, { num:34, range:'6 Sep' }, { num:35, range:'13 Sep' }, { num:36, range:'20 Sep' }, { num:37, range:'27 Sep' }, { num:38, range:'4 Oct' }, { num:39, range:'11 Oct' }
 ];
 
 // ─── KPI LISTS COMPUTATION ───────────────────────
@@ -2657,11 +2717,11 @@ function renderReport(r){
         <svg class="aimes-logo aimes-logo--mast" viewBox="0 0 445.74 106.04" role="img" aria-label="Aimes" fill="currentColor"><path d="M40.51,28.87h13.44l22.29,59.59h-13.6l-4.51-13.27h-22.29l-4.67,13.27h-13.27l22.62-59.59ZM39.25,65.43h15.44l-7.51-21.87h-.17l-7.76,21.87Z"/><path d="M107.97,38.64h-11.85v-9.76h11.85v9.76ZM96.12,45.31h11.85v43.15h-11.85v-43.15Z"/><path d="M127.86,45.31h11.18v5.84h.17c3.09-4.42,7.6-7.01,13.19-7.01s10.27,2,12.6,7.18c2.5-3.76,7.01-7.18,13.02-7.18,9.18,0,15.77,4.26,15.77,15.44v28.88h-11.85v-24.46c0-5.76-.5-10.52-7.26-10.52s-7.93,5.51-7.93,10.93v24.04h-11.85v-24.21c0-5.01.33-10.77-7.18-10.77-2.34,0-8.01,1.5-8.01,9.93v25.04h-11.85v-43.15Z"/><path d="M225.62,68.6c.33,7.51,4.01,10.93,10.6,10.93,4.76,0,8.6-2.92,9.35-5.59h10.43c-3.34,10.18-10.43,14.52-20.2,14.52-13.6,0-22.04-9.35-22.04-22.7s8.93-22.79,22.04-22.79c14.69,0,21.78,12.35,20.95,25.62h-31.13ZM244.9,61.09c-1.08-6.01-3.67-9.18-9.43-9.18-7.51,0-9.68,5.84-9.85,9.18h19.28Z"/><path d="M287.97,73.28c.08,5.18,4.42,7.26,9.1,7.26,3.42,0,7.76-1.34,7.76-5.51,0-3.59-4.92-4.84-13.44-6.68-6.84-1.5-13.69-3.92-13.69-11.52,0-11.02,9.51-13.86,18.78-13.86s18.11,3.17,19.03,13.77h-11.27c-.33-4.59-3.84-5.84-8.1-5.84-2.67,0-6.59.5-6.59,4.01,0,4.26,6.68,4.84,13.44,6.43,6.93,1.59,13.69,4.09,13.69,12.1,0,11.35-9.85,15.02-19.7,15.02s-19.78-3.76-20.28-15.19h11.27Z"/><path d="M429.06,21.29c0,5.49-4.45,9.94-9.94,9.94s-9.94-4.45-9.94-9.94,4.45-9.94,9.94-9.94,9.94,4.45,9.94,9.94Z"/><circle cx="386.3" cy="58.63" r="29.83"/></svg>
       </div>
       <div class="meta">
-        <div><span>Document</span>BD Weekly Report</div>
+        <div><span>Document</span>${r.source==='mailbox'?'BD Weekly — from tenders@':'BD Weekly Report'}</div>
         <div><span>Week</span>${r.week}</div>
         <div><span>Report N°</span>${r.num}</div>
-        <div><span>Produced</span>Manal</div>
-        <div><span>Validated</span>${r.num>=20?'Ignacio':r.num>=18?'Stav / Ignacio':r.num>=5?'Stav':'Alia'}</div>
+        <div><span>Produced</span>${r.source==='mailbox'?'Assia (AI-assisted)':'Manal'}</div>
+        <div><span>Validated</span>${r.source==='mailbox'?'Pending':r.num>=20?'Ignacio':r.num>=18?'Stav / Ignacio':r.num>=5?'Stav':'Alia'}</div>
       </div>
     </div>
     <div class="title-block">
@@ -2829,7 +2889,7 @@ function renderMasterGantt(){
     { label:'JUL 2026', cols:4, startIdx:23 },
     { label:'AUG 2026', cols:4, startIdx:27 },
     { label:'SEP 2026', cols:4, startIdx:31 },
-    { label:'OCT 2026', cols:2, startIdx:35 }
+    { label:'OCT 2026', cols:3, startIdx:35 }
   ];
 
   // Month header row (above week labels)
@@ -2925,7 +2985,7 @@ const MONTHLY_DATA = [
   { label:'Jul 2026', short:'Jul', sub:4, weeks:'W24 → W28', projects:'26_376 Emkan Booth Money 20/20 (2 Jul) · 26_375 Madinah Rock (14 Jul) · 26_377 Banan 4 · 26_379 Incense Road (26 Jul)' },
   { label:'Aug 2026', short:'Aug', sub:3, weeks:'W29 → W32', projects:'26_381 Venice Architecture Biennale (6 Aug) · 26_385 Oman Masterplan w/ BIG (18 Aug, counted n°32) · 26_383 SNM Activation & Ops (23 Aug) · LOST: 26_379 Incense Road · CANCELLED: 26_370 Vision 2030 · DECLINED: 26_387 Event District IO' },
   { label:'Sep 2026', short:'Sep', sub:3, weeks:'W33 → W36', projects:'26_389 Westfield Jeddah Opening Events (15 Sep) · Westfield Riyadh Art Strategy w/ Cultural Impact (17 Sep, SAR 11.5M) · 26_390 KKIA Art Framework (27 Sep, SAR 30.8M) · 3 LOST (n°34): 26_357 Sikka 2027, 26_354 Dubai Youth Performing Arts, 26_386 Al Fahidi VVIP · new RFPs: 26_391 Diriyah Public Art (9 Oct), 26_393 RCRC PQQ (1 Oct), 26_392 KFGQPC w/ Athr' },
-  { label:'Oct 2026', short:'Oct', sub:2, weeks:'W37 → W38', projects:'26_388 Villa Hegra Programming (1 Oct, ~SAR 8.67M) · 26_384 AlUla Wonder of Arabia Rome (2 Oct, ~EUR 597K) · 26_393 RCRC PQQ as JV w/ Athr (not counted) · CANCELLED: 26_343 Etihad Museum (DCAA) · new: 26_394 Expo 2030 PQQ (due 10 Oct) · 26_391 Diriyah due 9 Oct → 20 Oct (W38: new 26_395 MOC Framework due 24 Oct, Expo PQQ → 13 Oct)' }
+  { label:'Oct 2026', short:'Oct', sub:2, weeks:'W37 → W39', projects:'26_388 Villa Hegra Programming (1 Oct, ~SAR 8.67M) · 26_384 AlUla Wonder of Arabia Rome (2 Oct, ~EUR 597K) · 26_393 RCRC PQQ as JV w/ Athr (not counted) · CANCELLED: 26_343 Etihad Museum (DCAA) · new: 26_394 Expo 2030 PQQ (due 10 Oct) · 26_391 Diriyah due 9 Oct → 20 Oct (W38: new 26_395 MOC Framework due 24 Oct, Expo PQQ → 13 Oct)' }
 ];
 
 // Map of week → list of projects submitted that week
@@ -2966,6 +3026,7 @@ const WEEK_SUBMISSIONS = {
   35: { count:2, projects:'26_389 Westfield Jeddah Opening Events (15 Sep) · Westfield Riyadh Art Strategy w/ Cultural Impact (17 Sep, SAR 11.5M) · KKIA extended to 27 Sep · new: 26_393 RCRC PQQ (due 24 Sep), 26_392 KFGQPC w/ Athr' },
   36: { count:1, projects:'26_390 KKIA Art Framework Agreement (27 Sep, SAR 30.8M contract value) · extended: 26_384 AlUla Rome → 2 Oct, 26_393 RCRC PQQ → 1 Oct · MOC Int\'l Events declined · new RFPs TBC: Fragonard AlUla (8 Oct), AlUla Sensory Workshops (2 Oct)' },
   38: { count:0, projects:'No submissions · new RFP: 26_395 MOC Framework Agreement Artwork Loans & Acquisitions (due 24 Oct) · Diriyah extended → 20 Oct · Expo 2030 PQQ due 13 Oct · Red Sea final Shura Agreement for confirmation (12 Oct)' },
+  39: { count:0, projects:'No submissions · 26_394 Expo 2030 PQQ submitted 13 Oct as JV w/ Athr (PQQ, not counted) · CANCELLED by client: 26_363 Dubai Art Residency (3.18M wtd) · new: Diriyah RFI Museum Development Public Artworks · RSG Shura Central/East Hotel 1 artworks consultancy (Ariba) · CBK Kuwait museum content creation · 26_234 Misk: revised proposal requested, scope 5 → 2 artists, due 31 Oct' },
   37: { count:2, projects:'26_388 Villa Hegra Programming (1 Oct, ~SAR 8.67M) · 26_384 AlUla Wonder of Arabia Rome (2 Oct, ~EUR 597K) · 26_393 RCRC PQQ submitted 1 Oct as JV w/ Athr (PQQ, not counted) · CANCELLED: 26_343 Etihad Museum D&B · new: 26_394 Expo 2030 PQQ (due 10 Oct) · declined: Fragonard, AlUla Sensory Workshops' }
 };
 
@@ -3063,7 +3124,7 @@ function renderSubmissionChart(){
 }
 
 // ─── REFERENCE DATE ────────────────────────────
-const REF_DATE = new Date('2026-10-08');
+const REF_DATE = new Date('2026-10-15');
 function daysBetween(d1, d2){ return Math.round((d2 - d1) / 86400000); }
 function fmtDate(iso){
   const d = new Date(iso);
@@ -3095,9 +3156,10 @@ const UPCOMING_DEADLINES = [
   { id:'26_393', name:'RCRC PQQ — RACS · JV w/ Athr · extended', client:'RCRC', date:'2026-10-01', tbc:false, done:true },
   { id:'26_384', name:'AlUla Wonder of Arabia — Rome Exhibition · extended', client:'Afalula', date:'2026-10-02', tbc:false, done:true },
   { id:'26_353', name:'Red Sea — final Shura Agreement: AIMES confirmation (13:00 KSA)', client:'Red Sea Global', date:'2026-10-12', tbc:false },
-  { id:'26_394', name:'Expo 2030 PQQ — Exhibition Design (JV w/ Athr TBC)', client:'Expo 2030 Riyadh', date:'2026-10-13', tbc:false },
+  { id:'26_394', name:'Expo 2030 PQQ — Exhibition Design Only · JV w/ Athr (Response 55296)', client:'Expo 2030 Riyadh', date:'2026-10-13', tbc:false, done:true },
   { id:'26_391', name:'Diriyah Public Art Consultancy Framework — extended again (9 → 20 Oct)', client:'Diriyah Company', date:'2026-10-20', tbc:false },
-  { id:'26_395', name:'MOC Framework Agreement — Artwork Loans & Acquisitions (Museum of World Cultures)', client:'MOC', date:'2026-10-24', tbc:false }
+  { id:'26_395', name:'MOC Framework Agreement — Artwork Loans & Acquisitions (Museum of World Cultures)', client:'MOC', date:'2026-10-24', tbc:false },
+  { id:'26_234', name:'Misk Public Art Commission — revised proposal (scope 5 → 2 artists, mural recommendations)', client:'Misk Foundation', date:'2026-10-31', tbc:false }
 ];
 
 function renderDeadlineRadar(){
@@ -3254,13 +3316,15 @@ const REASONS = {
       text:'VOX Moonlight Cinema, Sheikh Zayed Americas, Fashion Showrooms, STA Work Environment, RCU Library , MOC Dhou\' Film Support Framework (W29), 26_387 Event District IO Ground Break / DIEZ (W32) — consistent and healthy scope discipline.' },
     { id:'Client-side tender cancellations', week:'W28', tag:'cancelled', tagCls:'deadline',
       text:'<b>4 tenders officially cancelled by clients in one week</b> (n°28, 30 Jul): 26_377 Banan 4 · 26_367 MoC Int\'l Event Support (Culinary, w/ Hwadi) · 26_372 Awareness Trips Visual Arts · 25_330 KSA Regional Identities (carry-over). All post-submission — effort spent with no decision. They remain in the submission base per PDF metrics.' },
+    { id:'DCAA cancellations', week:'W37-W39', tag:'cancelled', tagCls:'deadline',
+      text:'<b>Both remaining DCAA bids cancelled by the client</b>: 26_343 Etihad Museum D&B (n°37, after 7 months and 3 extensions) and 26_363 Dubai Art Residency (n°39, RFQ 786864, after a BAFO). ~SAR 10.9M of weighted value removed with no decision; bank guarantees and tender fees being recovered. Kept in the submission base, not counted as losses.' },
     { id:'RFP fees as friction', week:'W06-W10', tag:'process', tagCls:'deadline',
       text:'Multiple weeks waiting on management approval for fees (AED 720-820, esupply AED 6,610). <b>Small amounts creating multi-week delays</b> — consider pre-approved fee budget.' }
   ],
   takeaways: [
     { text:'<b>Add value-added components to every bid</b> — direct learning from 25_334: UAP won with higher price by enriching scope. Echoed in Aimes\' own W08 report as key takeaway.' },
     { text:'<b>Speed is a competitive asset</b>: the tight-deadline declines + RFP fee delays suggest the intake → decision pipeline needs a fast lane for small commitments.' },
-    { text:'<b>DCAA exposure</b>: 4 of the 10 losses of 2026 are DCAA bids (26_355, 26_357, 26_354 + 26_346 cancelled); only 26_343 Etihad (7.7M wtd, since Mar) and 26_363 Dubai Art Residency remain open with DCAA — worth a relationship-level check rather than bid-by-bid chasing.' },
+    { text:'<b>DCAA exposure</b>: 4 of the 10 losses of 2026 are DCAA bids (26_355, 26_357, 26_354 + 26_346 cancelled); the last two open DCAA bids were both cancelled by the client — 26_343 Etihad (W37, 7.7M wtd after 7 months) and 26_363 Dubai Art Residency (W39, 3.2M wtd) — leaving no open DCAA submission. A relationship-level check is now overdue.' },
     { text:'<b>Request debriefs on every loss</b>: 10 of 12 losses (83%) have no documented reason — incl. the three DCAA/UAE losses of W34 (Sikka 10.8M wtd). Without them, the loss log can\'t inform future bids.' },
     { text:'<b>Pricing discipline</b>: 1 of 2 documented losses was price-driven, but 25_334 shows clients pay premium for scope. Price-cutting is not the lesson — scope enrichment is.' }
   ]
