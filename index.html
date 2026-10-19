@@ -845,7 +845,7 @@ body{font-variant-numeric:tabular-nums}
 
     <div class="bignum-row">
       <div class="bignum-cell"><span class="lbl">Total Submissions YTD</span><span class="val">34</span><span class="delta">across 38 reporting weeks · +0 in W39 (last: +2 in W37)</span></div>
-      <div class="bignum-cell won"><span class="lbl">Wins</span><span class="val">2</span><span class="delta">5.9% · Red Sea + Abu Dhabi (in negotiation)</span></div>
+      <div class="bignum-cell won"><span class="lbl">Wins</span><span class="val">2</span><span class="delta">5.9% · Red Sea + Abu Dhabi — awarded (n°39)</span></div>
       <div class="bignum-cell lost"><span class="lbl">Losses</span><span class="val">10</span><span class="delta">29.4% loss rate · none since W34</span></div>
       <div class="bignum-cell pending"><span class="lbl">Awaiting decision</span><span class="val">22</span><span class="delta">64.7% of submitted</span></div>
     </div>
@@ -870,12 +870,12 @@ body{font-variant-numeric:tabular-nums}
       <div class="dash-card">
         <div class="dash-card-head">
           <h3 class="dash-card-title">Pipeline Status Mix</h3>
-          <span class="dash-card-meta">Of 34 submissions YTD · 2 won (in negotiation)</span>
+          <span class="dash-card-meta">Of 34 submissions YTD · 2 won (awarded)</span>
         </div>
         <div class="donut-wrap">
           <svg class="donut" id="donut" viewBox="0 0 200 200"></svg>
           <div class="donut-legend">
-            <div class="item"><span class="lbl"><span class="swatch" style="background:var(--won)"></span>Won <em style="font-size:9px;color:var(--ink-2);font-style:italic;margin-left:4px">(in negotiation)</em></span><span class="val">2 · 5.9%</span></div>
+            <div class="item"><span class="lbl"><span class="swatch" style="background:var(--won)"></span>Won <em style="font-size:9px;color:var(--ink-2);font-style:italic;margin-left:4px">(awarded)</em></span><span class="val">2 · 5.9%</span></div>
             <div class="item"><span class="lbl"><span class="swatch" style="background:var(--lost)"></span>Lost</span><span class="val">10 · 29.4%</span></div>
             <div class="item"><span class="lbl"><span class="swatch" style="background:var(--warn)"></span>Awaiting</span><span class="val">22 · 64.7%</span></div>
           </div>
@@ -991,7 +991,7 @@ body{font-variant-numeric:tabular-nums}
           <div class="funnel-step" style="background:var(--accent-deep);width:55%"><div><div class="lbl">Submitted (2026 cycle)</div></div><div style="text-align:right"><div class="val">34</div><div class="pct">55% of tracked</div></div></div>
           <div class="funnel-step" style="background:var(--warn);width:35%"><div><div class="lbl">Awaiting</div></div><div style="text-align:right"><div class="val">22</div><div class="pct">65% of subs</div></div></div>
           <div class="funnel-step" style="background:var(--lost);width:16%"><div><div class="lbl">Lost</div></div><div style="text-align:right"><div class="val">10</div><div class="pct">29% of subs</div></div></div>
-          <div class="funnel-step" style="background:var(--won);width:10%"><div><div class="lbl">Won (in negotiation)</div></div><div style="text-align:right"><div class="val">2</div><div class="pct">5.9% of subs</div></div></div>
+          <div class="funnel-step" style="background:var(--won);width:10%"><div><div class="lbl">Won (awarded)</div></div><div style="text-align:right"><div class="val">2</div><div class="pct">5.9% of subs</div></div></div>
         </div>
         <p style="margin-top:18px;font-size:12px;color:var(--ink-2);font-style:italic;line-height:1.5">Conversion under pressure: 22 of 34 submissions still pending. Five submissions in five weeks (Westfield ×2, KKIA at SAR 30.8M, Villa Hegra, AlUla Rome) lift the base to 34 while 26_343 Etihad (DCAA, SAR 7.7M wtd, chased since March) is cancelled by the client, but the loss rate stays above 30% after W34 (Sikka, Dubai Youth, Al Fahidi — all without documented reasons). Aging pipeline plus undocumented losses is the pattern of the cycle.</p>
       </div>
@@ -1011,7 +1011,7 @@ body{font-variant-numeric:tabular-nums}
 const REPORTS = [
   // W39 — 11 Oct - 15 Oct 2026 (built from tenders@ mailbox — no PDF)
   { num:39, week:'11 – 15 Oct 2026', latest:true, source:'mailbox',
-    headline:'0 SUBMITTED · 26_394 Expo 2030 PQQ submitted 13 Oct (JV w/ Athr, Exhibition Design Only) · 26_363 Dubai Art Residency CANCELLED by DCAA · 26_234 Misk: revised proposal requested — scope cut 5 → 2 artists, due 31 Oct · NEW: Diriyah RFI Museum Development Public Artworks (Ariba) · 26_391 Diriyah due 24 Oct · 26_395 MOWC due 27 Oct · leads: RSG Shura Hotel 1 artworks (Ariba, close 19 Oct) · CBK Kuwait museum content creation',
+    headline:'0 SUBMITTED · 26_353 Red Sea & 26_374 Abu Dhabi → AWARDED · 26_394 Expo 2030 PQQ submitted 13 Oct (JV w/ Athr, Exhibition Design Only) · 26_363 Dubai Art Residency CANCELLED by DCAA · 26_234 Misk: revised proposal requested — scope cut 5 → 2 artists, due 31 Oct · NEW: Diriyah RFI Museum Development Public Artworks (Ariba) · 26_391 Diriyah due 24 Oct · 26_395 MOWC due 27 Oct · leads: RSG Shura Hotel 1 artworks (Ariba, close 19 Oct) · CBK Kuwait museum content creation',
     metrics:{ subWeek:0, subYTD:34, won:2, lost:10, noUpd:22, wonRate:'5.9%', lostRate:'29.4%', noUpdRate:'64.7%', delta:'0' },
     timeline:{ cols:['18 – 24 Oct','25 – 31 Oct','01 – 07 Nov'], rows:[
       ['26_391 · Diriyah Co.','Diriyah Public Art Consultancy Framework',[{c:0,t:'DUE 24/10 · ARIBA',k:'deadline'}]],
@@ -1026,7 +1026,8 @@ const REPORTS = [
       {id:'26_395',title:'Framework Agreement — Artwork Loans & Acquisitions + Operational & Logistics Services (Museum of World Cultures)',client:'MOC',status:'urgent',deadline:'Due 27 Oct 2026',countdown:'upcoming',cd:'urgent',detail:'Closing date per Tender Monitor: 27 October (n°38 said 24 October). MoC answers to bidder clarifications received on Ariba (Doc257985616, 18 Oct). Portal and administrative documents to be completed; Hasenkamp partnership decision pending.'},
       {id:'26_388',title:'Villa Hegra Programming',client:'Villa Hegra',status:'ontrack',deadline:'Submitted 1 Oct · award postponed',countdown:'awaiting',cd:'',detail:'Client consultant (Tasama, 12 Oct) reports the password on the technical proposal file does not work — correct password requested as a matter of urgency. Award date postponed from 10 October, new date TBC.'},
       {id:'26_393',title:'RCRC PQQ — RACS (Art Conservation, Preservation & Collection Registrar)',client:'RCRC · JV w/ Athr',status:'ontrack',deadline:'PQQ submitted 1 Oct · clarifications',countdown:'awaiting',cd:'',detail:'RCRC clarifications received 14 October; financial data compiled with LOAs masked. Manal contacted four Saudi firms (Dussur, QWA, Dar Al Riyadh, ECEC) for a MOMRA-classified partner; Benedetta reached out to SAK Consulting and Richmond/Edge (18 Oct).'},
-      {id:'26_353',title:'Red Sea Artwork Package',client:'RSG · In Negotiation',status:'won',deadline:'Shura Agreement — confirmation requested by 12 Oct',countdown:'IN NEGOTIATION',cd:'won',detail:'Final Shura Agreement sent 11 October with confirmation requested by 12 October, 1:00 PM KSA, before issue for signature. No confirmation email visible in tenders@ — to verify with Benedetta.'},
+      {id:'26_353',title:'Red Sea Artwork Package',client:'RSG · Awarded',status:'won',deadline:'Awarded — Shura Agreement for signature',countdown:'AWARDED',cd:'won',detail:'Moved to AWARDED (confirmed by Assia, n°39): final Shura Agreement incorporating AIMES\' comments issued for signature (confirmation requested by 12 Oct). Projected total ~SAR 18.5M (NetSuite weighted 13.9M ÷ 75% — to reconcile). Contract signature date to be recorded.'},
+      {id:'26_374',title:'Public Art Abu Dhabi (Biennale)',client:'DCT Abu Dhabi · Awarded',status:'won',deadline:'Awarded — contract phase',countdown:'AWARDED',cd:'won',detail:'Moved to AWARDED (confirmed by Assia, n°39): all four artist cost estimates approved by the client, contract finalization underway. Projected total ~SAR 5.6M (weighted 4.2M ÷ 75% — to reconcile with NetSuite).'},
       {id:'26_392',title:'King Fahd Glorious Qur\'an Printing Complex — Technical Proposal',client:'KFGQPC · w/ Athr',status:'ontrack',deadline:'TBC',countdown:'upcoming',cd:'',detail:'Financial model updated after the 15 October working session and shared with Linda. Technical proposal structure with the Athr team ongoing.'},
       {id:'DGDA_RFI',title:'RFI — Museum Development Public Artworks',client:'Diriyah Company',status:'ontrack',deadline:'Deadline TBC (Ariba)',countdown:'upcoming',cd:'',detail:'New Ariba invitation from Diriyah Procurement (Doc257942015, 18 Oct, contact Mohammed Aldahmash). Forwarded by Katy; context and scope to be confirmed on the portal — possibly linked to the public art strategy work. Go/no-go pending.'}
     ],
@@ -1052,7 +1053,8 @@ const REPORTS = [
       ['Metrics transparency','No PDF n°39 received: this report is built from the tenders@ mailbox (11–19 Oct), per Benedetta\'s instruction that email exchanges feed the BD report. Dashboard unchanged at 34 submitted · 2 won (5.9%) · 10 lost (29.4%) · 22 awaiting — Expo 2030 PQQ is a pre-qualification (not counted); Dubai Art Residency cancelled by the client stays in the base as no update (same as Etihad in n°37). PDF-equivalent: 33 · 1 · 10 · 22.'],
       ['Items after 15 Oct included','Misk revision request (18 Oct), Diriyah RFI (18 Oct), CBK scope of work (17 Oct), RSG Ariba events (15–16 Oct) and the Aldar update (15 Oct) are included here so the dashboard is current; they will not be repeated in n°40.'],
       ['Leads not tracked as projects','RSG Shura Hotel 1 artworks (R07/R08) and the CBK Kuwait museum are kept in the pipeline list only — no bid/no-bid decision yet. Note: Manal\'s Teams space for CBK uses 26_356, which is already Westfield by Cenomi; a new bid code is needed if it is pursued.'],
-      ['Red Sea — unverified confirmation','The Shura Agreement confirmation requested by 12 Oct 13:00 KSA is not visible in tenders@. Deadline left open in the radar as PAST until confirmed.'],
+      ['Awarded ≠ in negotiation','Red Sea 26_353 and Public Art Abu Dhabi 26_374 move from "won · in negotiation" (75%) to AWARDED (100%). The weighted pipeline now shows them in the Awarded row at projected totals (18.5M + 5.6M = SAR 24.1M, derived as weighted ÷ 75% — to reconcile with NetSuite) and the open pipeline drops accordingly. Win count unchanged (2).'],
+      ['Red Sea — unverified confirmation','The Shura Agreement confirmation requested by 12 Oct 13:00 KSA is not visible in tenders@; the 12 Oct action is marked done in the radar since the project is now awarded.'],
       ['Deadlines aligned with the Tender Monitor (18 Oct)','Closing dates taken from aimes-tender-monitor.vercel.app for tenders already tracked: 26_391 Diriyah 20 → 24 Oct 20:59 (Ariba, verified) · 26_395 MOWC 24 → 27 Oct · RSG R07/R08 close 19 Oct 11:00 and CBK 3 Nov (leads). Not treated as extensions (no PDF confirmation). Misk (31 Oct) and the Diriyah RFI are not yet in the monitor.'],
       ['Villa Hegra — evaluability risk','Evaluator cannot open the technical proposal (password issue, 12 Oct). Not yet confirmed as resolved in tenders@.']
     ]
@@ -2453,9 +2455,9 @@ const SUBMISSIONS_PER_WEEK = [
 // value: NetSuite WEIGHTED TOTAL (projected total × probability) · SAR · Pipeline_9_6_26.xlsx
 const PROJECTS = [
   // ── 2026 SUBMITTED PITCHES ─────────────────────
-  { id:'26_353', name:'Red Sea Artwork Package', client:'Red Sea Global', extensions:4,  value:13896289, prob:75, subDate:'2026-03-30',
-    weeks:['','','','','','','','a','u','u','a','a','u','u','s','s','a','h','a','a','','','','h','','','','','','','','','','','','','','u'],
-    events:[{w:10,t:'s',d:'Submitted ~30 Mar'},{w:14,t:'s',d:'Final submitted 29 Apr'},{w:15,t:'s',d:'Final v2 submitted 7 May'},{w:17,t:'h',d:'Entered negotiation — preferred bidder, BOQ ongoing'}] },
+  { id:'26_353', name:'Red Sea Artwork Package', client:'Red Sea Global', extensions:4,  value:18528385, prob:100, valueSrc:'awarded — projected total = NetSuite weighted 13,896,289 ÷ 75% · to reconcile with NetSuite', subDate:'2026-03-30',
+    weeks:['','','','','','','','a','u','u','a','a','u','u','s','s','a','h','a','a','','','','h','','','','','','','','','','','','','','w'],
+    events:[{w:10,t:'s',d:'Submitted ~30 Mar'},{w:14,t:'s',d:'Final submitted 29 Apr'},{w:15,t:'s',d:'Final v2 submitted 7 May'},{w:17,t:'h',d:'Entered negotiation — preferred bidder, BOQ ongoing'},{w:37,t:'w',d:'AWARDED — final Shura Agreement issued for signature (n°39)'}] },
   { id:'26_354', name:'Dubai Fest. Youth Performing Arts', client:'DCAA', value:1719441, prob:25, subDate:'2026-03-26',
     weeks:['','','','','a','a','a','a','a','s','','','a','a','a','u','s','','','','','','','','','','','','','','','','l','','','','',''],
     events:[{w:9,t:'s',d:'Submitted 26 Mar'},{w:15,t:'s',d:'Resubmitted (post-republish)'},{w:32,t:'l',d:'Not Awarded — reported n°34 (10 Sep)'}] },
@@ -2504,9 +2506,9 @@ const PROJECTS = [
   { id:'26_372', name:'Awareness Trips in the Visual Arts Sector 2026', client:'MOC', prob:25, extensions:1, subDate:'2026-06-30',
     weeks:['','','','','','','','','','','','','','','','','','','','','a','a','s','','','','c','','','','','','','','','','',''],
     events:[{w:22,t:'s',d:'Submitted 30 Jun'}] },
-  { id:'26_374', name:'Public Art Abu Dhabi (Biennale)', client:'DCT Abu Dhabi', value:4200000, prob:75,
-    weeks:['','','','','','','','','','','','','','','','','','','','','h','h','h','h','','','','','','','','','','','','','',''],
-    events:[{w:20,t:'h',d:'Won — in negotiation (final terms)'},{w:21,t:'h',d:'Kapwani Kiwanga quote + draft schedule after site visit; contract finalization'},{w:22,t:'h',d:'Revised cost estimates for all 4 artists APPROVED by client'},{w:23,t:'h',d:'Nari Ward cost estimate reviewed & approved — approval complete for all 4 artists (Kiwanga AED 825,341 · Senatore AED 1,093,861 · Clottey AED 752,783 · Nari Ward AED 1,264,038, excl. VAT)'}] },
+  { id:'26_374', name:'Public Art Abu Dhabi (Biennale)', client:'DCT Abu Dhabi', value:5600000, prob:100, valueSrc:'awarded — projected total = weighted 4,200,000 ÷ 75% · to reconcile with NetSuite',
+    weeks:['','','','','','','','','','','','','','','','','','','','','h','h','h','h','','','','','','','','','','','','','','w'],
+    events:[{w:20,t:'h',d:'Won — in negotiation (final terms)'},{w:21,t:'h',d:'Kapwani Kiwanga quote + draft schedule after site visit; contract finalization'},{w:22,t:'h',d:'Revised cost estimates for all 4 artists APPROVED by client'},{w:23,t:'h',d:'Nari Ward cost estimate reviewed & approved — approval complete for all 4 artists (Kiwanga AED 825,341 · Senatore AED 1,093,861 · Clottey AED 752,783 · Nari Ward AED 1,264,038, excl. VAT)'},{w:37,t:'w',d:'AWARDED — artist costs approved, contract phase (n°39)'}] },
   { id:'26_375', name:'Madinah Rock Display Project', client:'PMBS Museum for Arabic Calligraphy', value:345035, prob:10, valueSrc:'da pitch budget SharePoint · price w/o VAT SAR 3,450,349 × 10% · 26_373 Madinah budget (current sheet) · to reconcile with NetSuite', subDate:'2026-07-14',
     weeks:['','','','','','','','','','','','','','','','','','','','','','a','a','u','s','','a','a','','','','','','','','','',''],
     events:[{w:24,t:'s',d:'TP+FP submitted 14 Jul — 2 concept options: SAR 3.34M / 2.48M'}] },
@@ -2867,7 +2869,7 @@ function renderMasterGantt(){
   const container = document.getElementById('masterGantt');
   const colorFor = (s)=>({a:'active',u:'urgent',s:'submitted',w:'won',h:'partial',ng:'negotiation',l:'lost',st:'stalled',c:'cancelled'}[s]||'');
   const labelFor = (s)=>({a:'',u:'!',s:'✓',w:'WIN',h:'NEGOT',ng:'NEGOT',l:'LOST',st:'—',c:'×'}[s]||'');
-  const stateName = (s)=>({a:'Active / in development',u:'Urgent · deadline',s:'Submitted',w:'Won',h:'In negotiation · revisions ongoing',ng:'In negotiation',l:'Lost',st:'Stalled · no update',c:'Cancelled / declined'}[s]||s);
+  const stateName = (s)=>({a:'Active / in development',u:'Urgent · deadline',s:'Submitted',w:'Awarded',h:'Won · in negotiation',ng:'In negotiation',l:'Lost',st:'Stalled · no update',c:'Cancelled / declined'}[s]||s);
 
   // Month grouping: Jan W01-04 · Feb W05-08 · Mar W09-12 · Apr W13-16 · May W17-19 · Jun W20-24 · Jul W25-28 · Aug W29-32 · Sep W33-36 · Oct W37-38
   const monthGroups = [
@@ -3017,7 +3019,7 @@ const WEEK_SUBMISSIONS = {
   35: { count:2, projects:'26_389 Westfield Jeddah Opening Events (15 Sep) · Westfield Riyadh Art Strategy w/ Cultural Impact (17 Sep, SAR 11.5M) · KKIA extended to 27 Sep · new: 26_393 RCRC PQQ (due 24 Sep), 26_392 KFGQPC w/ Athr' },
   36: { count:1, projects:'26_390 KKIA Art Framework Agreement (27 Sep, SAR 30.8M contract value) · extended: 26_384 AlUla Rome → 2 Oct, 26_393 RCRC PQQ → 1 Oct · MOC Int\'l Events declined · new RFPs TBC: Fragonard AlUla (8 Oct), AlUla Sensory Workshops (2 Oct)' },
   38: { count:0, projects:'No submissions · new RFP: 26_395 MOC Framework Agreement Artwork Loans & Acquisitions (due 24 Oct) · Diriyah extended → 20 Oct · Expo 2030 PQQ due 13 Oct · Red Sea final Shura Agreement for confirmation (12 Oct)' },
-  39: { count:0, projects:'No submissions · 26_394 Expo 2030 PQQ submitted 13 Oct as JV w/ Athr (PQQ, not counted) · CANCELLED by client: 26_363 Dubai Art Residency (3.18M wtd) · new: Diriyah RFI Museum Development Public Artworks · leads: RSG Shura Hotel 1 artworks (Ariba), CBK Kuwait museum · 26_234 Misk: revised proposal requested, scope 5 → 2 artists, due 31 Oct' },
+  39: { count:0, projects:'No submissions · 26_394 Expo 2030 PQQ submitted 13 Oct as JV w/ Athr (PQQ, not counted) · CANCELLED by client: 26_363 Dubai Art Residency (3.18M wtd) · AWARDED: 26_353 Red Sea + 26_374 Abu Dhabi (from in-negotiation) · new: Diriyah RFI Museum Development Public Artworks · leads: RSG Shura Hotel 1 artworks (Ariba), CBK Kuwait museum · 26_234 Misk: revised proposal requested, scope 5 → 2 artists, due 31 Oct' },
   37: { count:2, projects:'26_388 Villa Hegra Programming (1 Oct, ~SAR 8.67M) · 26_384 AlUla Wonder of Arabia Rome (2 Oct, ~EUR 597K) · 26_393 RCRC PQQ submitted 1 Oct as JV w/ Athr (PQQ, not counted) · CANCELLED: 26_343 Etihad Museum D&B · new: 26_394 Expo 2030 PQQ (due 10 Oct) · declined: Fragonard, AlUla Sensory Workshops' }
 };
 
@@ -3146,7 +3148,7 @@ const UPCOMING_DEADLINES = [
   { id:'26_388', name:'Villa Hegra Programming — proposal submission', client:'Villa Hegra', date:'2026-10-01', tbc:false, done:true },
   { id:'26_393', name:'RCRC PQQ — RACS · JV w/ Athr · extended', client:'RCRC', date:'2026-10-01', tbc:false, done:true },
   { id:'26_384', name:'AlUla Wonder of Arabia — Rome Exhibition · extended', client:'Afalula', date:'2026-10-02', tbc:false, done:true },
-  { id:'26_353', name:'Red Sea — final Shura Agreement: AIMES confirmation (13:00 KSA)', client:'Red Sea Global', date:'2026-10-12', tbc:false },
+  { id:'26_353', name:'Red Sea — final Shura Agreement: AIMES confirmation (13:00 KSA) · awarded', client:'Red Sea Global', date:'2026-10-12', tbc:false, done:true },
   { id:'26_394', name:'Expo 2030 PQQ — Exhibition Design Only · JV w/ Athr (Response 55296)', client:'Expo 2030 Riyadh', date:'2026-10-13', tbc:false, done:true },
   { id:'26_391', name:'Diriyah Public Art Consultancy Framework (PW-FA26-074) — Ariba closing 24 Oct 20:59', client:'Diriyah Company', date:'2026-10-24', tbc:false },
   { id:'26_395', name:'MOC Framework Agreement — Artwork Loans & Acquisitions (Museum of World Cultures) · 10012091', client:'MOC', date:'2026-10-27', tbc:false },
@@ -3191,11 +3193,11 @@ function renderWeightedPipeline(){
   const open = PROJECTS.filter(p => {
     if(p.carryover) return false;
     const st = getProjectStatus(p);
-    return ['awaiting','active','negotiation'].includes(st) || (st === 'won' && (p.id === '26_353' || p.id === '26_374')); // open pipeline + Red Sea & Abu Dhabi (won, in negotiation)
+    return ['awaiting','active','negotiation'].includes(st) || (st === 'won' && isInNegotiation(p)); // open pipeline + won-in-negotiation ('h'); awarded ('w') go to the 100% row
   });
 
   const tiers = [
-    { prob:75, label:'Negotiation', items: open.filter(p => p.prob === 75) },
+    { prob:75, label:'Won · in negotiation', items: open.filter(p => p.prob === 75) },
     { prob:25, label:'Pitch submitted', items: open.filter(p => p.prob === 25) },
     { prob:10, label:'BID / RFP received', items: open.filter(p => p.prob === 10) }
   ];
@@ -3223,7 +3225,7 @@ function renderWeightedPipeline(){
   const wonValue = wonProjects.reduce((s,p) => s + p.value, 0);
   const wonNames = wonProjects.map(p => `<b>${p.id}</b>`).join(' · ');
   const wonRow = wonProjects.length ? `<div class="wp-tier wp-won-row">
-      <div class="wp-prob">100%<small>Won YTD</small></div>
+      <div class="wp-prob">100%<small>Awarded</small></div>
       <div class="wp-projects">${wonNames}</div>
       <div class="wp-raw"></div>
       <div class="wp-weighted">${formatValue(wonValue)}</div>
@@ -3234,7 +3236,7 @@ function renderWeightedPipeline(){
       <span class="lbl">Expected Pipeline Value</span>
       <span class="val">${formatValue(totalWeighted)}<span class="u">SAR · weighted</span></span>
       <span class="note">Sum of NetSuite Weighted Totals (projected value × probability) across open 2026 opportunities · excludes 2025 carry-overs and projects without values</span>
-      <span class="wp-won-hero">+ <strong>${formatValue(wonValue)||"0"} SAR</strong> won &amp; secured YTD</span>
+      <span class="wp-won-hero">+ <strong>${formatValue(wonValue)||"0"} SAR</strong> awarded YTD (projected totals)</span>
     </div>
     <div class="wp-tiers">${wonRow}${tiersHtml}</div>
   `;
@@ -3494,7 +3496,7 @@ function renderLifecycleMacros(){
     <div class="macro-cell">
       <span class="macro-label">Win rate (decided pitches)</span>
       <span class="macro-value">${winRate}<span class="unit">%</span></span>
-      <span class="macro-detail">${wonCount+partialCount} won/in-negotiation · ${lostCount} lost</span>
+      <span class="macro-detail">${wonCount} awarded · ${partialCount} in negotiation · ${lostCount} lost</span>
     </div>
     <div class="macro-cell">
       <span class="macro-label">Avg weighted pitch value</span>
@@ -3539,6 +3541,11 @@ function getProjectStatus(p){
   if(last === 'u' || last === 'a') return 'active';
   return 'stalled';
 }
+
+function latestOutcome(p){ return (p.events||[]).filter(e => e.t==='w'||e.t==='h'||e.t==='l').sort((a,b)=>b.w-a.w)[0]; }
+function isAwarded(p){ const o=latestOutcome(p); return !!o && o.t==='w'; }
+function isInNegotiation(p){ const o=latestOutcome(p); return !!o && o.t==='h'; }
+function wonLabel(p, upper){ const t = isAwarded(p) ? 'Awarded' : 'Won · in negotiation'; return upper ? t.toUpperCase() : t; }
 
 function getProjectLastEventDetail(p){
   const events = p.events || [];
@@ -3608,7 +3615,7 @@ function renderClientList(){
         <span class="cp-id">${p.id}</span>
         <span class="cp-name clickable-proj" data-pid="${p.id}">${p.name}${p.partner?` <span style="color:var(--accent-deep);font-size:10px">· w/ ${p.partner}</span>`:''}${detail ? `<span class="cp-detail">${detail}</span>` : ''}</span>
         <span class="cp-value">${valLabel}</span>
-        <span class="cp-status">${p.status === 'awaiting' ? 'NO REPLY' : p.status === 'negotiation' ? 'IN NEGOTIATION' : p.status === 'declined' ? 'CANCELLED / DECLINED' : p.status}</span>
+        <span class="cp-status">${p.status === 'awaiting' ? 'NO REPLY' : p.status === 'won' ? wonLabel(p,true) : p.status === 'negotiation' ? 'IN NEGOTIATION' : p.status === 'declined' ? 'CANCELLED / DECLINED' : p.status}</span>
       </li>`;
     }).join('');
 
@@ -3750,7 +3757,7 @@ function renderDonut(){
 function renderProjectTable(){
   const statusMap = {
     'a':['act','Active'],'u':['act','Active'],'s':['sub','Submitted'],
-    'w':['won','Won'],'h':['won','Won/Negot.'],'ng':['won','Negotiation'],'l':['lost','Lost'],'st':['stl','Stalled'],'c':['lost','Cancelled']
+    'w':['won','Awarded'],'h':['won','Won/Negot.'],'ng':['won','Negotiation'],'l':['lost','Lost'],'st':['stl','Stalled'],'c':['lost','Cancelled']
   };
   const enriched = PROJECTS.map(p=>{
     let final = '';
@@ -3776,12 +3783,12 @@ function renderProjectTable(){
 
 // ═══════════ INTERACTIVE LAYER ═══════════
 // ── Project Dossier modal ──
-const STATE_LABEL = {a:'Active',u:'Urgent · deadline',s:'Submitted',w:'Won',h:'Won · in negotiation',ng:'In negotiation',l:'Lost',st:'Stalled',c:'Cancelled/declined'};
+const STATE_LABEL = {a:'Active',u:'Urgent · deadline',s:'Submitted',w:'Awarded',h:'Won · in negotiation',ng:'In negotiation',l:'Lost',st:'Stalled',c:'Cancelled/declined'};
 function openDossier(pid){
   const p = PROJECTS.find(x=>x.id===pid);
   if(!p) return;
   const st = getProjectStatus(p);
-  const stTxt = {won:'Won / In negotiation',negotiation:'In negotiation',awaiting:'Awaiting reply',active:'Active',lost:'Lost',declined:'Cancelled / declined',stalled:'Stalled'}[st]||st;
+  const stTxt = {won:wonLabel(p),negotiation:'In negotiation',awaiting:'Awaiting reply',active:'Active',lost:'Lost',declined:'Cancelled / declined',stalled:'Stalled'}[st]||st;
   const strip = p.weeks.map((w,i)=>`<div class="ds-cell ${w||''}" title="W${WEEK_LABELS[i].num}${w?' · '+(STATE_LABEL[w]||w):''}"></div>`).join('');
   const stripLbl = p.weeks.map((w,i)=> i%3===0?`<span>W${WEEK_LABELS[i].num}</span>`:'<span></span>').join('');
   const evts = (p.events||[]).map(e=>`<div class="de"><span class="de-w">W${WEEK_LABELS[e.w].num}</span><span>${e.d}</span></div>`).join('') || '<div class="de"><span style="color:var(--stall);font-style:italic">No milestone events logged — see weekly reports for narrative.</span></div>';
@@ -3889,7 +3896,7 @@ function buildSummaryText(latest, dls, chase){
   const m = latest.metrics;
   const lines = [];
   lines.push(`📊 *Aimes BD — W${latest.num} (${latest.week})*`);
-  lines.push(`Submitted YTD: ${m.subYTD} · Won: ${m.won} (in negotiation) · Lost: ${m.lost} · Awaiting: ${m.noUpd}`);
+  lines.push(`Submitted YTD: ${m.subYTD} · Won: ${m.won} (awarded) · Lost: ${m.lost} · Awaiting: ${m.noUpd}`);
   lines.push('');
   lines.push('🔑 *This week:*');
   latest.headline.split('·').map(s=>s.trim()).filter(Boolean).forEach(f=>lines.push(`• ${f}`));
