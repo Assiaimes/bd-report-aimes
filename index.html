@@ -1039,7 +1039,7 @@ const REPORTS = [
       {head:'Pipeline Opportunities',count:9,items:[
         ['Red Sea Global — R07-HC1D26 / R08-HE1D26 Shura Central & East Hotel 1 — Artworks Consultancy','Two Ariba invitations received 15 Oct (Doc267154876 / Doc267201144), events closing 19 Oct 11:00 per Tender Monitor · bid/no-bid not decided — not tracked as projects','awaiting','Ariba invitation'],
         ['Central Bank of Kuwait Museum — Museum Content Creator Works','Inquiries from multiple potential partners (City Kuwait, KCPC); introductory meeting held with City and NDA signed; in-person meeting with Piero being planned · full SOW received 17 Oct · closing 3 Nov per Tender Monitor','awaiting','NDA signed'],
-        ['UAE Pavilion (NPUAE 2027 — Exhibition Construction RFP)','NDA signed and shared; acknowledged by National Pavilion UAE (15 Oct) · RFP to follow','awaiting','NDA signed'],
+        ['UAE Pavilion (NPUAE 2027 — Exhibition Construction RFP)','NDA signed and shared; acknowledged by National Pavilion UAE (15 Oct) · RFP received 21 Oct, proposal due 8 Nov per Tender Monitor','awaiting','RFP received'],
         ['Expo 2030 Riyadh — Swiss Pavilion','Interest expressed to the Embassy of Switzerland via email (13 Oct); follow-up planned to explore collaboration and next steps','awaiting','Interest sent'],
         ['Aramco Stadium — Art Curation & Production','Client shared additional documentation (VIP hospitality spaces, material direction) and requested a follow-up meeting to review requirements','awaiting','Follow-up meeting'],
         ['MANE Saudi Arabia x Aimes','Introductory meeting held to explore potential collaboration opportunities','awaiting','Meeting held'],
@@ -1064,6 +1064,7 @@ const REPORTS = [
       ['Awarded ≠ in negotiation','Red Sea 26_353 and Public Art Abu Dhabi 26_374 move from "won · in negotiation" (75%) to AWARDED (100%). The weighted pipeline now shows them in the Awarded row at projected totals (18.5M + 5.6M = SAR 24.1M, derived as weighted ÷ 75% — to reconcile with NetSuite) and the open pipeline drops accordingly. Win count unchanged (2).'],
       ['Red Sea — unverified confirmation','The Shura Agreement confirmation requested by 12 Oct 13:00 KSA is not visible in tenders@; the 12 Oct action is marked done in the radar since the project is now awarded.'],
       ['Deadlines aligned with the Tender Monitor (18 Oct)','Closing dates taken from aimes-tender-monitor.vercel.app for tenders already tracked: 26_391 Diriyah 20 → 24 Oct 20:59 (Ariba, verified) · 26_395 MOWC 24 → 27 Oct · RSG R07/R08 close 19 Oct 11:00 and CBK 3 Nov (leads). PDF n°39 confirms both dates and calls Diriyah an extension (⏱ 3×); MOWC 27 Oct is not labelled an extension. Misk (31 Oct) and the Diriyah RFI are not yet in the monitor.'],
+      ['Deadlines aligned with the Tender Monitor (22 Oct)','Re-checked aimes-tender-monitor.vercel.app on 22 Oct (Email source filter, 23 rows): 26_391 Diriyah 24 Oct 20:59 · 26_395 MOWC 27 Oct · 26_234 Misk 31 Oct · CBK 3 Nov — unchanged. NPUAE 2027 Exhibition Construction RFP received 21 Oct → proposal due 8 Nov (added to radar). 26_393 RCRC supporting documents sent 19 Oct (marked done) but the monitor flags delivery failed (file too large) — resend needed. RSG R07/R08 now show no closing date on the monitor; Kidana 19 Oct status not confirmed by the monitor (kept open).'],
       ['Villa Hegra — evaluability risk','Evaluator cannot open the technical proposal (password issue, 12 Oct). Not yet confirmed as resolved in tenders@.']
     ]
   },
@@ -3160,11 +3161,12 @@ const UPCOMING_DEADLINES = [
   { id:'26_384', name:'AlUla Wonder of Arabia — Rome Exhibition · extended', client:'Afalula', date:'2026-10-02', tbc:false, done:true },
   { id:'26_353', name:'Red Sea — final Shura Agreement: AIMES confirmation (13:00 KSA) · awarded', client:'Red Sea Global', date:'2026-10-12', tbc:false, done:true },
   { id:'26_394', name:'Expo 2030 PQQ — Exhibition Design Only · JV w/ Athr (Response 55296)', client:'Expo 2030 Riyadh', date:'2026-10-13', tbc:false, done:true },
-  { id:'26_393', name:'RCRC PQQ — RACS · supporting documents submission', client:'RCRC', date:'2026-10-19', tbc:false },
+  { id:'26_393', name:'RCRC PQQ — RACS · supporting documents submission (sent 19 Oct · delivery failed, file too large — resend to confirm)', client:'RCRC', date:'2026-10-19', tbc:false, done:true },
   { id:'Kidana', name:'Kidana Project — proposal submission (w/ One Works)', client:'Kidana', date:'2026-10-19', tbc:false },
   { id:'26_391', name:'Diriyah Public Art Consultancy Framework (PW-FA26-074) — extended 20 → 24 Oct (Ariba 20:59)', client:'Diriyah Company', date:'2026-10-24', tbc:false },
   { id:'26_395', name:'MOC Framework Agreement — Artwork Loans & Acquisitions (Museum of World Cultures) · 10012091', client:'MOC', date:'2026-10-27', tbc:false },
-  { id:'26_234', name:'Misk Public Art Commission — revised proposal (scope 5 → 2 artists, mural recommendations)', client:'Misk Foundation', date:'2026-10-31', tbc:false }
+  { id:'26_234', name:'Misk Public Art Commission — revised proposal (scope 5 → 2 artists, mural recommendations)', client:'Misk Foundation', date:'2026-10-31', tbc:false },
+  { id:'NPUAE', name:'NPUAE 2027 — Exhibition Construction RFP (La Biennale di Venezia) · proposal', client:'National Pavilion UAE', date:'2026-11-08', tbc:false }
 ];
 
 function renderDeadlineRadar(){
