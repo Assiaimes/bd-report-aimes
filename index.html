@@ -231,6 +231,9 @@ body{background:radial-gradient(ellipse at top left, rgba(200,169,81,.08), trans
 .aging-table tr.watch .ag-days{color:var(--warn)}
 .aging-table tr.normal .ag-days{color:var(--ink)}
 .aging-table .ag-val{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--ink-2)}
+.aging-table .ag-owner{display:block;font-weight:600;color:var(--ink);white-space:nowrap}
+.aging-table .ag-owner.tbc{color:var(--warn)}
+.aging-table .ag-owner-2{display:block;font-size:11px;color:var(--ink-2)}
 .ag-priority{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.1em;padding:4px 10px;border-radius:2px;font-weight:600;text-transform:uppercase;display:inline-block;color:#fff}
 tr.critical .ag-priority{background:var(--urgent)}
 tr.watch .ag-priority{background:var(--warn)}
@@ -690,6 +693,9 @@ body{font-variant-numeric:tabular-nums}
   .aging-table td:nth-child(3){grid-column:2;text-align:right!important}
   .aging-table td:nth-child(4){grid-column:1}
   .aging-table td:nth-child(5){grid-column:2;justify-self:end}
+  .aging-table td:nth-child(6){grid-column:1 / -1}
+  .aging-table td:nth-child(6)::before{content:'Owner · ';font-family:'JetBrains Mono',monospace;font-size:10.5px;color:var(--ink-2);text-transform:uppercase;letter-spacing:.06em}
+  .aging-table td:nth-child(6) .ag-owner,.aging-table td:nth-child(6) .ag-owner-2{display:inline;margin-right:6px}
   .aging-table td:nth-child(4)::before{content:'Weighted · ';font-family:'JetBrains Mono',monospace;font-size:10.5px;color:var(--ink-2);text-transform:uppercase;letter-spacing:.06em}
   .aging-table tr:hover td{background:transparent}
   .aging-table .ag-name{font-size:15px}
@@ -910,7 +916,7 @@ body{font-variant-numeric:tabular-nums}
         <div class="dot-legend"><span><i class="status-dot" style="background:var(--urgent)"></i>Chase now</span><span><i class="status-dot" style="background:var(--warn)"></i>Monitor</span><span><i class="status-dot" style="background:var(--ok)"></i>Recent</span></div>
         <table class="aging-table">
           <thead><tr>
-            <th>Pitch</th><th>Client</th><th class="r">Submitted</th><th class="r">Weighted value</th><th>Priority</th>
+            <th>Pitch</th><th>Client</th><th class="r">Submitted</th><th class="r">Weighted value</th><th>Priority</th><th>Owner</th>
           </tr></thead>
           <tbody id="agingTable"></tbody>
         </table>
@@ -2662,7 +2668,7 @@ const PROJECTS = [
     weeks:['','','','a','a','a','a','a','a','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','',''] },
   { id:'26_351', name:'HYKAL — Aimes Collaboration', client:'Al-Jouf & Qassim Museums',
     weeks:['','','','a','a','','','','a','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','',''] },
-  { id:'26_356', name:'Westfield by Cenomi — Jeddah & Riyadh', client:'Cenomi Centers', value:5131370, prob:25, subDate:'2026-04-23',
+  { id:'26_356', name:'Westfield by Cenomi — Jeddah & Riyadh', client:'Cenomi Centers', value:5131370, prob:25, subDate:'2026-04-23', superseded:'26_389 Westfield Jeddah (15 Sep) + WestfieldRA Westfield Riyadh (17 Sep)',
     weeks:['','','','','','','','','a','a','a','a','a','s','','','','','','','','','','','','','','','','','','','','','','','','','','',''],
     events:[{w:13,t:'s',d:'Submitted 23 Apr'}] },
   { id:'26_357', name:'Sikka 2027 — Event Planning', client:'DCAA', extensions:2,  value:10794819, prob:25, subDate:'2026-05-11',
@@ -2700,7 +2706,7 @@ const PROJECTS = [
   { id:'26_374', name:'Public Art Abu Dhabi (Biennale)', client:'DCT Abu Dhabi', value:5600000, prob:100, valueSrc:'awarded — projected total = weighted 4,200,000 ÷ 75% · to reconcile with NetSuite',
     weeks:['','','','','','','','','','','','','','','','','','','','','h','h','h','h','','','','','','','','','','','','','','w','','',''],
     events:[{w:20,t:'h',d:'Won — in negotiation (final terms)'},{w:21,t:'h',d:'Kapwani Kiwanga quote + draft schedule after site visit; contract finalization'},{w:22,t:'h',d:'Revised cost estimates for all 4 artists APPROVED by client'},{w:23,t:'h',d:'Nari Ward cost estimate reviewed & approved — approval complete for all 4 artists (Kiwanga AED 825,341 · Senatore AED 1,093,861 · Clottey AED 752,783 · Nari Ward AED 1,264,038, excl. VAT)'},{w:37,t:'w',d:'AWARDED — artist costs approved, contract phase (n°39)'}] },
-  { id:'26_375', name:'Madinah Rock Display Project', client:'PMBS Museum for Arabic Calligraphy', value:345035, prob:10, valueSrc:'da pitch budget SharePoint · price w/o VAT SAR 3,450,349 × 10% · 26_373 Madinah budget (current sheet) · to reconcile with NetSuite', subDate:'2026-07-14',
+  { id:'26_375', name:'Madinah Rock Display Project', client:'PMBS Museum for Arabic Calligraphy', value:247511, prob:10, valueSrc:'weekly report n°26 · Concept Option 2 SAR 2,475,109 × 10% (Option 1 SAR 3,337,686 → 333,769 wtd) · to reconcile with NetSuite', subDate:'2026-07-14',
     weeks:['','','','','','','','','','','','','','','','','','','','','','a','a','u','s','','a','a','','','','','','','','','','','','',''],
     events:[{w:24,t:'s',d:'TP+FP submitted 14 Jul — 2 concept options: SAR 3.34M / 2.48M'}] },
   { id:'26_376', name:'Money 20/20 — Emkan Booth Production 2026', client:'Emkan', value:1285159, prob:25, valueSrc:'da pitch budget SharePoint · price w/o VAT SAR 5,140,635 × 25% · 26_376 Emkan budget — margin 55%, to verify · to reconcile with NetSuite', subDate:'2026-07-02',
@@ -2720,7 +2726,7 @@ const PROJECTS = [
     weeks:['','','','','','','','','','','','','','','','','','','','','s','','','','','','','','','','','','','','','','','','','',''],
     events:[{w:20,t:'s',d:'TP+FP submitted 19 Jun'}] },
   // ── NEW DEADLINES POST W20 ──────────────────────
-  { id:'26_366', name:'Permanent Arabic Language Exhibitions', client:'KSAAL', partner:'Hwadi', value:830247, prob:10, valueSrc:'da pitch budget SharePoint · price w/o VAT SAR 8,302,468 × 10% · 26_366 KSAAL budget · to reconcile with NetSuite', subDate:'2026-06-18',
+  { id:'26_366', name:'Permanent Arabic Language Exhibitions', client:'KSAAL', partner:'Hwadi', value:868513, prob:10, valueSrc:'weekly report n°40 · Aimes bid SAR 8,685,128.80 × 10% · to reconcile with NetSuite', subDate:'2026-06-18',
     weeks:['','','','','','','','','','','','','','','','','','a','u','u','s','','','','','','a','','','','','','','','','','','','l','',''],
     events:[{w:20,t:'s',d:'Submitted 18 Jun'},{w:38,t:'l',d:'Lost — awarded to Enzo Arabia for Exhibitions & Conferences at SAR 5,342,072 vs Aimes SAR 8,685,128.80 (~38.5% lower) · report n°40'}] },
   { id:'26_367', name:'Int\'l Event Support / Culinary Arts', client:'MOC', partner:'Hwadi', extensions:1,  prob:25, subDate:'2026-06-10',
@@ -2753,7 +2759,7 @@ const PROJECTS = [
   { id:'26_383', name:'Saudi National Museum Activation & Operations', client:'MOC', extensions:1, value:1070554, prob:25, subDate:'2026-08-23',
     weeks:['','','','','','','','','','','','','','','','','','','','','','','','','','','','a','u','s','','','','','','','','','','',''],
     events:[{w:29,t:'s',d:'Submitted 23 Aug — TP+FP · contract value SAR 4,282,215'}] },
-  { id:'26_384', name:'AlUla, Wonder of Arabia — Rome Exhibition Concept', client:'Afalula', extensions:1, value:635838, prob:25, valueSrc:'da pitch budget SharePoint · price w/o VAT SAR 2,543,353 × 25% · 26_384 AlUla Rome budget · to reconcile with NetSuite', subDate:'2026-10-02',
+  { id:'26_384', name:'AlUla, Wonder of Arabia — Rome Exhibition Concept', client:'Afalula', extensions:1, value:642189, prob:25, valueSrc:'weekly report n°37 · EUR 597,385 ≈ SAR 2,568,756 (EUR→SAR 4.30, rate TBC) × 25% · to reconcile with NetSuite', subDate:'2026-10-02',
     weeks:['','','','','','','','','','','','','','','','','','','','','','','','','','','','a','a','a','a','a','a','u','u','s','','l','','',''],
     events:[{w:35,t:'s',d:'Submitted 2 Oct — TP+FP · contract value ~EUR 597,385 (SAR value TBC)'},{w:37,t:'l',d:'Lost — not selected for the AWOA Rome exhibition design (Afalula email 22 Oct, confirmed by Assia)'}] },
   { id:'26_385', name:'BIG x Aimes — Almadina Azarqa Masterplan, Oman', client:'Grand Blue City Dev. SAOC', partner:'BIG', prob:25, subDate:'2026-08-18',
@@ -2770,7 +2776,7 @@ const PROJECTS = [
   { id:'WestfieldRA', name:'Westfield Riyadh Art Strategy — Cultural Impact x Aimes', client:'Cenomi Centers', partner:'Cultural Impact', extensions:1, value:2871495, prob:25, subDate:'2026-09-17',
     weeks:['','','','','','','','','','','','','','','','','','','','','','','','','','','','','','a','u','a','a','s','','','','','','',''],
     events:[{w:33,t:'s',d:'Submitted 17 Sep — TP+FP · contract value SAR 11,485,981 (PDF ID 26_387)'}] },
-  { id:'26_389', name:'Westfield Jeddah Opening Events', client:'Cenomi Centers', extensions:1, prob:25, subDate:'2026-09-15',
+  { id:'26_389', name:'Westfield Jeddah Opening Events', client:'Cenomi Centers', extensions:1, value:774432, prob:25, valueSrc:'weekly report n°35 · lean budget SAR 3,097,726 × 25% (premium budget SAR 22,703,963 → 5,675,991 wtd) · to reconcile with NetSuite', subDate:'2026-09-15',
     weeks:['','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','a','a','a','s','','','','','','',''],
     events:[{w:33,t:'s',d:'Submitted 15 Sep — premium budget SAR 22,703,963 · lean budget SAR 3,097,726'}] },
   { id:'26_390', name:'KKIA Art Framework Agreement', client:'RAC', extensions:1, value:7703684, prob:25, subDate:'2026-09-27',
@@ -3138,7 +3144,7 @@ function renderMasterGantt(){
 
     const weekCols = WEEK_LABELS.map((w,i)=>`<div class="week-col${i===WEEK_LABELS.length-1?' current':''}" data-widx="${i}" data-pid="${p.id}"></div>`).join('');
 
-    const valueLabel = p.value ? `<span class="mg-value" ${p.valueSrc?`title="${p.valueSrc}"`:''}>${formatValue(p.value)} SAR wtd${p.valueSrc?' · pitch budget':''}</span>` : '';
+    const valueLabel = p.value ? `<span class="mg-value" ${p.valueSrc?`title="${p.valueSrc}"`:''}>${formatValue(p.value)} SAR wtd${p.valueSrc?(p.valueSrc.startsWith('weekly report')?' · weekly report':' · pitch budget'):''}</span>` : '';
     const carryFlag = p.carryover ? `<span class="mg-flag">2025 carry-over</span>` : '';
 
     html += `<div class="mg-row" data-pid="${p.id}">
@@ -3456,7 +3462,7 @@ function renderWeightedPipeline(){
     <div class="wp-hero">
       <span class="lbl">Expected Pipeline Value</span>
       <span class="val">${formatValue(totalWeighted)}<span class="u">SAR · weighted</span></span>
-      <span class="note">Sum of NetSuite Weighted Totals (projected value × probability) across open 2026 opportunities · excludes 2025 carry-overs and projects without values</span>
+      <span class="note">Sum of weighted values (project value × probability) across open 2026 opportunities · value source: weekly report first, NetSuite as fallback · excludes 2025 carry-overs, superseded submissions and projects without values</span>
       <span class="wp-won-hero">+ <strong>${formatValue(wonValue)||"0"} SAR</strong> awarded YTD (projected totals)</span>
     </div>
     <div class="wp-tiers">${wonRow}${tiersHtml}</div>
@@ -3464,6 +3470,34 @@ function renderWeightedPipeline(){
 }
 
 // ─── AGING TRACKER ─────────────────────────────
+// ─── OWNERS (awaiting-reply follow-up) ─────────
+// Owner = person with the client relationship; can change per project. Set by Assia, 10 Nov 2026.
+const OWNERS = {
+  'Paris':       { lead:'Benedetta' },
+  '26_368':      { lead:'Ignacio', support:'BIG' },
+  '26_234':      { lead:'Mohammed Hafiz (Athr)', support:'Katy' },
+  '26_369':      { lead:'Ignacio', support:'Hwadi', task:'Manal: confirm whether cancelled (submitted via Hwadi, no confirmation received)' },
+  'AlUlaHorse':  { lead:'Sofia', support:'Manal', task:'Manal: follow up by email' },
+  '26_376':      { lead:'Manal', task:'Manal: ask client for outcome / reason' },
+  '26_375':      { lead:'Piero', support:'Ignacio' },
+  '26_381':      { lead:'Benedetta' },
+  '26_385':      { lead:'Ignacio', support:'BIG' },
+  '26_383':      { lead:'Katy', support:'Benedetta' },
+  '26_389':      { lead:'Manal', task:'Manal: email client for update' },
+  'WestfieldRA': { lead:'Manal', task:'Manal: email client for update' },
+  '26_390':      { lead:'Manal' },
+  '26_388':      { lead:'Manal', support:'Sofia' },
+  '26_400':      { lead:'Aya', support:'Benedetta, Mohammed' },
+  '26_391':      { lead:'Katy' },
+  '26_395':      { lead:'Katy' },
+  '26_396':      { lead:'Benedetta' },
+};
+function ownerCell(id){
+  const o = OWNERS[id];
+  if(!o) return '<span class="ag-owner tbc">TBC</span>';
+  return `<span class="ag-owner">${o.lead}</span>${o.support?`<span class="ag-owner-2">+ ${o.support}</span>`:''}${o.task?`<span class="ag-note">${o.task}</span>`:''}`;
+}
+
 function renderAgingTracker(){
   const tbody = document.getElementById('agingTable');
   if(!tbody) return;
@@ -3491,6 +3525,7 @@ function renderAgingTracker(){
       <td class="r" style="font-family:'JetBrains Mono',monospace;font-size:11px">${fmtDate(r.p.subDate)} · ${r.wk}</td>
       <td class="r"><span class="ag-val">${r.p.value ? formatValue(r.p.value) + ' SAR wtd' : '—'}</span></td>
       <td><span class="ag-priority">${r.priority}</span></td>
+      <td>${ownerCell(r.p.id)}</td>
     </tr>
   `).join('');
 }
@@ -3751,6 +3786,7 @@ function formatValue(v){
 }
 
 function getProjectStatus(p){
+  if(p.superseded) return 'declined'; // replaced by later resubmissions (stays in KPI base, out of aging/weighted/chase)
   const events = p.events || [];
   const outcomes = events.filter(e => e.t === 'w' || e.t === 'h' || e.t === 'l').sort((a,b)=>b.w-a.w);
   if(outcomes.length > 0) return (outcomes[0].t === 'w' || outcomes[0].t === 'h') ? 'won' : 'lost';
@@ -3841,7 +3877,7 @@ function renderClientList(){
         <span class="cp-id">${p.id}</span>
         <span class="cp-name clickable-proj" data-pid="${p.id}">${p.name}${p.partner?` <span style="color:var(--accent-deep);font-size:10px">· w/ ${p.partner}</span>`:''}${detail ? `<span class="cp-detail">${detail}</span>` : ''}</span>
         <span class="cp-value">${valLabel}</span>
-        <span class="cp-status">${p.status === 'awaiting' ? 'NO REPLY' : p.status === 'won' ? wonLabel(p,true) : p.status === 'negotiation' ? 'IN NEGOTIATION' : p.status === 'declined' ? 'CANCELLED / DECLINED' : p.status}</span>
+        <span class="cp-status">${p.status === 'awaiting' ? 'NO REPLY' : p.status === 'won' ? wonLabel(p,true) : p.status === 'negotiation' ? 'IN NEGOTIATION' : p.status === 'declined' ? (p.superseded ? 'SUPERSEDED' : 'CANCELLED / DECLINED') : p.status}</span>
       </li>`;
     }).join('');
 
