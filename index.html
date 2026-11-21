@@ -87,18 +87,22 @@ body{background:radial-gradient(ellipse at top left, rgba(200,169,81,.08), trans
 .kpi-tip{
   position:absolute;top:calc(100% + 6px);left:50%;transform:translateX(-50%) translateY(-4px);
   background:var(--ink);color:var(--paper);padding:14px 16px;border-radius:2px;
-  min-width:300px;max-width:380px;opacity:0;visibility:hidden;pointer-events:none;
+  min-width:300px;max-width:460px;width:max-content;opacity:0;visibility:hidden;pointer-events:none;
   transition:opacity .15s ease, transform .15s ease;
   box-shadow:0 12px 32px -8px rgba(10,22,40,.5);z-index:200;
 }
-.kpi:hover .kpi-tip{opacity:1;visibility:visible;transform:translateX(-50%) translateY(0)}
+.kpi:hover .kpi-tip{opacity:1;visibility:visible;pointer-events:auto;transform:translateX(-50%) translateY(0)}
+.kpi-tip::before{content:'';position:absolute;left:0;right:0;top:-8px;height:8px}
+.kpi-tip{display:flex;flex-direction:column;max-height:min(70vh,620px)}
+.kpi-tip-head,.kpi-tip-note,.kpi-tip-empty{flex-shrink:0}
 .kpi:first-child .kpi-tip{left:0;transform:translateY(-4px)}
 .kpi:first-child:hover .kpi-tip{transform:translateY(0)}
 .kpi:last-child .kpi-tip{left:auto;right:0;transform:translateY(-4px)}
 .kpi:last-child:hover .kpi-tip{transform:translateY(0)}
 .kpi-tip-head{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);margin-bottom:10px;padding-bottom:8px;border-bottom:1px solid rgba(255,255,255,.12);display:flex;justify-content:space-between;align-items:baseline;gap:8px}
 .kpi-tip-head .count{color:rgba(244,241,234,.6)}
-.kpi-tip-list{list-style:none;display:flex;flex-direction:column;gap:8px;max-height:280px;overflow-y:auto}
+.kpi-tip-list{list-style:none;display:flex;flex-direction:column;gap:8px;min-height:0;flex:1 1 auto;overflow-y:auto;overscroll-behavior:contain;scrollbar-width:thin;scrollbar-color:rgba(244,241,234,.35) transparent;padding-right:4px}
+.kpi-tip-list::-webkit-scrollbar{width:4px}.kpi-tip-list::-webkit-scrollbar-thumb{background:rgba(244,241,234,.35);border-radius:2px}
 .kpi-tip-list li{display:grid;grid-template-columns:60px 1fr auto;gap:8px;align-items:baseline;font-size:11px;line-height:1.35}
 .kpi-tip-list li .proj-id{font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--accent);letter-spacing:.05em;font-weight:600}
 .kpi-tip-list li .proj-name{color:rgba(244,241,234,.92);font-weight:500}
@@ -738,6 +742,7 @@ body{font-variant-numeric:tabular-nums}
 @media (display-mode: standalone){
   body{padding-top:calc(env(safe-area-inset-top) + 10px);padding-bottom:calc(env(safe-area-inset-bottom) + 40px)}
 }
+@media (max-width:640px){.kpi .kpi-tip,.kpi:first-child .kpi-tip,.kpi:last-child .kpi-tip,.kpi:hover .kpi-tip,.kpi:first-child:hover .kpi-tip,.kpi:last-child:hover .kpi-tip{position:fixed;top:auto;bottom:16px;left:16px;right:16px;width:auto;min-width:0;max-width:none;max-height:70vh;transform:none}}
 </style>
 </head>
 <body>
@@ -2968,7 +2973,9 @@ function getKpiLists(weekIdx){
       subYTD.push({ id:p.id, name:p.name, when:'W'+WEEK_LABELS[firstSub.w].num, value:p.value });
       if(firstSub.w === weekIdx) subWeek.push({ id:p.id, name:p.name, value:p.value });
     }
-    if(latestOutcome){
+    if(latestOutcome && !p.carryover){ // 2025 carry-overs excluded from 2026 KPIs
+      // Awarded without a tracked 's' event (26_374 Public Art Abu Dhabi convention): counts as a submission too
+      if(!firstSub && (latestOutcome.t === 'w' || latestOutcome.t === 'h')) subYTD.push({ id:p.id, name:p.name, when:'W'+WEEK_LABELS[latestOutcome.w].num, value:p.value });
       const obj = { id:p.id, name:p.name, when:'W'+WEEK_LABELS[latestOutcome.w].num, value:p.value, carryover:!!p.carryover, partial: latestOutcome.t === 'h' };
       if(latestOutcome.t === 'w' || latestOutcome.t === 'h') won.push(obj);
       else lost.push(obj);
