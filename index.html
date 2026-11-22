@@ -1074,7 +1074,7 @@ const REPORTS = [
         ['Sela — Falcon Festival 2026 (King Abdulaziz Falcon Festival)','Five requests: Production 1, PKG 4 Production 2 & 3, PKG 5 Branding, PKG 7 Race Area Preparation — out of scope (PDF n°42)','lost','OUT OF SCOPE'],
         ['Sela — Qatif Season 2026 · Al Hajj Exhibition 2026','Declined: capacity, timeline and scope (Benedetta 21–22 Oct · PDF n°40)','lost','DECLINED']
       ]},
-      {head:'To chase — submitted, no client decision (21 Nov)',count:12,items:[
+      {head:'To chase — submitted, no client decision (21 Nov)',count:11,items:[
         ['26_356 Westfield by Cenomi — Jeddah & Riyadh','Submitted 23 Apr · no client decision in tenders@','awaiting','TO CHASE'],
         ['Cultural Activations in the City of Paris (MOC)','First bid 23 Nov 2025 (Ariba Doc227413832, SAR 54.6M excl. VAT) · June 2026 re-tender (Doc248787297): no response from the tenders@ Ariba account and no submission email — only BD report n°20 says resubmitted 4 Jun · submission to verify with Manal','awaiting','TO VERIFY'],
         ['26_368 District 11 — Urban Core Office Architect (Qiddiya, w/ BIG)','Submitted 9 Jun via BIG · no outcome','awaiting','TO CHASE'],
@@ -1085,10 +1085,10 @@ const REPORTS = [
         ['26_385 Almadina Azarqa Masterplan, Oman (w/ BIG)','Materials sent to BIG 19 Aug · no outcome','awaiting','TO CHASE'],
         ['26_383 Saudi National Museum Activation & Operations (MOC)','Submitted 23 Aug (SAR 4.28M) · no outcome','awaiting','TO CHASE'],
         ['26_389 Westfield Jeddah Opening Events (Cenomi)','Submitted 15 Sep (Teradix RFQ 81484) · no outcome','awaiting','TO CHASE'],
-        ['Westfield Riyadh Art Strategy (Cenomi, w/ Cultural Impact)','Submitted 17 Sep · no outcome','awaiting','TO CHASE'],
         ['26_390 KKIA Art Framework Agreement (RAC)','Submitted 27 Sep · status chased with Riyadh Airports procurement on 9 Nov — no reply yet','awaiting','CHASED 9 NOV']
       ]},
-      {head:'Submitted RFPs / General Updates',count:15,items:[
+      {head:'Submitted RFPs / General Updates',count:16,items:[
+        ['Westfield Riyadh Art Strategy (Cenomi, w/ Cultural Impact)','Submitted 17 Sep (Teradix RFx #81267) · 22 Nov: Cenomi procurement (Dowel Sanchez, via Cultural Impact) — RFP #83239 is not a new RFP but an expansion of #81267, from the luxury areas to a wider coverage area (new BOQ + presentation); updated Technical + Commercial proposals to be submitted on Teradix · deadline TBC · revision of the same bid, not counted as a new submission','awaiting','RESUBMISSION REQUESTED'],
         ['26_396 NPUAE 2027 — Exhibition Construction (UAE Pavilion, La Biennale di Venezia)','Submitted 8 Nov · NPUAE: the curatorial team decided to proceed with another contender, Aimes proposal "among the strongest" (client email, 17 Nov) · Internal debrief (Benedetta, after meeting NPUAE, 19 Nov): methodology OK; our price ~3× the selected Slovenian contender; lack of pavilion experience beyond the KSA pavilions — to be considered in the next proposals · KPIs unchanged until confirmed in the BD report','lost','NOT SELECTED'],
         ['26_380 Passages of Light AlUla (Italian Embassy · RCU)','Postponed at the Embassy\'s request (1 Nov) to after Ramadan, with the new season','awaiting','POSTPONED'],
         ['26_399 DGDA — RFI Museum Development Public Artworks (Pre-Concept)','RFI submitted 25 Oct · Ariba "Pending Selection" · RFI, not counted','awaiting','RFI submitted'],
@@ -2884,7 +2884,7 @@ const PROJECTS = [
     events:[{w:35,t:'s',d:'Submitted 1 Oct — TP+FP · contract value ~SAR 8,670,579'}] },
   { id:'WestfieldRA', name:'Westfield Riyadh Art Strategy — Cultural Impact x Aimes', client:'Cenomi Centers', partner:'Cultural Impact', extensions:1, value:2871495, prob:25, valueSrc:'to confirm · weekly report n°35 SAR 11,485,981.23 (≈ 9.99M excl. VAT) × 25% · pitch budget: SAR 10,000,000 lump sum excl. VAT (Aimes 7.2M / Cultural Impact 2.8M) — joint total vs Aimes share to confirm', subDate:'2026-09-17',
     weeks:['','','','','','','','','','','','','','','','','','','','','','','','','','','','','','a','u','a','a','s','','','','','','','',''],
-    events:[{w:33,t:'s',d:'Submitted 17 Sep — TP+FP · contract value SAR 11,485,981 (PDF ID 26_387)'}] },
+    events:[{w:33,t:'s',d:'Submitted 17 Sep — TP+FP · contract value SAR 11,485,981 (PDF ID 26_387)'},{w:41,t:'w',d:'22 Nov — Cenomi (via Cultural Impact): RFP #83239 = expansion of #81267 (luxury areas → wider coverage); updated TP + CP to be submitted on Teradix · deadline TBC · revision, not a new submission'}] },
   { id:'26_389', name:'Westfield Jeddah Opening Events', client:'Cenomi Centers', extensions:1, value:5675991, prob:25, valueSrc:'Teradix #81484 · SAR 26,109,557.66 incl. VAT entered on Teradix (ended 16 Sep) = premium option, SAR 22,703,963.18 excl. VAT (financial proposal 15 Sep) × 25% · lean option SAR 3,097,725.93 not the one entered', subDate:'2026-09-15',
     weeks:['','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','a','a','a','s','','','','','','','',''],
     events:[{w:33,t:'s',d:'Submitted 15 Sep — premium budget SAR 22,703,963 · lean budget SAR 3,097,726'}] },
@@ -3628,7 +3628,7 @@ const OWNERS = {
   '26_383':      { lead:'Katy', support:'Benedetta' },
   '26_356':      { lead:'Manal' },
   '26_389':      { lead:'Manal', task:'Manal: email client for update' },
-  'WestfieldRA': { lead:'Manal', task:'Manal: email client for update' },
+  'WestfieldRA': { lead:'Manal', support:'Aya (Cultural Impact)', task:'Resubmission under RFP #83239 (expanded scope) — get the deadline from Cultural Impact' },
   '26_390':      { lead:'Manal' },
   '26_388':      { lead:'Manal', support:'Sofia' },
   '26_400':      { lead:'Aya', support:'Benedetta, Mohammed' },
@@ -3647,7 +3647,7 @@ function ownerCell(id){
 // tier: critical = past stale threshold / catch-up · watch = follow-up overdue or threshold within the cycle · normal = active / on cadence
 const POLICY_ASOF = '22 Nov 2026';
 const POLICY_OPEN = {
-  '26_356':     { days:213, tier:'critical', last:'1 May — Stavros to Alanoud Alhuriesh (meeting arrangements); no follow-up since', status:'Past threshold (75) — catch-up', action:'One consolidated Cenomi follow-up (26_356 + 26_389 + Westfield Riyadh); repeat 1 & 8 Dec; close 26_356 on 10 Dec if silent', by:'24 Nov', ch:'Email to Alanoud Alhuriesh' },
+  '26_356':     { days:213, tier:'critical', last:'1 May — Stavros to Alanoud Alhuriesh (meeting arrangements); no follow-up since', status:'Past threshold (75) — catch-up', action:'One consolidated Cenomi follow-up (26_356 + 26_389; Westfield Riyadh now active under #83239); repeat 1 & 8 Dec; close 26_356 on 10 Dec if silent', by:'24 Nov', ch:'Email to Alanoud Alhuriesh' },
   '26_369':     { days:161, tier:'critical', last:'None found in tenders@', status:'Partner-led — threshold 150 passed', action:'Ask Hwadi for status; catch-up, then close ~10 Dec', by:'24 Nov', ch:'Hwadi only' },
   '26_376':     { days:143, tier:'critical', last:'12 Jul — tenders@ to Wadha Aljunaydil: status follow-up (client replied same day)', status:'Past threshold (75) — catch-up', action:'Follow-up 24 Nov, 1 Dec, 8 Dec; courtesy close 10 Dec', by:'24 Nov', ch:'Email / call' },
   '26_368':     { days:125, tier:'critical', last:'None found in tenders@', status:'Partner-led — threshold 120 passed', action:'Ask BIG for status; catch-up 3× weekly, then close', by:'24 Nov', ch:'BIG only' },
@@ -3655,7 +3655,7 @@ const POLICY_OPEN = {
   '26_381':     { days:108, tier:'watch', last:'25 Aug — tenders@ to Kerr McIlwraith (Flint); Flint asked 6 Nov if we lost — no reply found', status:'Gov — threshold on 4 Dec', action:'Reply to Flint; portal / procurement follow-up; CEO meeting via Athr only for non-bid topics', by:'24 Nov', ch:'Portal · Flint · Athr' },
   '26_385':     { days:96,  tier:'watch', last:'19 Aug — tenders@ to BIG: submission materials', status:'Partner-led — threshold 105 on 1 Dec', action:'Same BIG email as 26_368', by:'24 Nov', ch:'BIG only' },
   '26_389':     { days:68,  tier:'watch', last:'None found — submitted via Teradix portal', status:'RFP selection date (19–20 Sep) missed', action:'Covered by the consolidated Cenomi email; stale on 29 Nov', by:'24 Nov', ch:'Same Cenomi email' },
-  'WestfieldRA':{ days:66,  tier:'watch', last:'16 Aug — tenders@ to Aya (Cultural Impact); none to Cenomi', status:'Overdue first follow-up', action:'Covered by the consolidated Cenomi email; align with Cultural Impact first', by:'24 Nov', ch:'Same Cenomi email' },
+  'WestfieldRA':{ days:66,  tier:'normal', last:'16 Aug — tenders@ to Aya (Cultural Impact); 22 Nov Cenomi (Dowel Sanchez) → Aya: RFP #83239 = expansion of #81267 — not in tenders@', status:'Active — scope expanded, resubmission requested', action:'Align with Cultural Impact on the expanded scope (BOQ + presentation); submit updated TP + CP on Teradix under #83239; forward the Cenomi emails to tenders@', by:'deadline TBC', ch:'Teradix · via Cultural Impact' },
   '26_390':     { days:56,  tier:'normal', last:'9 Nov — tenders@ to RAC procurement: status follow-up, no reply', status:'Semi-gov — 21-day cycle', action:'Next follow-up; escalate to CEO if silent', by:'30 Nov', ch:'Procurement contact' },
   '26_388':     { days:52,  tier:'normal', last:'1 Oct — tenders@: technical + commercial submission', status:'Active — client meeting on proposals 19 Nov', action:'Log outcome of 19 Nov meeting; thank-you / next-steps email; next date 10 days after', by:'24 Nov', ch:'Email to TASAMA, cc tenders@' },
   '26_400':     { days:24,  tier:'normal', last:'12 Oct — Manal to Hadeel Alnahdi: capabilities and portfolio', status:'Partner-led — day 30 on 28 Nov', action:'Ask Cultural Impact (Aya) for status', by:'29 Nov', ch:'Partner only' },
