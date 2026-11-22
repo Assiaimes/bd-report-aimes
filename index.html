@@ -241,7 +241,10 @@ body{background:radial-gradient(ellipse at top left, rgba(200,169,81,.08), trans
 .ag-priority{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.1em;padding:4px 10px;border-radius:2px;font-weight:600;text-transform:uppercase;display:inline-block;color:#fff}
 tr.critical .ag-priority{background:var(--urgent)}
 tr.watch .ag-priority{background:var(--warn)}
-tr.normal .ag-priority{background:var(--stall)}
+tr.normal .ag-priority{background:var(--ok)}
+#agingTable .ag-priority,#debriefTable .ag-priority{white-space:normal;line-height:1.35;letter-spacing:.06em;max-width:180px}
+#agingTable .ag-client{display:block;margin-top:2px}
+.aging-table .ag-act{display:block;font-weight:500;color:var(--ink);line-height:1.35}
 
 /* ─── REASONS LOG ──────────────── */
 .reasons-log{display:grid;grid-template-columns:1fr 1fr;gap:24px}
@@ -700,7 +703,7 @@ body{font-variant-numeric:tabular-nums}
   .aging-table td:nth-child(6){grid-column:1 / -1}
   .aging-table td:nth-child(6)::before{content:'Owner · ';font-family:'JetBrains Mono',monospace;font-size:10.5px;color:var(--ink-2);text-transform:uppercase;letter-spacing:.06em}
   .aging-table td:nth-child(6) .ag-owner,.aging-table td:nth-child(6) .ag-owner-2{display:inline;margin-right:6px}
-  .aging-table td:nth-child(4)::before{content:'Weighted · ';font-family:'JetBrains Mono',monospace;font-size:10.5px;color:var(--ink-2);text-transform:uppercase;letter-spacing:.06em}
+  .aging-table td:nth-child(4)::before{content:'Last email · ';font-family:'JetBrains Mono',monospace;font-size:10.5px;color:var(--ink-2);text-transform:uppercase;letter-spacing:.06em}
   .aging-table tr:hover td{background:transparent}
   .aging-table .ag-name{font-size:15px}
 
@@ -811,9 +814,36 @@ body{font-variant-numeric:tabular-nums}
       </div>
     </div>
 
-    <div class="section" style="margin-top:48px;display:none">
+    <div class="section" style="margin-top:48px">
       <div class="section-head">
         <span class="section-num">§ TL.02</span>
+        <h2 class="section-title">Awaiting-Reply Aging Tracker</h2>
+        <span class="section-count">Follow-up policy applied as of 22 Nov 2026 · oldest first · next action, date and owner</span>
+      </div>
+      <p class="tl-page-sub" style="margin:0 0 14px">Source: <a href="https://claude.ai/artifact/7GbpMBqsTnpR4UFa3NLCUa" target="_blank" rel="noopener">Aimes Post-Submission Follow-up &amp; Loss Debrief Policy</a> — “Application to current bids (as of 22 Nov 2026)”. Days counted from the final submission; last email = last Aimes message found in tenders@. Stale thresholds: Gov 120 · Semi-gov 90 · Private 75 · partner-led +30 (thresholds pending approval).</p>
+      <div class="dash-card" style="padding:0;overflow:hidden">
+        <div class="dot-legend"><span><i class="status-dot" style="background:var(--urgent)"></i>Past threshold · catch-up</span><span><i class="status-dot" style="background:var(--warn)"></i>Follow-up overdue / threshold this cycle</span><span><i class="status-dot" style="background:var(--ok)"></i>Active / on cadence</span></div>
+        <table class="aging-table">
+          <thead><tr>
+            <th>Pitch</th><th class="r">Days open</th><th>Next action · by</th><th>Last email (tenders@)</th><th>Policy status</th><th>Owner</th>
+          </tr></thead>
+          <tbody id="agingTable"></tbody>
+        </table>
+      </div>
+      <h3 style="font-family:'Fraunces',serif;font-weight:500;font-size:20px;margin:34px 0 12px">Debrief &amp; close-out actions <span style="font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--ink-2);letter-spacing:.08em;text-transform:uppercase">recent losses and cancellations · policy 22 Nov</span></h3>
+      <div class="dash-card" style="padding:0;overflow:hidden">
+        <table class="aging-table">
+          <thead><tr>
+            <th>Pitch</th><th class="r">Decided</th><th>Next action · by</th><th>Last email (tenders@)</th><th>Debrief status</th><th>Owner</th>
+          </tr></thead>
+          <tbody id="debriefTable"></tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="section" style="margin-top:48px;display:none">
+      <div class="section-head">
+        <span class="section-num">§ TL.03</span>
         <h2 class="section-title">Master Project Lifecycles</h2>
         <span class="section-count">Hover cells for details · click row to jump to weekly report</span>
       </div>
@@ -916,23 +946,6 @@ body{font-variant-numeric:tabular-nums}
     <div class="section" style="margin-top:48px">
       <div class="section-head">
         <span class="section-num">§ OV.02</span>
-        <h2 class="section-title">Awaiting-Reply Aging Tracker</h2>
-        <span class="section-count">Sorted by wait time · oldest submissions first · who to chase</span>
-      </div>
-      <div class="dash-card" style="padding:0;overflow:hidden">
-        <div class="dot-legend"><span><i class="status-dot" style="background:var(--urgent)"></i>Chase now</span><span><i class="status-dot" style="background:var(--warn)"></i>Monitor</span><span><i class="status-dot" style="background:var(--ok)"></i>Recent</span></div>
-        <table class="aging-table">
-          <thead><tr>
-            <th>Pitch</th><th>Client</th><th class="r">Submitted</th><th class="r">Weighted value</th><th>Priority</th><th>Owner</th>
-          </tr></thead>
-          <tbody id="agingTable"></tbody>
-        </table>
-      </div>
-    </div>
-
-    <div class="section" style="margin-top:48px">
-      <div class="section-head">
-        <span class="section-num">§ OV.03</span>
         <h2 class="section-title">Win / Loss Reasons Log</h2>
         <span class="section-count">Accumulated learnings from weekly reports · 2026 YTD</span>
       </div>
@@ -941,7 +954,7 @@ body{font-variant-numeric:tabular-nums}
 
     <div class="section" style="margin-top:48px">
       <div class="section-head">
-        <span class="section-num">§ OV.04</span>
+        <span class="section-num">§ OV.03</span>
         <h2 class="section-title">Active Collaborations</h2>
         <span class="section-count">Partner-led bids · updated 10 Sep 2026</span>
       </div>
@@ -3601,7 +3614,7 @@ function renderWeightedPipeline(){
 
 // ─── AGING TRACKER ─────────────────────────────
 // ─── OWNERS (awaiting-reply follow-up) ─────────
-// Owner = person with the client relationship; can change per project. Set by Assia, 10 Nov 2026.
+// Owner = person with the client relationship; can change per project. Set by Assia, 10 Nov 2026; 26_356 + 26_381 support added 22 Nov (follow-up policy).
 const OWNERS = {
   'Paris':       { lead:'Benedetta' },
   '26_368':      { lead:'Ignacio', support:'BIG' },
@@ -3610,9 +3623,10 @@ const OWNERS = {
   'AlUlaHorse':  { lead:'Sofia', support:'Manal', task:'Manal: follow up by email' },
   '26_376':      { lead:'Manal', task:'Manal: ask client for outcome / reason' },
   '26_375':      { lead:'Piero', support:'Ignacio' },
-  '26_381':      { lead:'Benedetta' },
+  '26_381':      { lead:'Benedetta', support:'Manal' },
   '26_385':      { lead:'Ignacio', support:'BIG' },
   '26_383':      { lead:'Katy', support:'Benedetta' },
+  '26_356':      { lead:'Manal' },
   '26_389':      { lead:'Manal', task:'Manal: email client for update' },
   'WestfieldRA': { lead:'Manal', task:'Manal: email client for update' },
   '26_390':      { lead:'Manal' },
@@ -3628,34 +3642,69 @@ function ownerCell(id){
   return `<span class="ag-owner">${o.lead}</span>${o.support?`<span class="ag-owner-2">+ ${o.support}</span>`:''}${o.task?`<span class="ag-note">${o.task}</span>`:''}`;
 }
 
+// ─── FOLLOW-UP POLICY · application to current bids (as of 22 Nov 2026) ───
+// Source: "Aimes Post-Submission Follow-up & Loss Debrief Policy" (Claude Doc, 22 Nov 2026). Days from final submission.
+// tier: critical = past stale threshold / catch-up · watch = follow-up overdue or threshold within the cycle · normal = active / on cadence
+const POLICY_ASOF = '22 Nov 2026';
+const POLICY_OPEN = {
+  '26_356':     { days:213, tier:'critical', last:'1 May — Stavros to Alanoud Alhuriesh (meeting arrangements); no follow-up since', status:'Past threshold (75) — catch-up', action:'One consolidated Cenomi follow-up (26_356 + 26_389 + Westfield Riyadh); repeat 1 & 8 Dec; close 26_356 on 10 Dec if silent', by:'24 Nov', ch:'Email to Alanoud Alhuriesh' },
+  '26_369':     { days:161, tier:'critical', last:'None found in tenders@', status:'Partner-led — threshold 150 passed', action:'Ask Hwadi for status; catch-up, then close ~10 Dec', by:'24 Nov', ch:'Hwadi only' },
+  '26_376':     { days:143, tier:'critical', last:'12 Jul — tenders@ to Wadha Aljunaydil: status follow-up (client replied same day)', status:'Past threshold (75) — catch-up', action:'Follow-up 24 Nov, 1 Dec, 8 Dec; courtesy close 10 Dec', by:'24 Nov', ch:'Email / call' },
+  '26_368':     { days:125, tier:'critical', last:'None found in tenders@', status:'Partner-led — threshold 120 passed', action:'Ask BIG for status; catch-up 3× weekly, then close', by:'24 Nov', ch:'BIG only' },
+  '26_375':     { days:108, tier:'watch', last:'13 Jul — Ignacio to Olivier Melissant (Hasenkamp); none after final submission (6 Aug)', status:'Gov — threshold 120 on 4 Dec', action:'Ask Hasenkamp for client status; catch-up then close mid-Dec if silent', by:'24 Nov', ch:'Hasenkamp' },
+  '26_381':     { days:108, tier:'watch', last:'25 Aug — tenders@ to Kerr McIlwraith (Flint); Flint asked 6 Nov if we lost — no reply found', status:'Gov — threshold on 4 Dec', action:'Reply to Flint; portal / procurement follow-up; CEO meeting via Athr only for non-bid topics', by:'24 Nov', ch:'Portal · Flint · Athr' },
+  '26_385':     { days:96,  tier:'watch', last:'19 Aug — tenders@ to BIG: submission materials', status:'Partner-led — threshold 105 on 1 Dec', action:'Same BIG email as 26_368', by:'24 Nov', ch:'BIG only' },
+  '26_389':     { days:68,  tier:'watch', last:'None found — submitted via Teradix portal', status:'RFP selection date (19–20 Sep) missed', action:'Covered by the consolidated Cenomi email; stale on 29 Nov', by:'24 Nov', ch:'Same Cenomi email' },
+  'WestfieldRA':{ days:66,  tier:'watch', last:'16 Aug — tenders@ to Aya (Cultural Impact); none to Cenomi', status:'Overdue first follow-up', action:'Covered by the consolidated Cenomi email; align with Cultural Impact first', by:'24 Nov', ch:'Same Cenomi email' },
+  '26_390':     { days:56,  tier:'normal', last:'9 Nov — tenders@ to RAC procurement: status follow-up, no reply', status:'Semi-gov — 21-day cycle', action:'Next follow-up; escalate to CEO if silent', by:'30 Nov', ch:'Procurement contact' },
+  '26_388':     { days:52,  tier:'normal', last:'1 Oct — tenders@: technical + commercial submission', status:'Active — client meeting on proposals 19 Nov', action:'Log outcome of 19 Nov meeting; thank-you / next-steps email; next date 10 days after', by:'24 Nov', ch:'Email to TASAMA, cc tenders@' },
+  '26_400':     { days:24,  tier:'normal', last:'12 Oct — Manal to Hadeel Alnahdi: capabilities and portfolio', status:'Partner-led — day 30 on 28 Nov', action:'Ask Cultural Impact (Aya) for status', by:'29 Nov', ch:'Partner only' },
+  '26_234':     { days:22,  tier:'normal', last:'31 Oct — revised quote via Misk Oracle portal; client requested an updated proposal 17 Nov', status:'Active negotiation — ball in our court', action:'Submit the updated proposal requested on 17 Nov', by:'26 Nov', ch:'Misk portal' },
+  '26_391':     { days:20,  tier:'normal', last:'15 Nov — tenders@ to Khalid Algheriri: confirmed PTC 01 meeting', status:'Active — PTC open', action:'Submit PTC 01 response (extended to 28 Nov, 23:00 KSA); no other contact', by:'28 Nov', ch:'Official channel' },
+  '26_395':     { days:14,  tier:'normal', last:'Not checked — Athr-led', status:'Partner-led — day 30 on 8 Dec', action:'Ask Athr for status', by:'8 Dec', ch:'Athr only' },
+  // in the dashboard's awaiting list but not open in the policy table
+  'Paris':      { days:null, tier:'watch', last:'No trace in tenders@ / Ariba for the June resubmission (first bid 23 Nov 2025)', status:'Not in the policy table — submission to verify', action:'Manal to confirm how/if the 1b resubmission was sent; then apply Gov cadence', by:'—', ch:'TBC' },
+};
+const POLICY_DEBRIEF = [
+  { id:'26_396', name:'UAE Pavilion construction / NPUAE', decided:'Lost 17 Nov', last:'17 Nov — Benedetta to Farah El-Rafei: thanks + coffee (held 19 Nov)', status:'Held 19 Nov', action:'Send “[DEBRIEF] 26_396 NPUAE – Lost” to tenders@ (price ~3× winner, methodology OK, limited non-KSA experience); add to pricing log; day-30 value touch, ask about the next pavilion cycle', by:'26 Nov · touch ~17 Dec', owner:'Benedetta; record by Manal' },
+  { id:'26_383', name:'Saudi National Museum Activation / MOC', decided:'Lost 12 Nov (incumbents) — per policy; still awaiting in BD-report KPIs', last:'None found in tenders@', status:'Not requested — overdue', action:'Thank-you + feedback request through the MOC channel; log price gap if given', by:'24 Nov', owner:'Katy + Benedetta' },
+  { id:'26_384 + 26_379', name:'Rome exhibition + Incense Road museum / AFALULA', decided:'Lost 22 Oct and 3 Aug', last:'23 Oct — Benedetta to Claire Pinault: feedback request, no answer', status:'Requested — no answer', action:'One reminder to Claire covering both bids; close the step on 7 Dec if silent', by:'24 Nov', owner:'Benedetta' },
+  { id:'26_366', name:'Permanent Arabic Exhibitions / KSAAL', decided:'Lost 22 Oct', last:'None found in tenders@', status:'Reason known (price, −38.5%)', action:'[DEBRIEF] email + pricing log entry', by:'3 Dec', owner:'TBC' },
+  { id:'26_354 + 26_357', name:'Youth Performing Arts + Sikka 2027 / DCAA', decided:'Lost 6 Sep', last:'10 Sep — Muneeruddin to DCAA: bid bond release (Sikka: last follow-up 17 Aug)', status:'Never requested', action:'Late debrief request to DCAA procurement (Noor Al Masri) before the 26_401 DCAA bid is finalised', by:'26 Nov', owner:'TBC' },
+  { id:'26_363', name:'Dubai Art Residency / DCAA', decided:'Cancelled 12 Oct', last:'19 Oct — Muneeruddin to Noor Al Masri: bank guarantee approval', status:'N/A', action:'Complete bank guarantee release and fee refund', by:'3 Dec', owner:'Finance (Jasim / Muneeruddin)' },
+  { id:'AlUlaHorse', name:'Contemporary Art Exhibition / AFALULA', decided:'Postponed indefinitely 12 Nov', last:'12 Nov — tenders@ to Tehzeeb Sandhu: status chase (answered same day)', status:'N/A', action:'Log as Cancelled; 90-day check-in on relaunch', by:'10 Feb 2027', owner:'Sofia + Manal' },
+];
+
 function renderAgingTracker(){
   const tbody = document.getElementById('agingTable');
   if(!tbody) return;
-  const awaiting = PROJECTS.filter(p => !p.carryover && getProjectStatus(p) === 'awaiting' && p.subDate);
-  // Find the report week each submission falls in (week-stable label)
-  const subWeekLabel = (p) => {
-    const subEvt = (p.events||[]).find(e=>e.t==='s');
-    if(subEvt) return 'W' + WEEK_LABELS[subEvt.w].num;
-    // fall back: find 's' in weeks array
-    const idx = p.weeks.indexOf('s');
-    return idx >= 0 ? 'W' + WEEK_LABELS[idx].num : '—';
-  };
+  const awaiting = PROJECTS.filter(p => !p.carryover && !POLICY_DEBRIEF.some(d=>d.id===p.id) && (POLICY_OPEN[p.id] || (getProjectStatus(p) === 'awaiting' && p.subDate)));
+  const tierRank = { critical:0, watch:1, normal:2 };
   const rows = awaiting.map(p => {
-    const days = daysBetween(new Date(p.subDate), REF_DATE);
-    const tier = days > 60 ? 'critical' : days > 30 ? 'watch' : 'normal';
-    const priority = days > 60 ? 'Chase now' : days > 30 ? 'Monitor' : 'Recent';
-    const resub = (p.events||[]).filter(e=>e.t==='s').length > 1;
-    return { p, days, tier, priority, resub, wk: subWeekLabel(p) };
-  }).sort((a,b) => b.days - a.days);
+    const pol = POLICY_OPEN[p.id] || { days:null, tier:'watch', last:'—', status:'Not in the policy table', action:'Add to the follow-up calendar', by:'—', ch:'TBC' };
+    return { p, pol };
+  }).sort((a,b) => (b.pol.days??-1) - (a.pol.days??-1) || tierRank[a.pol.tier]-tierRank[b.pol.tier]);
 
-  tbody.innerHTML = rows.map(r => `
-    <tr class="${r.tier}">
-      <td class="clickable-proj" data-pid="${r.p.id}"><span class="ag-id">${r.p.id}</span><span class="ag-name">${r.p.name}</span>${r.resub ? '<span class="ag-note">resubmitted at least once</span>' : ''}</td>
-      <td><span class="ag-client">${r.p.client}</span></td>
-      <td class="r" style="font-family:'JetBrains Mono',monospace;font-size:11px">${fmtDate(r.p.subDate)} · ${r.wk}</td>
-      <td class="r"><span class="ag-val">${r.p.value ? formatValue(r.p.value) + ' SAR wtd' : '—'}</span></td>
-      <td><span class="ag-priority">${r.priority}</span></td>
-      <td>${ownerCell(r.p.id)}</td>
+  tbody.innerHTML = rows.map(({p,pol}) => `
+    <tr class="${pol.tier}">
+      <td class="clickable-proj" data-pid="${p.id}"><span class="ag-id">${p.id}</span><span class="ag-name">${p.name}</span><span class="ag-client">${p.client}</span><span class="ag-note">Submitted ${fmtDate(p.subDate)}${p.value ? ' · ' + formatValue(p.value) + ' SAR wtd' : ''}</span></td>
+      <td class="r"><span class="ag-days">${pol.days ?? '—'}<span class="u">${pol.days!=null?'d':''}</span></span></td>
+      <td><span class="ag-act">${pol.action}</span><span class="ag-note" style="font-style:normal"><b>by ${pol.by}</b> · ${pol.ch}</span></td>
+      <td><span class="ag-note" style="font-style:normal;margin:0">${pol.last}</span></td>
+      <td><span class="ag-priority">${pol.status}</span></td>
+      <td>${ownerCell(p.id)}</td>
+    </tr>
+  `).join('');
+
+  const dbody = document.getElementById('debriefTable');
+  if(dbody) dbody.innerHTML = POLICY_DEBRIEF.map(d => `
+    <tr class="${/overdue|Never/i.test(d.status)?'critical':/no answer|Held|known/i.test(d.status)?'watch':'normal'}">
+      <td${PROJECTS.some(p=>p.id===d.id)?` class="clickable-proj" data-pid="${d.id}"`:''}><span class="ag-id">${d.id}</span><span class="ag-name">${d.name}</span></td>
+      <td class="r" style="font-family:'JetBrains Mono',monospace;font-size:11px">${d.decided}</td>
+      <td><span class="ag-act">${d.action}</span><span class="ag-note" style="font-style:normal"><b>by ${d.by}</b></span></td>
+      <td><span class="ag-note" style="font-style:normal;margin:0">${d.last}</span></td>
+      <td><span class="ag-priority">${d.status}</span></td>
+      <td><span class="ag-owner${d.owner==='TBC'?' tbc':''}">${d.owner}</span></td>
     </tr>
   `).join('');
 }
