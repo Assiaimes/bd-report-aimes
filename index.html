@@ -747,6 +747,66 @@ body{font-variant-numeric:tabular-nums}
   body{padding-top:calc(env(safe-area-inset-top) + 10px);padding-bottom:calc(env(safe-area-inset-bottom) + 40px)}
 }
 @media (max-width:640px){.kpi .kpi-tip,.kpi:first-child .kpi-tip,.kpi:last-child .kpi-tip,.kpi:hover .kpi-tip,.kpi:first-child:hover .kpi-tip,.kpi:last-child:hover .kpi-tip{position:fixed;top:auto;bottom:16px;left:16px;right:16px;width:auto;min-width:0;max-width:none;max-height:70vh;transform:none}}
+/* ─── FOLLOW-UP TRACKER (TL.02, 24 Nov) ─── */
+.fu-banner{background:var(--paper-2);border-left:3px solid var(--accent);padding:12px 16px;font-size:12.5px;margin:0 0 16px;line-height:1.5}
+.fu-rules{display:grid;grid-template-columns:3fr 2fr;gap:18px;margin:0 0 18px}
+.fu-rules h4,.fu-notes h4{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-2);margin:0 0 8px;font-weight:600}
+.fu-cad{width:100%;border-collapse:collapse;font-size:12px}
+.fu-cad th{text-align:left;font-family:'JetBrains Mono',monospace;font-size:9.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-2);border-bottom:1px solid var(--line);padding:6px 8px;font-weight:500}
+.fu-cad td{padding:6px 8px;border-bottom:1px solid var(--line);vertical-align:top}
+.fu-small{font-size:11.5px;color:var(--ink-2);line-height:1.5;margin:8px 0 0}
+.fu-tpl{list-style:none;padding:0;margin:0 0 14px;display:flex;flex-wrap:wrap;gap:6px 14px;font-size:12px}
+.fu-tpl b{display:inline-block;min-width:18px;text-align:center;background:var(--ink);color:var(--paper);border-radius:2px;margin-right:5px;font-family:'JetBrains Mono',monospace;font-size:10px;padding:1px 4px}
+.fu-flow{display:flex;flex-wrap:wrap;align-items:center;gap:6px;font-size:11.5px}
+.fu-flow span{border:1px solid var(--line);padding:4px 8px;border-radius:2px;background:var(--paper)}
+.fu-flow i{font-style:normal;color:var(--ink-2)}
+.fu-card{padding:0;overflow:hidden}
+.fu-scroll{overflow-x:auto}
+.fu-table{width:100%;border-collapse:collapse;min-width:1180px}
+.fu-table th{background:var(--ink);color:var(--paper);font-family:'JetBrains Mono',monospace;font-size:9.5px;letter-spacing:.1em;text-transform:uppercase;padding:11px 12px;text-align:left;font-weight:500;white-space:nowrap}
+.fu-table th.r,.fu-table td.r{text-align:right}
+.fu-table td{padding:12px;border-bottom:1px solid var(--line);font-size:12px;vertical-align:top;line-height:1.35}
+.fu-table tr:last-child td{border-bottom:none}
+.fu-table td:first-child{border-left:4px solid transparent}
+.fu-table tr.fu-red td:first-child{border-left-color:var(--urgent)}
+.fu-table tr.fu-amber td:first-child{border-left-color:var(--warn)}
+.fu-table tr.fu-grey td:first-child{border-left-color:#9a9286}
+.fu-table tr.fu-green td:first-child{border-left-color:var(--ok)}
+.fu-table tr.fu-green td{background:rgba(58,139,90,.06)}
+.fu-table .ag-id{font-family:'JetBrains Mono',monospace;font-size:10.5px;color:var(--accent-deep);font-weight:600;display:block;white-space:nowrap}
+.fu-table .ag-name{font-weight:600;color:var(--ink);display:block}
+.fu-table .ag-note{display:block;font-size:10.5px;color:var(--ink-2);font-style:italic;margin-top:3px}
+.fu-table .ag-act{display:block;font-weight:500;color:var(--ink)}
+.fu-table .ag-owner{display:block;font-weight:600;color:var(--ink);white-space:nowrap}
+.fu-table .ag-owner.tbc{color:var(--warn)}
+.fu-table .ag-owner-2{display:block;font-size:10.5px;color:var(--ink-2)}
+.fu-table .ag-days{font-family:'Fraunces',serif;font-size:20px;font-weight:500}
+.fu-table tr.fu-red .ag-days{color:var(--urgent)}
+.fu-table tr.fu-amber .ag-days{color:var(--warn)}
+.fu-mono{font-family:'JetBrains Mono',monospace;font-size:11px;white-space:nowrap;display:block}
+.fu-type{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.06em;text-transform:uppercase;border:1px solid var(--line);padding:2px 6px;border-radius:2px;white-space:nowrap;display:inline-block}
+.fu-type.tbc{color:var(--warn);border-color:var(--warn)}
+.fu-tplb{display:inline-block;min-width:22px;text-align:center;font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:600;border:1px solid var(--ink);border-radius:2px;padding:2px 5px}
+.fu-chip{display:inline-block;font-family:'JetBrains Mono',monospace;font-size:9.5px;letter-spacing:.04em;text-transform:uppercase;padding:4px 8px;border-radius:2px;color:#fff;line-height:1.35;max-width:200px;font-weight:600}
+tr.fu-red .fu-chip{background:var(--urgent)} tr.fu-amber .fu-chip{background:var(--warn)} tr.fu-grey .fu-chip{background:#9a9286} tr.fu-green .fu-chip{background:var(--ok)}
+.fu-flag{display:block;font-size:10px;color:var(--urgent);margin-top:4px;max-width:170px;line-height:1.35}
+.fu-notes{margin-top:22px;font-size:12px;line-height:1.5}
+.fu-notes h4{margin-top:16px}
+.fu-notes ul{margin:0;padding-left:18px}
+.fu-notes p{margin:0}
+@media (max-width:760px){
+  .fu-rules{grid-template-columns:1fr}
+  .fu-scroll{overflow:visible}
+  .fu-table{min-width:0}
+  .fu-table thead{display:none}
+  .fu-table,.fu-table tbody{display:block}
+  .fu-table tr{display:block;padding:12px 14px;border-bottom:1px solid var(--line);border-left:4px solid transparent}
+  .fu-table tr.fu-red{border-left-color:var(--urgent)} .fu-table tr.fu-amber{border-left-color:var(--warn)} .fu-table tr.fu-grey{border-left-color:#9a9286} .fu-table tr.fu-green{border-left-color:var(--ok)}
+  .fu-table td{display:block;padding:3px 0;border:0!important;text-align:left!important}
+  .fu-table td::before{content:attr(data-l);display:block;font-family:'JetBrains Mono',monospace;font-size:9.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-2);margin-top:4px}
+  .fu-table td:first-child::before,.fu-table td:nth-child(2)::before{display:none}
+  .fu-flag{max-width:none}
+}
 </style>
 </head>
 <body>
@@ -818,28 +878,46 @@ body{font-variant-numeric:tabular-nums}
     <div class="section" style="margin-top:48px">
       <div class="section-head">
         <span class="section-num">§ TL.02</span>
-        <h2 class="section-title">Awaiting-Reply Aging Tracker</h2>
-        <span class="section-count">Follow-up policy applied as of 22 Nov 2026 · oldest first · next action, date and owner</span>
+        <h2 class="section-title">Follow-up Tracker</h2>
+        <span class="section-count" id="fuAsOf">Post-submission follow-up &amp; loss debrief policy · one row per bid</span>
       </div>
-      <p class="tl-page-sub" style="margin:0 0 14px">Source: <a href="https://claude.ai/artifact/7GbpMBqsTnpR4UFa3NLCUa" target="_blank" rel="noopener">Aimes Post-Submission Follow-up &amp; Loss Debrief Policy</a> — “Application to current bids (as of 22 Nov 2026)”. Days counted from the final submission; last email = last Aimes message found in tenders@. Stale thresholds: Gov 120 · Semi-gov 90 · Private 75 · partner-led +30 (thresholds pending approval).</p>
-      <div class="dash-card" style="padding:0;overflow:hidden">
-        <div class="dot-legend"><span><i class="status-dot" style="background:var(--urgent)"></i>Past threshold · catch-up</span><span><i class="status-dot" style="background:var(--warn)"></i>Follow-up overdue / threshold this cycle</span><span><i class="status-dot" style="background:var(--ok)"></i>Active / on cadence</span></div>
-        <table class="aging-table">
+      <div class="fu-banner"><b>Trial phase from 22 Nov 2026 — Timelines is the single follow-up tracker.</b> Rules agreed with Manal on 24 Nov 2026 · source: <a href="https://claude.ai/artifact/7GbpMBqsTnpR4UFa3NLCUa" target="_blank" rel="noopener">Aimes Post-Submission Follow-up &amp; Loss Debrief Policy</a>.</div>
+      <div class="fu-rules">
+        <div><h4>Cadence by end-client type</h4>
+          <table class="fu-cad"><thead><tr><th>Type</th><th>First follow-up</th><th>Then every</th><th>Stale at</th></tr></thead><tbody>
+            <tr><td>Gov</td><td>Decision date + 3 working days, else day 30</td><td>30 days</td><td>day 120</td></tr>
+            <tr><td>Semi-gov</td><td>Decision date + 3 working days, else day 21</td><td>21 days</td><td>day 90</td></tr>
+            <tr><td>Private</td><td>Decision date + 3 working days, else day 14</td><td>14 days</td><td>day 75</td></tr>
+            <tr><td>Partner-led</td><td colspan="3">Same cadence as the end client · contact through the partner only (Template C)</td></tr>
+          </tbody></table>
+          <p class="fu-small">Days counted from the final submission, as of the Monday of the current week (Riyadh). Working days Sun–Thu. Past the stale threshold with no reply → <b>Proposed close — Template B (final status confirmation)</b>; never closed automatically. MOC: Template B sent by Benedetta.</p>
+        </div>
+        <div><h4>Templates</h4>
+          <ul class="fu-tpl"><li><b>A</b> Follow-up</li><li><b>B</b> Final status confirmation</li><li><b>C</b> Partner chase</li><li><b>E</b> Debrief meeting</li><li><b>F</b> Written feedback</li></ul>
+          <h4>Reminder flow</h4>
+          <div class="fu-flow"><span>tenders@ reminder</span><i>→</i><span>Manal confirms</span><i>→</i><span>owner</span><i>→</i><span>owner replies to client · cc tenders@</span></div>
+        </div>
+      </div>
+      <div class="dash-card fu-card">
+        <div class="dot-legend"><span><i class="status-dot" style="background:var(--urgent)"></i>Past stale threshold · proposed close (B)</span><span><i class="status-dot" style="background:var(--warn)"></i>Follow-up due / overdue · or to check</span><span><i class="status-dot" style="background:#9a9286"></i>On cadence · next date ahead</span><span><i class="status-dot" style="background:var(--ok)"></i>Active client engagement this cycle · no follow-up due</span></div>
+        <div class="fu-scroll"><table class="fu-table">
           <thead><tr>
-            <th>Pitch</th><th class="r">Days open</th><th>Next action · by</th><th>Last email (tenders@)</th><th>Policy status</th><th>Owner</th>
+            <th>Code</th><th>Client · bid</th><th>Type</th><th>Owner</th><th>Submitted</th><th class="r">Days open</th><th>Last email sent</th><th>Next action · date</th><th>Tpl</th><th>Status</th>
           </tr></thead>
           <tbody id="agingTable"></tbody>
-        </table>
+        </table></div>
       </div>
-      <h3 style="font-family:'Fraunces',serif;font-weight:500;font-size:20px;margin:34px 0 12px">Debrief &amp; close-out actions <span style="font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--ink-2);letter-spacing:.08em;text-transform:uppercase">recent losses and cancellations · policy 22 Nov</span></h3>
-      <div class="dash-card" style="padding:0;overflow:hidden">
-        <table class="aging-table">
+      <h3 style="font-family:'Fraunces',serif;font-weight:500;font-size:20px;margin:34px 0 12px">Debrief &amp; close-out actions <span style="font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--ink-2);letter-spacing:.08em;text-transform:uppercase">losses (incl. unofficial) and cancellations · one row per bid</span></h3>
+      <p class="fu-small" style="margin:0 0 12px">Etimad evaluation report checked (KSA gov tenders) · debrief request sent at the notice, also for unofficial losses · reminders at day 10 and day 15 · then “no answer” → closed. MOC and KSA gov: through Benedetta's contacts.</p>
+      <div class="dash-card fu-card">
+        <div class="fu-scroll"><table class="fu-table">
           <thead><tr>
-            <th>Pitch</th><th class="r">Decided</th><th>Next action · by</th><th>Last email (tenders@)</th><th>Debrief status</th><th>Owner</th>
+            <th>Code</th><th>Client · bid</th><th>Type</th><th>Owner</th><th>Decided</th><th>Etimad report</th><th>Request sent</th><th>Reminders d10 · d15</th><th>Next action · date</th><th>Tpl</th><th>Status</th>
           </tr></thead>
           <tbody id="debriefTable"></tbody>
-        </table>
+        </table></div>
       </div>
+      <div class="fu-notes" id="fuNotes"></div>
     </div>
 
     <div class="section" style="margin-top:48px;display:none">
@@ -3712,103 +3790,176 @@ function renderWeightedPipeline(){
   `;
 }
 
-// ─── AGING TRACKER ─────────────────────────────
-// ─── OWNERS (awaiting-reply follow-up) ─────────
-// Owner = person with the client relationship; can change per project. Set by Assia, 10 Nov 2026; 26_356 + 26_381 support added 22 Nov (follow-up policy).
-const OWNERS = {
-  'Paris':       { lead:'Benedetta' },
-  '26_368':      { lead:'Ignacio', support:'BIG' },
-  '26_234':      { lead:'Mohammed Hafiz (Athr)', support:'Katy' },
-  '26_369':      { lead:'Ignacio', support:'Hwadi', task:'Manal: confirm whether cancelled (submitted via Hwadi, no confirmation received)' },
-  'AlUlaHorse':  { lead:'Sofia', support:'Manal', task:'Manal: follow up by email' },
-  '26_376':      { lead:'Manal', task:'Manal: ask client for outcome / reason' },
-  '26_375':      { lead:'Piero', support:'Ignacio' },
-  '26_381':      { lead:'Benedetta', support:'Manal' },
-  '26_385':      { lead:'Ignacio', support:'BIG' },
-  '26_383':      { lead:'Katy', support:'Benedetta' },
-  '26_356':      { lead:'Manal' },
-  '26_389':      { lead:'Manal', task:'Manal: email client for update' },
-  'WestfieldRA': { lead:'Aya (Cultural Impact)', support:'Manal (Aimes contact)', task:'Partner-led: Cultural Impact owns the Cenomi relationship and the #83239 resubmission; Manal gets the deadline and has the thread forwarded to tenders@' },
-  '26_390':      { lead:'Manal' },
-  '26_388':      { lead:'Manal', support:'Sofia' },
-  '26_400':      { lead:'Aya', support:'Benedetta, Mohammed' },
-  '26_391':      { lead:'Katy' },
-  '26_395':      { lead:'Katy' },
-  '26_396':      { lead:'Benedetta' },
+// ─── FOLLOW-UP TRACKER (Timelines TL.02) ───────────────────────────
+// Rules agreed with Manal on 24 Nov 2026 (Assia) on top of the Post-Submission Follow-up & Loss Debrief Policy (22 Nov).
+// Trial phase from 22 Nov 2026 — Timelines is the single follow-up tracker. One row per bid. No KPI is changed here.
+// type = END-CLIENT type: 'Gov' | 'Semi-gov' | 'Private' | null (TBC). partner = set when the bid is partner-led (contact via the partner only).
+// owner ∈ Manal / Ignacio / Benedetta / TBC. last = last email sent by Aimes {d:ISO, by:'sender → recipient'} or null.
+// engaged:true = active client engagement in the current cycle → green, no follow-up due.
+// next:{d:ISO, t:'…'} overrides the computed cadence date. check:'…' = item to verify (amber, cadence not applied).
+const FU_CADENCE = {
+  'Gov':      { first:30, every:30, stale:120 },
+  'Semi-gov': { first:21, every:21, stale:90 },
+  'Private':  { first:14, every:14, stale:75 },
 };
-function ownerCell(id){
-  const o = OWNERS[id];
-  if(!o) return '<span class="ag-owner tbc">TBC</span>';
-  return `<span class="ag-owner">${o.lead}</span>${o.support?`<span class="ag-owner-2">+ ${o.support}</span>`:''}${o.task?`<span class="ag-note">${o.task}</span>`:''}`;
-}
-
-// ─── FOLLOW-UP POLICY · application to current bids (as of 22 Nov 2026) ───
-// Source: "Aimes Post-Submission Follow-up & Loss Debrief Policy" (Claude Doc, 22 Nov 2026). Days from final submission.
-// tier: critical = past stale threshold / catch-up · watch = follow-up overdue or threshold within the cycle · normal = active / on cadence
-const POLICY_ASOF = '22 Nov 2026';
-const POLICY_OPEN = {
-  '26_356':     { days:213, tier:'critical', last:'1 May — Stavros to Alanoud Alhuriesh (meeting arrangements); no follow-up since', status:'Past threshold (75) — catch-up', action:'One consolidated Cenomi follow-up (26_356 + 26_389; Westfield Riyadh now active under #83239); repeat 1 & 8 Dec; close 26_356 on 10 Dec if silent', by:'24 Nov', ch:'Email to Alanoud Alhuriesh' },
-  '26_369':     { days:161, tier:'critical', last:'None found in tenders@', status:'Partner-led — threshold 150 passed', action:'Ask Hwadi for status; catch-up, then close ~10 Dec', by:'24 Nov', ch:'Hwadi only' },
-  '26_376':     { days:143, tier:'critical', last:'12 Jul — tenders@ to Wadha Aljunaydil: status follow-up (client replied same day)', status:'Past threshold (75) — catch-up', action:'Follow-up 24 Nov, 1 Dec, 8 Dec; courtesy close 10 Dec', by:'24 Nov', ch:'Email / call' },
-  '26_368':     { days:125, tier:'critical', last:'None found in tenders@', status:'Partner-led — threshold 120 passed', action:'Ask BIG for status; catch-up 3× weekly, then close', by:'24 Nov', ch:'BIG only' },
-  '26_375':     { days:108, tier:'watch', last:'13 Jul — Ignacio to Olivier Melissant (Hasenkamp); none after final submission (6 Aug)', status:'Gov — threshold 120 on 4 Dec', action:'Ask Hasenkamp for client status; catch-up then close mid-Dec if silent', by:'24 Nov', ch:'Hasenkamp' },
-  '26_381':     { days:108, tier:'watch', last:'25 Aug — tenders@ to Kerr McIlwraith (Flint); Flint asked 6 Nov if we lost — no reply found', status:'Gov — threshold on 4 Dec', action:'Reply to Flint; portal / procurement follow-up; CEO meeting via Athr only for non-bid topics', by:'24 Nov', ch:'Portal · Flint · Athr' },
-  '26_385':     { days:96,  tier:'watch', last:'19 Aug — tenders@ to BIG: submission materials', status:'Partner-led — threshold 105 on 1 Dec', action:'Same BIG email as 26_368', by:'24 Nov', ch:'BIG only' },
-  '26_389':     { days:68,  tier:'watch', last:'None found — submitted via Teradix portal', status:'RFP selection date (19–20 Sep) missed', action:'Covered by the consolidated Cenomi email; stale on 29 Nov', by:'24 Nov', ch:'Same Cenomi email' },
-  'WestfieldRA':{ days:66,  tier:'normal', last:'16 Aug — tenders@ to Aya (Cultural Impact); 22 Nov Cenomi (Dowel Sanchez) → Aya: RFP #83239 = expansion of #81267 — not in tenders@', status:'Active — client engaged: Cenomi reminder 22 Nov asks for the expanded-scope resubmission · not stale · partner-led (Cultural Impact)', action:'Internal meeting w/ Aya Mon 23 Nov, Cenomi meeting Tue 24 Nov (PDF n°44); Cultural Impact leads the updated TP + CP on Teradix under #83239; Cenomi emails forwarded to tenders@', by:'24 Nov meeting · deadline TBC', ch:'Partner only (Cultural Impact)' },
-  '26_390':     { days:56,  tier:'normal', last:'9 Nov — tenders@ to RAC procurement: status follow-up, no reply', status:'Semi-gov — 21-day cycle', action:'Next follow-up; escalate to CEO if silent', by:'30 Nov', ch:'Procurement contact' },
-  '26_388':     { days:52,  tier:'normal', last:'1 Oct — tenders@: technical + commercial submission', status:'Active — client review meeting Mon 23 Nov 19:00 KSA (PDF n°44)', action:'Attend 23 Nov review; thank-you / next-steps email the same week; next date 10 days after', by:'24 Nov', ch:'Email to TASAMA, cc tenders@' },
-  '26_400':     { days:24,  tier:'normal', last:'12 Oct — Manal to Hadeel Alnahdi: capabilities and portfolio', status:'Partner-led — day 30 on 28 Nov', action:'Ask Cultural Impact (Aya) for status', by:'29 Nov', ch:'Partner only' },
-  '26_234':     { days:22,  tier:'normal', last:'21 Nov — revised TP+FP via Misk Oracle portal (SAR 3,361,747.18 excl. VAT)', status:'Revised TP+FP submitted 21 Nov (SAR 3.36M excl.) — client review', action:'Follow up on the artist meeting and site visit (PDF n°44); next follow-up 10 days after the revision', by:'1 Dec', ch:'Misk portal' },
-  '26_391':     { days:20,  tier:'normal', last:'15 Nov — tenders@ to Khalid Algheriri: confirmed PTC 01 meeting', status:'Active — PTC open', action:'Submit PTC 01 response (extended to 28 Nov, 23:00 KSA); no other contact', by:'28 Nov', ch:'Official channel' },
-  '26_395':     { days:14,  tier:'normal', last:'Not checked — Athr-led', status:'Partner-led — day 30 on 8 Dec', action:'Ask Athr for status', by:'8 Dec', ch:'Athr only' },
-  // in the dashboard's awaiting list but not open in the policy table
-  'Paris':      { days:null, tier:'watch', last:'No trace in tenders@ / Ariba for the June resubmission (first bid 23 Nov 2025)', status:'Not in the policy table — submission to verify', action:'Manal to confirm how/if the 1b resubmission was sent; then apply Gov cadence', by:'—', ch:'TBC' },
-};
-const POLICY_DEBRIEF = [
-  { id:'26_396', name:'UAE Pavilion construction / NPUAE', decided:'Lost 17 Nov', last:'17 Nov — Benedetta to Farah El-Rafei: thanks + coffee (held 19 Nov)', status:'Held 19 Nov', action:'Send “[DEBRIEF] 26_396 NPUAE – Lost” to tenders@ (price ~3× winner, methodology OK, limited non-KSA experience); add to pricing log; day-30 value touch, ask about the next pavilion cycle', by:'26 Nov · touch ~17 Dec', owner:'Benedetta; record by Manal' },
-  { id:'26_383', name:'Saudi National Museum Activation / MOC', decided:'Lost 12 Nov (incumbents) — per policy tracker; still no outcome in BD report n°44', last:'None found in tenders@', status:'Not requested — overdue', action:'Thank-you + feedback request through the MOC channel; log price gap if given', by:'24 Nov', owner:'Katy + Benedetta' },
-  { id:'26_384 + 26_379', name:'Rome exhibition + Incense Road museum / AFALULA', decided:'Lost 22 Oct and 3 Aug', last:'23 Oct — Benedetta to Claire Pinault: feedback request, no answer', status:'Requested — no answer', action:'One reminder to Claire covering both bids; close the step on 7 Dec if silent', by:'24 Nov', owner:'Benedetta' },
-  { id:'26_366', name:'Permanent Arabic Exhibitions / KSAAL', decided:'Lost 22 Oct', last:'None found in tenders@', status:'Reason known (price, −38.5%)', action:'[DEBRIEF] email + pricing log entry', by:'3 Dec', owner:'TBC' },
-  { id:'26_354 + 26_357', name:'Youth Performing Arts + Sikka 2027 / DCAA', decided:'Lost 6 Sep', last:'10 Sep — Muneeruddin to DCAA: bid bond release (Sikka: last follow-up 17 Aug)', status:'Never requested', action:'Late debrief request to DCAA procurement (Noor Al Masri) before the 26_401 DCAA bid is finalised', by:'26 Nov', owner:'TBC' },
-  { id:'26_363', name:'Dubai Art Residency / DCAA', decided:'Cancelled 12 Oct', last:'19 Oct — Muneeruddin to Noor Al Masri: bank guarantee approval', status:'N/A', action:'Complete bank guarantee release and fee refund', by:'3 Dec', owner:'Finance (Jasim / Muneeruddin)' },
-  { id:'AlUlaHorse', name:'Contemporary Art Exhibition / AFALULA', decided:'Postponed indefinitely 12 Nov', last:'12 Nov — tenders@ to Tehzeeb Sandhu: status chase (answered same day)', status:'N/A', action:'Log as Cancelled; 90-day check-in on relaunch', by:'10 Feb 2027', owner:'Sofia + Manal' },
+const FU_SRC = 'per meeting with Manal, 24 Nov';
+const FOLLOWUP = [
+  { id:'Paris', client:'MOC', bid:'Cultural Activations in the City of Paris', type:'Gov', owner:'Benedetta', sub:null, subNote:'June 2026 re-tender: not verified (BD report n°20 only) · first bid 23 Nov 2025', last:null, lastNote:'No response from the tenders@ Ariba account for the June re-tender',
+    check:'Submission to verify', action:'Manal to confirm whether / how the June resubmission was sent; if confirmed, apply the Gov cadence', by:'TBC', val:'SAR 54.6M excl. VAT (Nov 2025 bid) — to reconcile with NetSuite' },
+  { id:'26_369', client:'MOC', bid:'Int\'l Film Criticism Conference 2026', type:'Gov', partner:'Hwadi (lead)', owner:'Ignacio', sub:'2026-06-14', last:null, lastNote:'None found in tenders@',
+    check:'Likely cancelled — Ignacio to check with Hwadi (TBC)', action:'Ignacio to ask Hwadi whether the conference was cancelled ('+FU_SRC+') · no KPI change until confirmed', by:'TBC', tpl:'C', val:'TBC (price held by Hwadi)' },
+  { id:'26_376', client:'Emkan', bid:'Money 20/20 — booth production', type:'Private', owner:'Manal', sub:'2026-07-02', last:{d:'2026-07-12', by:'tenders@ → Wadha Aljunaydil'}, lastNote:'client replied the same day: "RFP under review, evaluation ongoing"',
+    val:'SAR 5,140,634.65 excl. VAT (financial proposal 2 Jul) — to reconcile with NetSuite' },
+  { id:'26_368', client:'Qiddiya', bid:'District 11 — Urban Core Office Architect', type:'Semi-gov', partner:'BIG', owner:'Ignacio', sub:'2026-06-09', last:null, lastNote:'None found in tenders@',
+    val:'TBC (price held by BIG)' },
+  { id:'26_375', client:'PMBS Museum for Arabic Calligraphy', bid:'Madinah Rock Display', type:'Gov', partner:'Hasenkamp', owner:'TBC', ownerNote:'was Piero + Ignacio', sub:'2026-08-06', subNote:'final = discounted offer 6 Aug (first TP+FP 14 Jul)', last:{d:'2026-07-13', by:'Ignacio → Olivier Melissant (Hasenkamp)'}, lastNote:'none after the 6 Aug revised offer',
+    val:'SAR 1,953,057.82 excl. VAT (revised offer 6 Aug, PDF n°29) — to reconcile with NetSuite' },
+  { id:'26_381', client:'MOC', bid:'Venice Architecture Biennale 2027 (w/ Flint Culture)', type:'Gov', owner:'Benedetta', ownerNote:'+ Manal', sub:'2026-08-06', last:{d:'2026-08-25', by:'tenders@ → Kerr McIlwraith (Flint)'}, lastNote:'Flint asked on 6 Nov whether we lost — no reply found',
+    val:'SAR 16,714,030.53 excl. VAT (pricing model 6 Aug) — to reconcile with NetSuite' },
+  { id:'26_385', client:'Grand Blue City Development (Oman)', bid:'Almadina Azarqa Masterplan', type:'Private', partner:'BIG', owner:'Ignacio', sub:'2026-08-18', last:{d:'2026-08-19', by:'tenders@ → BIG'}, lastNote:'submission materials',
+    val:'OMR 53,043.45 excl. VAT, Aimes share (financial proposal 19 Aug) — to reconcile with NetSuite' },
+  { id:'26_389', client:'Cenomi Centers', bid:'Westfield Jeddah Opening Events (Teradix RFQ 81484)', type:'Private', owner:'Manal', sub:'2026-09-15', decision:'2026-09-20', decisionNote:'RFP selection date 19–20 Sep', last:null, lastNote:'None found — submitted via the Teradix portal',
+    val:'SAR 22,703,963.18 excl. VAT, premium option (financial proposal 15 Sep) — to reconcile with NetSuite' },
+  { id:'WestfieldRA', code:'26_387', client:'Cenomi Centers', bid:'Westfield Riyadh Art Strategy — RFP 81267 → 83239 (expanded scope)', type:'Private', partner:'Cultural Impact', owner:'Manal', ownerNote:'Aimes contact; Aya (Cultural Impact) owns the client relationship', sub:'2026-09-17', last:{d:'2026-08-16', by:'tenders@ → Aya (Cultural Impact)'}, lastNote:'22 Nov Cenomi (Dowel Sanchez) → Aya: RFP 83239 expands 81267 — not in tenders@',
+    engaged:'Client engaged — Cenomi reminder 22 Nov; meetings 23–24 Nov (PDF n°44)', action:'Updated TP + CP on Teradix under RFP 83239 (Cultural Impact leads); forward Cenomi emails to tenders@', by:'deadline TBC',
+    codeFlag:'Code 26_387 also used for Event District IO Ground Break (DIEZ) — Manal: codes are not reused · flagged for Assia\'s check', val:'SAR 11,485,981.23 (BD report n°35) — joint total vs Aimes share TBC · to reconcile with NetSuite' },
+  { id:'26_390', client:'Riyadh Airports (RAC)', bid:'KKIA Art Framework Agreement', type:'Semi-gov', owner:'Manal', sub:'2026-09-27', last:{d:'2026-11-09', by:'tenders@ → RAC procurement'}, lastNote:'status follow-up, no reply',
+    next:{d:'2026-11-30', t:'Next follow-up ≈ 30 Nov 2026 ('+FU_SRC+')'}, val:'SAR 267,954.23 excl. VAT, rates per deliverable (financial proposal 27 Sep) — to reconcile with NetSuite' },
+  { id:'26_388', client:'Villa Hegra', bid:'Villa Hegra Programming (VH-RFP-002)', type:null, owner:'Manal', ownerNote:'+ Sofia', sub:'2026-10-01', last:{d:'2026-10-01', by:'tenders@ → TASAMA'}, lastNote:'technical + commercial submission',
+    engaged:'Client engaged — review meeting on the proposal held 23 Nov, 19:00 KSA (PDF n°44)', action:'Record the outcome of the 23 Nov meeting; thank-you / next-steps email', by:'TBC', val:'SAR 8,670,779 excl. VAT (pitch budget 1 Oct) — to reconcile with NetSuite' },
+  { id:'26_400', client:'Aramco Stadium', bid:'VIP Art Curation & Production', type:null, partner:'Cultural Impact', owner:'TBC', ownerNote:'was Aya (CI) + Benedetta, Mohammed', sub:'2026-10-29', last:{d:'2026-10-12', by:'Manal → Hadeel Alnahdi'}, lastNote:'capabilities and portfolio; none after submission',
+    action:'Ask Cultural Impact (Aya) for status · Aramco supplier profile: GOSI certificate to renew', by:'29 Nov (policy table, 22 Nov)', val:'TBC (submitted by Cultural Impact)' },
+  { id:'26_234', code:'26_234 (PDF 26_364)', client:'Misk Foundation', bid:'Public Art Commission Program (MAR-NEG-1082)', type:null, owner:'TBC', ownerNote:'was Mohammed Hafiz (Athr) + Katy · tracker lead: Matt', sub:'2026-11-21', subNote:'revised TP+FP 21 Nov (first bid 10 Jun)', last:{d:'2026-11-21', by:'Misk Oracle portal'}, lastNote:'revised TP + FP',
+    engaged:'Client engaged — revised TP+FP submitted 21 Nov at the client\'s request', action:'Client review; follow up on the artist meeting and site visit', by:'1 Dec', val:'SAR 3,361,747.18 excl. VAT (revised 21 Nov, PDF n°44) — to reconcile with NetSuite' },
+  { id:'26_391', client:'Diriyah Company', bid:'Diriyah Public Art Consultancy Framework (PW-FA26-074) · JV w/ Athr', type:null, owner:'TBC', ownerNote:'was Katy · tracker lead: Hamza', sub:'2026-11-02', last:{d:'2026-11-15', by:'tenders@ → Khalid Algheriri'}, lastNote:'confirmed the PTC 01 meeting (held 17 Nov)',
+    engaged:'Client engaged — PTC 01 open; clarification meeting 17 Nov', action:'Submit the PTC 01 response (no prices); official channel only', by:'28 Nov, 23:00 KSA', val:'Rate card, no fixed contract value' },
+  { id:'26_395', client:'MOC', bid:'Museum of World Cultures — Framework Agreement', type:'Gov', partner:'Athr', owner:'TBC', ownerNote:'was Katy', sub:'2026-11-08', last:null, lastNote:'Not checked — Athr-led (Ariba response 8 Nov)',
+    val:'SAR 443,769.67 excl. VAT (financial proposal 7 Nov, Athr) — to reconcile with NetSuite' },
 ];
+// Removed 24 Nov (per meeting with Manal): 26_356 Westfield by Cenomi — Jeddah & Riyadh (Apr 2026) — superseded by the two later bids 26_389 (Jeddah) and 26_387 (Riyadh); stays in the KPI base, no follow-up row.
+
+const DEBRIEF = [
+  { id:'26_383', client:'MOC', bid:'Saudi National Museum Activation & Operations', type:'Gov', owner:'Benedetta', decided:'Unofficial loss — awarded to the incumbent as an extension, no official notice ('+FU_SRC+')', etimad:'TBC', req:null,
+    action:'Send the debrief request now (unofficial loss) through Benedetta\'s MOC contacts', by:'TBC', tpl:'E/F', status:'Request not sent', tone:'red',
+    note:'KPI flag only — still counted as awaiting until confirmed' },
+  { id:'26_384', client:'AFALULA', bid:'AlUla, Wonder of Arabia — Rome exhibition', type:null, owner:'Benedetta', decided:'Lost 22 Oct', etimad:'n.a.', req:'2026-10-23', reqNote:'Benedetta → Claire Pinault',
+    remNote:'not found in tenders@', action:'Send one reminder; if no answer, close as “no answer”', by:'7 Dec (policy table, 22 Nov)', tpl:'E', status:'Requested — no answer', tone:'amber' },
+  { id:'26_379', client:'AFALULA', bid:'Museum of the Incense Road (MOIR AlUla)', type:null, owner:'Benedetta', decided:'Lost 3 Aug', etimad:'n.a.', req:null, reqNote:'TBC — to cover in the reminder to Claire Pinault (26_384)',
+    action:'Include in the reminder to Claire Pinault; if no answer, close as “no answer”', by:'7 Dec (policy table, 22 Nov)', tpl:'E', status:'Request TBC', tone:'amber' },
+  { id:'26_354', client:'DCAA', bid:'Dubai Fest. Youth Performing Arts', type:'Gov', owner:'Manal', decided:'Lost 6 Sep', etimad:'n.a.', req:null, last:'10 Sep — Muneeruddin → DCAA: bid bond release',
+    action:'Debrief request to send (Template E/F) to DCAA procurement (Noor Al Masri) — '+FU_SRC, by:'TBC', tpl:'E/F', status:'Request to send', tone:'red' },
+  { id:'26_357', client:'DCAA', bid:'Sikka 2027 — Event Planning', type:'Gov', owner:'TBC', decided:'Lost 6 Sep', etimad:'n.a.', req:null, last:'17 Aug — last follow-up',
+    action:'Late debrief request to DCAA procurement (Noor Al Masri) before the 26_401 MODA bid is finalised', by:'26 Nov (policy table, 22 Nov)', tpl:'F', status:'Never requested', tone:'red' },
+  { id:'26_363', client:'DCAA', bid:'Dubai Art Residency', type:'Gov', owner:'Manal', decided:'Cancelled 12 Oct', etimad:'n.a.', req:null, last:'19 Oct — Muneeruddin → Noor Al Masri: bank guarantee approval',
+    action:'Debrief request to send (Template E/F) — '+FU_SRC+' · Finance (Jasim / Muneeruddin): bank guarantee release and fee refund by 3 Dec', by:'TBC', tpl:'E/F', status:'Request to send', tone:'red' },
+  { id:'AlUlaHorse', code:'26_373', client:'AFALULA', bid:'Contemporary Art Exhibition AlUla (Horse)', type:null, owner:'TBC', ownerNote:'was Sofia + Manal', decided:'Cancelled 12 Nov — postponed indefinitely', etimad:'n.a.', req:null, reqNote:'n.a. (cancelled)', last:'12 Nov — tenders@ → Tehzeeb Sandhu (answered the same day)',
+    action:'Logged as cancelled; 90-day check-in on a relaunch', by:'10 Feb 2027', tpl:'A', status:'N/A — cancelled', tone:'grey',
+    codeFlag:'Code 26_373 also used for Madinah Rock in BD reports n°28–29 (tracked here as 26_375) — Manal: codes are not reused · flagged for Assia\'s check' },
+];
+// Removed from the debrief actions 24 Nov (per meeting with Manal): loss reason already known — reason recorded below and in the Win/Loss log.
+const DEBRIEF_CLOSED = [
+  { id:'26_396', bid:'NPUAE 2027 — UAE Pavilion construction', reason:'Lost 17 Nov — debrief held 19 Nov: methodology OK; price ~3× the Slovenian winner; limited experience beyond the KSA pavilions' },
+  { id:'26_366', bid:'Permanent Arabic Exhibitions (KSAAL, w/ Hwadi)', reason:'Lost 22 Oct — awarded to Enzo Arabia at SAR 5,342,072 vs Aimes SAR 8,685,128.80 (−38.5%, price)' },
+];
+const FU_NOTES = [
+  ['Open policy question','Do PQQs follow the same cadence? (raised by Manal, TBC)'],
+  ['Codes used for more than one bid — for Assia\'s check (Manal: codes are not reused)','26_373: Contemporary Art Exhibition AlUla (Horse, AFALULA — policy tracker) and Madinah Rock Display (BD reports n°28–29; tracked as 26_375) · 26_387: Event District IO Ground Break (DIEZ) and Westfield Riyadh Art Strategy (Cenomi, w/ Cultural Impact) · not renamed'],
+  ['KPI flags (no change)','26_383 Saudi National Museum: unofficial loss (awarded to the incumbent as an extension, no official notice) — still counted as awaiting · 26_369 Film Criticism: likely cancelled, Ignacio to check with Hwadi — still counted as awaiting'],
+  ['Values','Bid values shown are the latest amounts in Manal\'s weekly reports or the submitted financial proposals — all to reconcile with NetSuite.'],
+];
+
+function fuISO(d){ return d.toISOString().slice(0,10); }
+const FU_MON=['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+function fuDate(iso){ if(!iso) return 'TBC'; const d=new Date(iso+'T00:00:00Z'); return d.getUTCDate()+' '+FU_MON[d.getUTCMonth()]+(d.getUTCFullYear()!==2026?' '+d.getUTCFullYear():''); }
+function fuAdd(iso, n){ const d=new Date(iso+'T00:00:00Z'); d.setUTCDate(d.getUTCDate()+n); return fuISO(d); }
+function fuAddWD(iso, n){ let d=iso; while(n>0){ d=fuAdd(d,1); const wd=new Date(d+'T00:00:00Z').getUTCDay(); if(wd!==5 && wd!==6) n--; } return d; } // KSA working week Sun–Thu
+function fuDiff(a, b){ return Math.round((new Date(b+'T00:00:00Z') - new Date(a+'T00:00:00Z'))/864e5); }
+// Week-stable reference: Monday of the current week, Riyadh time
+function fuAsOf(){ const r=new Date(Date.now()+3*3600e3); const iso=fuISO(r); const wd=new Date(iso+'T00:00:00Z').getUTCDay(); return fuAdd(iso, -((wd+6)%7)); }
+
+function fuCompute(r, asOf){
+  const weekEnd = fuAdd(asOf, 6);
+  const out = { days: r.sub ? Math.max(0, fuDiff(r.sub, asOf)) : null, tpl: r.tpl || '—', tone:'grey', status:'', next:r.by||'—', action:r.action||'' };
+  const cad = r.type ? FU_CADENCE[r.type] : null;
+  if(r.engaged){ out.tone='green'; out.status=r.engaged; out.tpl='—'; return out; }
+  if(r.check){ out.tone='amber'; out.status=r.check; return out; }
+  if(!cad || !r.sub){ out.tone='amber'; out.status='Client type TBC — cadence not set'; if(r.partner && !r.tpl) out.tpl='C'; return out; }
+  const stale = fuAdd(r.sub, cad.stale);
+  // cadence dates: decision + 3 working days if a decision date is known, else day `first`; then every `every`
+  let due = r.decision ? fuAddWD(r.decision, 3) : fuAdd(r.sub, cad.first);
+  const lastD = r.last && r.last.d;
+  if(lastD) while(due <= lastD) due = fuAdd(due, cad.every);
+  if(r.next){ due = r.next.d; }
+  const via = r.partner ? ' via '+r.partner.replace(/ \(lead\)/,'')+' only' : '';
+  if(asOf >= stale){
+    out.tone='red'; out.tpl='B';
+    out.status = 'Past stale threshold (day '+cad.stale+', '+fuDate(stale)+') — no reply';
+    out.action = 'Proposed close — Template B (final status confirmation)'+via+(r.client==='MOC'?' · sent by Benedetta':'')+' · never auto-closed';
+    out.next = 'this week (from '+fuDate(asOf)+')';
+    return out;
+  }
+  out.tpl = r.tpl || (r.partner ? 'C' : 'A');
+  out.next = r.next ? fuDate(r.next.d) : fuDate(due);
+  const what = r.next ? r.next.t : (r.partner ? 'Partner chase (Template C)'+via : 'Follow-up (Template A)');
+  if(due <= weekEnd){
+    out.tone='amber';
+    out.status = (due < asOf ? 'Follow-up overdue since '+fuDate(due) : 'Follow-up due this week')+' · stale on '+fuDate(stale);
+  } else {
+    out.tone='grey';
+    out.status = 'On cadence ('+r.type+') · stale on '+fuDate(stale);
+  }
+  out.action = what + (r.action ? ' · '+r.action : '');
+  return out;
+}
 
 function renderAgingTracker(){
   const tbody = document.getElementById('agingTable');
   if(!tbody) return;
-  const awaiting = PROJECTS.filter(p => !p.carryover && !POLICY_DEBRIEF.some(d=>d.id===p.id) && (POLICY_OPEN[p.id] || (getProjectStatus(p) === 'awaiting' && p.subDate)));
-  const tierRank = { critical:0, watch:1, normal:2 };
-  const rows = awaiting.map(p => {
-    const pol = POLICY_OPEN[p.id] || { days:null, tier:'watch', last:'—', status:'Not in the policy table', action:'Add to the follow-up calendar', by:'—', ch:'TBC' };
-    return { p, pol };
-  }).sort((a,b) => (b.pol.days??-1) - (a.pol.days??-1) || tierRank[a.pol.tier]-tierRank[b.pol.tier]);
-
-  tbody.innerHTML = rows.map(({p,pol}) => `
-    <tr class="${pol.tier}">
-      <td class="clickable-proj" data-pid="${p.id}"><span class="ag-id">${p.id}</span><span class="ag-name">${p.name}</span><span class="ag-client">${p.client}</span><span class="ag-note">Submitted ${fmtDate(p.subDate)}${p.value ? ' · ' + formatValue(p.value) + ' SAR wtd' : ''}</span></td>
-      <td class="r"><span class="ag-days">${pol.days ?? '—'}<span class="u">${pol.days!=null?'d':''}</span></span></td>
-      <td><span class="ag-act">${pol.action}</span><span class="ag-note" style="font-style:normal"><b>by ${pol.by}</b> · ${pol.ch}</span></td>
-      <td><span class="ag-note" style="font-style:normal;margin:0">${pol.last}</span></td>
-      <td><span class="ag-priority">${pol.status}</span></td>
-      <td>${ownerCell(p.id)}</td>
-    </tr>
-  `).join('');
+  const asOf = fuAsOf();
+  const asEl = document.getElementById('fuAsOf');
+  if(asEl) asEl.textContent = 'Days open as of Mon '+fuDate(asOf)+' · one row per bid · oldest first';
+  const toneRank = { red:0, amber:1, grey:2, green:3 };
+  const ownerHtml = (o, n) => `<span class="ag-owner${o==='TBC'?' tbc':''}">${o}</span>${n?`<span class="ag-owner-2">${n}</span>`:''}`;
+  const pid = id => PROJECTS.some(p=>p.id===id) ? ` class="clickable-proj" data-pid="${id}"` : '';
+  const rows = FOLLOWUP.map(r => ({ r, c: fuCompute(r, asOf) }))
+    .sort((a,b) => toneRank[a.c.tone]-toneRank[b.c.tone] || (b.c.days??-1)-(a.c.days??-1));
+  tbody.innerHTML = rows.map(({r,c}) => `
+    <tr class="fu-${c.tone}">
+      <td data-l="Code"${pid(r.id)}><span class="ag-id">${r.code||r.id}</span>${r.codeFlag?`<span class="fu-flag">⚑ ${r.codeFlag}</span>`:''}</td>
+      <td data-l="Client"><span class="ag-name">${r.client}</span><span class="ag-note" style="font-style:normal">${r.bid}${r.partner?' · partner-led: '+r.partner:''}</span>${r.val?`<span class="ag-note">${r.val}</span>`:''}</td>
+      <td data-l="Type"><span class="fu-type${r.type?'':' tbc'}">${r.type||'TBC'}</span>${r.partner?'<span class="ag-owner-2">partner-led</span>':''}</td>
+      <td data-l="Owner">${ownerHtml(r.owner, r.ownerNote)}</td>
+      <td data-l="Submitted"><span class="fu-mono">${fuDate(r.sub)}</span>${r.subNote?`<span class="ag-note">${r.subNote}</span>`:''}${r.decision?`<span class="ag-note">decision ${fuDate(r.decision)}${r.decisionNote?' ('+r.decisionNote+')':''}</span>`:''}</td>
+      <td data-l="Days open" class="r"><span class="ag-days">${c.days ?? '—'}</span></td>
+      <td data-l="Last email sent">${r.last?`<span class="fu-mono">${fuDate(r.last.d)}</span><span class="ag-note" style="font-style:normal">${r.last.by}</span>`:''}${r.lastNote?`<span class="ag-note">${r.lastNote}</span>`:''}</td>
+      <td data-l="Next action"><span class="ag-act">${c.action}</span><span class="ag-note" style="font-style:normal"><b>${c.next}</b></span></td>
+      <td data-l="Template"><span class="fu-tplb">${c.tpl}</span></td>
+      <td data-l="Status"><span class="fu-chip">${c.status}</span></td>
+    </tr>`).join('');
 
   const dbody = document.getElementById('debriefTable');
-  if(dbody) dbody.innerHTML = POLICY_DEBRIEF.map(d => `
-    <tr class="${/overdue|Never/i.test(d.status)?'critical':/no answer|Held|known/i.test(d.status)?'watch':'normal'}">
-      <td${PROJECTS.some(p=>p.id===d.id)?` class="clickable-proj" data-pid="${d.id}"`:''}><span class="ag-id">${d.id}</span><span class="ag-name">${d.name}</span></td>
-      <td class="r" style="font-family:'JetBrains Mono',monospace;font-size:11px">${d.decided}</td>
-      <td><span class="ag-act">${d.action}</span><span class="ag-note" style="font-style:normal"><b>by ${d.by}</b></span></td>
-      <td><span class="ag-note" style="font-style:normal;margin:0">${d.last}</span></td>
-      <td><span class="ag-priority">${d.status}</span></td>
-      <td><span class="ag-owner${d.owner==='TBC'?' tbc':''}">${d.owner}</span></td>
-    </tr>
-  `).join('');
-}
+  if(dbody) dbody.innerHTML = DEBRIEF.slice().sort((a,b)=>toneRank[a.tone]-toneRank[b.tone]).map(d => {
+    const d10 = d.req ? fuAdd(d.req,10) : null, d15 = d.req ? fuAdd(d.req,15) : null;
+    return `
+    <tr class="fu-${d.tone}">
+      <td data-l="Code"${pid(d.id)}><span class="ag-id">${d.code||d.id}</span>${d.codeFlag?`<span class="fu-flag">⚑ ${d.codeFlag}</span>`:''}</td>
+      <td data-l="Client"><span class="ag-name">${d.client}</span><span class="ag-note" style="font-style:normal">${d.bid}</span>${d.note?`<span class="ag-note">${d.note}</span>`:''}</td>
+      <td data-l="Type"><span class="fu-type${d.type?'':' tbc'}">${d.type||'TBC'}</span></td>
+      <td data-l="Owner">${ownerHtml(d.owner, d.ownerNote)}</td>
+      <td data-l="Decided"><span class="ag-note" style="font-style:normal;margin:0">${d.decided}</span></td>
+      <td data-l="Etimad report"><span class="fu-mono">${d.etimad}</span></td>
+      <td data-l="Request sent">${d.req?`<span class="fu-mono">${fuDate(d.req)}</span>`:'<span class="fu-mono">—</span>'}${d.reqNote?`<span class="ag-note">${d.reqNote}</span>`:''}${d.last?`<span class="ag-note">last: ${d.last}</span>`:''}</td>
+      <td data-l="Reminders">${d.req?`<span class="fu-mono">${fuDate(d10)} · ${fuDate(d15)}</span>${d.remNote?`<span class="ag-note">${d.remNote}</span>`:''}`:'<span class="fu-mono">—</span>'}</td>
+      <td data-l="Next action"><span class="ag-act">${d.action}</span><span class="ag-note" style="font-style:normal"><b>${d.by}</b></span></td>
+      <td data-l="Template"><span class="fu-tplb">${d.tpl}</span></td>
+      <td data-l="Status"><span class="fu-chip">${d.status}</span></td>
+    </tr>`; }).join('');
 
+  const nEl = document.getElementById('fuNotes');
+  if(nEl) nEl.innerHTML = `<h4>Closed — loss reason already known (removed from the debrief actions, ${FU_SRC})</h4><ul>${DEBRIEF_CLOSED.map(x=>`<li><b>${x.id}</b> ${x.bid} — ${x.reason}</li>`).join('')}</ul>`
+    + `<h4>Removed from the follow-up tracker</h4><ul><li><b>26_356</b> Westfield by Cenomi — Jeddah &amp; Riyadh (Apr 2026): superseded by the two later bids 26_389 (Jeddah) and 26_387 (Riyadh) — ${FU_SRC}; stays in the KPI base</li></ul>`
+    + FU_NOTES.map(([h,t])=>`<h4>${h}</h4><p>${t}</p>`).join('');
+}
 // ─── WIN/LOSS REASONS LOG ──────────────────────
 const REASONS = {
   losses: [
