@@ -888,12 +888,12 @@ tr.fu-red .fu-chip{background:var(--urgent)} tr.fu-amber .fu-chip{background:var
             <tr><td>Gov</td><td>Decision date + 3 working days, else day 30</td><td>30 days</td><td>day 120</td></tr>
             <tr><td>Semi-gov</td><td>Decision date + 3 working days, else day 21</td><td>21 days</td><td>day 90</td></tr>
             <tr><td>Private</td><td>Decision date + 3 working days, else day 14</td><td>14 days</td><td>day 75</td></tr>
-            <tr><td>Partner-led</td><td colspan="3">Same cadence as the end client · contact through the partner only (Template C)</td></tr>
+            <tr><td>Partner-led</td><td colspan="3">Same cadence as the end client · contact through the partner only (Template C) · <b>Aimes owner = Ignacio</b>: he emails the partner and invites them to follow up with the client</td></tr>
           </tbody></table>
           <p class="fu-small">Days counted from the final submission, as of the Monday of the current week (Riyadh). Working days Sun–Thu. Past the stale threshold with no reply → <b>Proposed close — Template B (final status confirmation)</b>; never closed automatically. MOC: Template B sent by Benedetta.</p>
         </div>
         <div><h4>Templates</h4>
-          <ul class="fu-tpl"><li><b>A</b> Follow-up</li><li><b>B</b> Final status confirmation</li><li><b>C</b> Partner chase</li><li><b>E</b> Debrief meeting</li><li><b>F</b> Written feedback</li></ul>
+          <ul class="fu-tpl"><li><b>A</b> Follow-up</li><li><b>B</b> Final status confirmation</li><li><b>C</b> Partner chase (Ignacio → partner)</li><li><b>E</b> Debrief meeting</li><li><b>F</b> Written feedback</li></ul>
           <h4>Reminder flow</h4>
           <div class="fu-flow"><span>tenders@ reminder</span><i>→</i><span>Manal confirms</span><i>→</i><span>owner</span><i>→</i><span>owner replies to client · cc tenders@</span></div>
         </div>
@@ -3803,6 +3803,9 @@ const FU_CADENCE = {
   'Private':  { first:14, every:14, stale:75 },
 };
 const FU_SRC = 'per meeting with Manal, 24 Nov';
+// RULE (Assia, 25 Nov 2026): partner-led bids → the Aimes owner is ALWAYS Ignacio. He emails the partner (Template C) inviting them to follow up with the client; Aimes never contacts the client directly.
+const FU_PARTNER_OWNER = 'Ignacio';
+function fuOwner(r){ return r.partner ? { o:FU_PARTNER_OWNER, n:'partner-led rule — emails '+r.partner.replace(/ \(lead\)/,'')+(r.ownerNote?' · '+r.ownerNote:'') } : { o:r.owner, n:r.ownerNote }; }
 const FOLLOWUP = [
   { id:'Paris', client:'MOC', bid:'Cultural Activations in the City of Paris', type:'Gov', owner:'Benedetta', sub:null, subNote:'June 2026 re-tender: not verified (BD report n°20 only) · first bid 23 Nov 2025', last:null, lastNote:'No response from the tenders@ Ariba account for the June re-tender',
     check:'Submission to verify', action:'Manal to confirm whether / how the June resubmission was sent; if confirmed, apply the Gov cadence', by:'TBC', val:'SAR 54.6M excl. VAT (Nov 2025 bid) — to reconcile with NetSuite' },
@@ -3812,7 +3815,7 @@ const FOLLOWUP = [
     val:'SAR 5,140,634.65 excl. VAT (financial proposal 2 Jul) — to reconcile with NetSuite' },
   { id:'26_368', client:'Qiddiya', bid:'District 11 — Urban Core Office Architect', type:'Semi-gov', partner:'BIG', owner:'Ignacio', sub:'2026-06-09', last:null, lastNote:'None found in tenders@',
     val:'TBC (price held by BIG)' },
-  { id:'26_375', client:'PMBS Museum for Arabic Calligraphy', bid:'Madinah Rock Display', type:'Gov', partner:'Hasenkamp', owner:'TBC', ownerNote:'was Piero + Ignacio', sub:'2026-08-06', subNote:'final = discounted offer 6 Aug (first TP+FP 14 Jul)', last:{d:'2026-07-13', by:'Ignacio → Olivier Melissant (Hasenkamp)'}, lastNote:'none after the 6 Aug revised offer',
+  { id:'26_375', client:'PMBS Museum for Arabic Calligraphy', bid:'Madinah Rock Display', type:'Gov', partner:'Hasenkamp', owner:'Ignacio', ownerNote:'was Piero + Ignacio', sub:'2026-08-06', subNote:'final = discounted offer 6 Aug (first TP+FP 14 Jul)', last:{d:'2026-07-13', by:'Ignacio → Olivier Melissant (Hasenkamp)'}, lastNote:'none after the 6 Aug revised offer',
     val:'SAR 1,953,057.82 excl. VAT (revised offer 6 Aug, PDF n°29) — to reconcile with NetSuite' },
   { id:'26_381', client:'MOC', bid:'Venice Architecture Biennale 2027 (w/ Flint Culture)', type:'Gov', owner:'Benedetta', ownerNote:'+ Manal', sub:'2026-08-06', last:{d:'2026-08-25', by:'tenders@ → Kerr McIlwraith (Flint)'}, lastNote:'Flint asked on 6 Nov whether we lost — no reply found',
     val:'SAR 16,714,030.53 excl. VAT (pricing model 6 Aug) — to reconcile with NetSuite' },
@@ -3820,20 +3823,20 @@ const FOLLOWUP = [
     val:'OMR 53,043.45 excl. VAT, Aimes share (financial proposal 19 Aug) — to reconcile with NetSuite' },
   { id:'26_389', client:'Cenomi Centers', bid:'Westfield Jeddah Opening Events (Teradix RFQ 81484)', type:'Private', owner:'Manal', sub:'2026-09-15', decision:'2026-09-20', decisionNote:'RFP selection date 19–20 Sep', last:null, lastNote:'None found — submitted via the Teradix portal',
     val:'SAR 22,703,963.18 excl. VAT, premium option (financial proposal 15 Sep) — to reconcile with NetSuite' },
-  { id:'WestfieldRA', code:'26_387', client:'Cenomi Centers', bid:'Westfield Riyadh Art Strategy — RFP 81267 → 83239 (expanded scope)', type:'Private', partner:'Cultural Impact', owner:'Manal', ownerNote:'Aimes contact; Aya (Cultural Impact) owns the client relationship', sub:'2026-09-17', last:{d:'2026-08-16', by:'tenders@ → Aya (Cultural Impact)'}, lastNote:'22 Nov Cenomi (Dowel Sanchez) → Aya: RFP 83239 expands 81267 — not in tenders@',
+  { id:'WestfieldRA', code:'26_387', client:'Cenomi Centers', bid:'Westfield Riyadh Art Strategy — RFP 81267 → 83239 (expanded scope)', type:'Private', partner:'Cultural Impact', owner:'Ignacio', ownerNote:'Manal = Aimes contact on the thread; Aya (Cultural Impact) owns the client relationship', sub:'2026-09-17', last:{d:'2026-08-16', by:'tenders@ → Aya (Cultural Impact)'}, lastNote:'22 Nov Cenomi (Dowel Sanchez) → Aya: RFP 83239 expands 81267 — not in tenders@',
     engaged:'Client engaged — Cenomi reminder 22 Nov; meetings 23–24 Nov (PDF n°44)', action:'Updated TP + CP on Teradix under RFP 83239 (Cultural Impact leads); forward Cenomi emails to tenders@', by:'deadline TBC',
     codeFlag:'Code 26_387 also used for Event District IO Ground Break (DIEZ) — Manal: codes are not reused · flagged for Assia\'s check', val:'SAR 11,485,981.23 (BD report n°35) — joint total vs Aimes share TBC · to reconcile with NetSuite' },
   { id:'26_390', client:'Riyadh Airports (RAC)', bid:'KKIA Art Framework Agreement', type:'Semi-gov', owner:'Manal', sub:'2026-09-27', last:{d:'2026-11-09', by:'tenders@ → RAC procurement'}, lastNote:'status follow-up, no reply',
     next:{d:'2026-11-30', t:'Next follow-up ≈ 30 Nov 2026 ('+FU_SRC+')'}, val:'SAR 267,954.23 excl. VAT, rates per deliverable (financial proposal 27 Sep) — to reconcile with NetSuite' },
   { id:'26_388', client:'Villa Hegra', bid:'Villa Hegra Programming (VH-RFP-002)', type:null, owner:'Manal', ownerNote:'+ Sofia', sub:'2026-10-01', last:{d:'2026-10-01', by:'tenders@ → TASAMA'}, lastNote:'technical + commercial submission',
     engaged:'Client engaged — review meeting on the proposal held 23 Nov, 19:00 KSA (PDF n°44)', action:'Record the outcome of the 23 Nov meeting; thank-you / next-steps email', by:'TBC', val:'SAR 8,670,779 excl. VAT (pitch budget 1 Oct) — to reconcile with NetSuite' },
-  { id:'26_400', client:'Aramco Stadium', bid:'VIP Art Curation & Production', type:null, partner:'Cultural Impact', owner:'TBC', ownerNote:'was Aya (CI) + Benedetta, Mohammed', sub:'2026-10-29', last:{d:'2026-10-12', by:'Manal → Hadeel Alnahdi'}, lastNote:'capabilities and portfolio; none after submission',
+  { id:'26_400', client:'Aramco Stadium', bid:'VIP Art Curation & Production', type:null, partner:'Cultural Impact', owner:'Ignacio', ownerNote:'was Aya (CI) + Benedetta, Mohammed', sub:'2026-10-29', last:{d:'2026-10-12', by:'Manal → Hadeel Alnahdi'}, lastNote:'capabilities and portfolio; none after submission',
     action:'Ask Cultural Impact (Aya) for status · Aramco supplier profile: GOSI certificate to renew', by:'29 Nov (policy table, 22 Nov)', val:'TBC (submitted by Cultural Impact)' },
   { id:'26_234', code:'26_234 (PDF 26_364)', client:'Misk Foundation', bid:'Public Art Commission Program (MAR-NEG-1082)', type:null, owner:'TBC', ownerNote:'was Mohammed Hafiz (Athr) + Katy · tracker lead: Matt', sub:'2026-11-21', subNote:'revised TP+FP 21 Nov (first bid 10 Jun)', last:{d:'2026-11-21', by:'Misk Oracle portal'}, lastNote:'revised TP + FP',
     engaged:'Client engaged — revised TP+FP submitted 21 Nov at the client\'s request', action:'Client review; follow up on the artist meeting and site visit', by:'1 Dec', val:'SAR 3,361,747.18 excl. VAT (revised 21 Nov, PDF n°44) — to reconcile with NetSuite' },
   { id:'26_391', client:'Diriyah Company', bid:'Diriyah Public Art Consultancy Framework (PW-FA26-074) · JV w/ Athr', type:null, owner:'TBC', ownerNote:'was Katy · tracker lead: Hamza', sub:'2026-11-02', last:{d:'2026-11-15', by:'tenders@ → Khalid Algheriri'}, lastNote:'confirmed the PTC 01 meeting (held 17 Nov)',
     engaged:'Client engaged — PTC 01 open; clarification meeting 17 Nov', action:'Submit the PTC 01 response (no prices); official channel only', by:'28 Nov, 23:00 KSA', val:'Rate card, no fixed contract value' },
-  { id:'26_395', client:'MOC', bid:'Museum of World Cultures — Framework Agreement', type:'Gov', partner:'Athr', owner:'TBC', ownerNote:'was Katy', sub:'2026-11-08', last:null, lastNote:'Not checked — Athr-led (Ariba response 8 Nov)',
+  { id:'26_395', client:'MOC', bid:'Museum of World Cultures — Framework Agreement', type:'Gov', partner:'Athr', owner:'Ignacio', ownerNote:'was Katy', sub:'2026-11-08', last:null, lastNote:'Not checked — Athr-led (Ariba response 8 Nov)',
     val:'SAR 443,769.67 excl. VAT (financial proposal 7 Nov, Athr) — to reconcile with NetSuite' },
 ];
 // Removed 24 Nov (per meeting with Manal): 26_356 Westfield by Cenomi — Jeddah & Riyadh (Apr 2026) — superseded by the two later bids 26_389 (Jeddah) and 26_387 (Riyadh); stays in the KPI base, no follow-up row.
@@ -3894,13 +3897,13 @@ function fuCompute(r, asOf){
   if(asOf >= stale){
     out.tone='red'; out.tpl='B';
     out.status = 'Past stale threshold (day '+cad.stale+', '+fuDate(stale)+') — no reply';
-    out.action = 'Proposed close — Template B (final status confirmation)'+via+(r.client==='MOC'?' · sent by Benedetta':'')+' · never auto-closed';
+    out.action = 'Proposed close — Template B (final status confirmation)'+(r.partner?' via '+r.partner.replace(/ \(lead\)/,'')+' only — Ignacio asks the partner to get the final status from the client':(r.client==='MOC'?' · sent by Benedetta':''))+' · never auto-closed';
     out.next = 'this week (from '+fuDate(asOf)+')';
     return out;
   }
   out.tpl = r.tpl || (r.partner ? 'C' : 'A');
   out.next = r.next ? fuDate(r.next.d) : fuDate(due);
-  const what = r.next ? r.next.t : (r.partner ? 'Partner chase (Template C)'+via : 'Follow-up (Template A)');
+  const what = r.next ? r.next.t : (r.partner ? 'Partner chase (Template C): Ignacio invites '+r.partner.replace(/ \(lead\)/,'')+' to follow up with the client' : 'Follow-up (Template A)');
   if(due <= weekEnd){
     out.tone='amber';
     out.status = (due < asOf ? 'Follow-up overdue since '+fuDate(due) : 'Follow-up due this week')+' · stale on '+fuDate(stale);
@@ -3928,7 +3931,7 @@ function renderAgingTracker(){
       <td data-l="Code"${pid(r.id)}><span class="ag-id">${r.code||r.id}</span>${r.codeFlag?`<span class="fu-flag">⚑ ${r.codeFlag}</span>`:''}</td>
       <td data-l="Client"><span class="ag-name">${r.client}</span><span class="ag-note" style="font-style:normal">${r.bid}${r.partner?' · partner-led: '+r.partner:''}</span>${r.val?`<span class="ag-note">${r.val}</span>`:''}</td>
       <td data-l="Type"><span class="fu-type${r.type?'':' tbc'}">${r.type||'TBC'}</span>${r.partner?'<span class="ag-owner-2">partner-led</span>':''}</td>
-      <td data-l="Owner">${ownerHtml(r.owner, r.ownerNote)}</td>
+      <td data-l="Owner">${(o=>ownerHtml(o.o, o.n))(fuOwner(r))}</td>
       <td data-l="Submitted"><span class="fu-mono">${fuDate(r.sub)}</span>${r.subNote?`<span class="ag-note">${r.subNote}</span>`:''}${r.decision?`<span class="ag-note">decision ${fuDate(r.decision)}${r.decisionNote?' ('+r.decisionNote+')':''}</span>`:''}</td>
       <td data-l="Days open" class="r"><span class="ag-days">${c.days ?? '—'}</span></td>
       <td data-l="Last email sent">${r.last?`<span class="fu-mono">${fuDate(r.last.d)}</span><span class="ag-note" style="font-style:normal">${r.last.by}</span>`:''}${r.lastNote?`<span class="ag-note">${r.lastNote}</span>`:''}</td>
