@@ -1062,7 +1062,7 @@ tr.fu-red .fu-chip{background:var(--urgent)} tr.fu-amber .fu-chip{background:var
       <div class="section-head">
         <span class="section-num">§ OV.02</span>
         <h2 class="section-title">Win / Loss Reasons Log</h2>
-        <span class="section-count">Accumulated learnings from weekly reports · 2026 YTD</span>
+        <span class="section-count">Accumulated learnings from weekly reports and NetSuite comments · 2026 YTD</span>
       </div>
       <div id="reasonsLog" class="reasons-log"></div>
     </div>
@@ -4044,13 +4044,13 @@ const REASONS = {
     { id:'25_334 · KSPF Art Strategy', week:'W08', tag:'scope', tagCls:'scope',
       text:'Awarded to UAP. Their financial was <b>higher</b> than ours but technical scored better: they proposed <b>value-added program elements beyond base scope</b>. Strategic extras were the game changer.' },
     { id:'26_352 · Traditional Arts Festival', week:'W11', tag:'no reason documented', tagCls:'nodoc',
-      text:'Lost without documented reason in weekly reports. <b>Suggest requesting client debrief.</b>' },
-    { id:'26_349 · Villa Hegra x Asia Now', week:'W16', tag:'no reason documented', tagCls:'nodoc',
-      text:'"Not Awarded" (Afalula) — no reason recorded. <b>Suggest requesting client debrief.</b>' },
+      text:'Lost without documented reason in weekly reports. <b>Suggest requesting client debrief.</b> NetSuite (OPP-0241): Aimes lead, co-development with Mistika · pitched SAR 36,370,105 — the largest lost bid of 2026.' },
+    { id:'26_349 · Villa Hegra x Asia Now', week:'W16', tag:'budget cap · NetSuite', tagCls:'pricing',
+      text:'"Not Awarded" (Afalula) — no reason recorded in the weekly reports. NetSuite (OPP-0240): the tender was refloated with a <b>maximum budget of EUR 400,000 incl. taxes</b>; the value recorded for our bid is SAR 2,122,024 (≈ EUR 0.49M at 4.30) — above the cap unless it was revised. <b>Check our final price against the cap.</b>' },
     { id:'26_379 · Museum of the Incense Road (MOIR AlUla)', week:'W29', tag:'no reason documented', tagCls:'nodoc',
-      text:'Lost (Afalula) — reported 6 Aug after technical review meeting and revised TP resubmission. No reason recorded. <b>Suggest requesting client debrief.</b>' },
+      text:'Lost (Afalula) — reported 6 Aug after technical review meeting and revised TP resubmission. No reason recorded. <b>Suggest requesting client debrief.</b> NetSuite (OPP-0296): pitched SAR 1,271,122.60.' },
     { id:'26_365 · Red Palace (w/ Hasenkamp)', week:'W20', tag:'no reason documented', tagCls:'nodoc',
-      text:'"Not Awarded" (DBF) — no reason recorded. Partnership bid with Hasenkamp. <b>Suggest requesting client debrief.</b>' },
+      text:'"Not Awarded" (DBF) — no reason recorded. Partnership bid with Hasenkamp. <b>Suggest requesting client debrief.</b> NetSuite (OPP-0262): pitched SAR 1,935,660.59.' },
     { id:'26_355 · Museums & Heritage 3-yr Retainer', week:'W25', tag:'no reason documented', tagCls:'nodoc',
       text:'"Not Awarded" (DCAA) — no reason recorded. Bid Bond Release requested 16 Jul. <b>Suggest requesting client debrief.</b>' },
     { id:'26_358 · Aldar Curatorial & Collections', week:'W26', tag:'no reason documented', tagCls:'nodoc',
@@ -4071,6 +4071,37 @@ const REASONS = {
     { id:'26_396 · NPUAE 2027 — UAE Pavilion Exhibition Construction (Venice)', week:'W44', tag:'pricing', tagCls:'pricing',
       text:'Not selected (NPUAE, 17 Nov) — proposal called "among the strongest". <b>Internal debrief</b> (Benedetta after meeting NPUAE, 19 Nov): methodology OK; <b>our price ~3× the selected Slovenian contender</b> (Aimes AED 1.50M excl. VAT); <b>lack of pavilion experience beyond the KSA pavilions</b>. To be considered in the next proposals. Confirmed lost in BD report n°44.' }
   ],
+  // Comments (memo field) of NetSuite opportunities, read live on 26 Nov 2026. 2025 bids: reference only, outside the 2026 KPIs.
+  netsuite: [
+    { id:'25_338 · Cultural Activations in Paris — first bid (MOC)', week:'Feb 2026', tag:'competitor', tagCls:'scope',
+      text:'"The project was awarded to <b>Black & white</b>" (OPP-0207, SAR 54.6M). The tender was then re-floated and Aimes resubmitted at the same value on 4 Jun 2026 — still awaiting.' },
+    { id:'25_272 · SAMOCA exhibitions framework (MOC)', week:'Jul 2025', tag:'pricing', tagCls:'pricing',
+      text:'"<b>LOST because of high cost</b>" — first financial proposal SAR 6.4M, later budget shared SAR 978,019.59 (framework, final budget never fixed).' },
+    { id:'24_265 · Celestial Skyports (RCU)', week:'2025', tag:'pricing', tagCls:'pricing',
+      text:'"LOST — <b>no budget</b>" on the client side.' },
+    { id:'25_307 · Diriyah Center for Future Arts — exhibition programs FA (MOC)', week:'Sep 2025', tag:'competitor', tagCls:'scope',
+      text:'"Project was given to <b>Backyard</b>" (per Katy) — after Aimes submitted a <b>25% discounted price</b>. The discount did not win it.' },
+    { id:'25_277 · GCC Antiquities Joint Exhibition (MOC)', week:'Jun 2025', tag:'pricing', tagCls:'pricing',
+      text:'Client asked for a discount, Aimes revised the financial proposal twice; then "procurement asked for revised FP from other agency". Lost (SAR 11.2M).' },
+    { id:'25_323 · Traditional Cuisine Festival (MOC)', week:'Dec 2025', tag:'no reason stated', tagCls:'nodoc',
+      text:'Lost with official notice on 14 Dec after a revised cost and renders: first submission SAR 15,261,579 → SAR 11,583,471. Reason not stated.' },
+    { id:'24_262 · Audio Visual Production for Regional Museums (MOC)', week:'Jul 2025', tag:'presentation', tagCls:'scope',
+      text:'"Lost because <b>the presentation is weak</b>" (SAR 34.4M).' },
+    { id:'25_333 · British Council — 50 Years in Saudi Arabia', week:'Dec 2025', tag:'technical score', tagCls:'scope',
+      text:'"Lost at <b>31.64%</b> against <b>Ilum Studio Limited</b> who got <b>81.01%</b>" (SAR 4.5M) — a scoring gap, not a narrow loss.' },
+    { id:'25_296 · Afalula x RCU — Exhibition Japan 2025', week:'Aug 2025', tag:'ranking', tagCls:'scope',
+      text:'"Awarded to another agency. <b>We ranked third</b> overall" (SAR 5.2M).' },
+    { id:'25_275 · Azimuth Festival 2025 (RCU)', week:'Sep 2025', tag:'competitor', tagCls:'scope',
+      text:'"MDI Beast have won it, it seems" (per Sofia) — Aimes had presented two cost variations (≈ SAR 3M / 2M) with the final budget depending on scope.' },
+    { id:'25_328 · Conservation & Restoration FA (Museums Commission)', week:'Oct 2025', tag:'process', tagCls:'deadline',
+      text:'"Submitted proposals, <b>late in portal submission</b>" — then lost. A process failure, not a pricing or quality one.' },
+    { id:'25_316 · National Pavilion at Artigiano in Fiera 2025 (MOC)', week:'Sep 2025', tag:'reversal', tagCls:'deadline',
+      text:'On 17 Sep Aimes "was informed that we will receive the contract within 2–3 weeks" — the record is now LOST (SAR 16.6M). A verbal award is not an award.' },
+    { id:'24_260 · Museum of Architecture & Design vision (MOC)', week:'Sep 2025', tag:'no answer', tagCls:'nodoc',
+      text:'"No update after 7 months" — closed as lost (SAR 11.5M). Same silent pattern as the 2026 stale bids.' },
+    { id:'2025 declines', week:'2025', tag:'capacity', tagCls:'deadline',
+      text:'25_287 International Events FA and 25_288 Craft Houses FA declined for capacity / tight deadline; 25_293 Diriyah Horizons cancelled because the collaborator (Backyard) never answered — the same firm later won 25_307.' }
+  ],
   declines: [
     { id:'Tight deadline pattern', week:'recurring', tag:'deadline', tagCls:'deadline',
       text:'<b>5+ RFPs declined for tight deadlines</b>: Culture Oasis RCU (W03), AlUla Founding Day (W04), 26_362 Curatorial Dev DCAA (W20), Al Fahidi late receival (W01), 26_382 Villa Hegra Graduate Exchange (W29 — declined even after extension to 3 Aug). Recurring loss of opportunity due to reaction time.' },
@@ -4088,6 +4119,7 @@ const REASONS = {
     { text:'<b>Speed is a competitive asset</b>: the tight-deadline declines + RFP fee delays suggest the intake → decision pipeline needs a fast lane for small commitments.' },
     { text:'<b>DCAA exposure</b>: 4 of the 12 losses of 2026 are DCAA bids (26_355, 26_357, 26_354 + 26_346 cancelled); the last two open DCAA bids were both cancelled by the client — 26_343 Etihad (W37, 7.7M wtd after 7 months) and 26_363 Dubai Art Residency (W39, 3.2M wtd) — leaving no open DCAA submission. A relationship-level check is now overdue.' },
     { text:'<b>Request debriefs on every loss</b>: 10 of 12 losses (83%) have no documented reason — incl. the three DCAA/UAE losses of W34 (Sikka 10.8M wtd). Without them, the loss log can\'t inform future bids.' },
+    { text:'<b>What the NetSuite comments add (2025 bids)</b>: where a reason is written, price or budget is named most often (SAMOCA "high cost", Celestial "no budget", KSAAL −38.5%, NPUAE ~3×), and <b>discounting did not rescue a bid</b> (Diriyah Future Arts at −25%, GCC Antiquities after two revisions). Technical quality is named three times (AV Museums "weak presentation", British Council 31.6% vs 81.0%, KSPF scope). Named winners so far: UAP, Enzo Arabia, Black & White, Backyard, Ilum Studio, and probably MDLBeast.' },
     { text:'<b>Pricing discipline</b>: 1 of 2 documented losses was price-driven, but 25_334 shows clients pay premium for scope. Price-cutting is not the lesson — scope enrichment is.' }
   ]
 };
@@ -4101,6 +4133,11 @@ function renderReasonsLog(){
       <div class="ri-text">${r.text}</div>
     </li>`).join('');
   const declineItems = REASONS.declines.map(r => `
+    <li class="reason-item">
+      <div class="ri-head"><span class="ri-id">${r.id}</span><span class="ri-tag ${r.tagCls}">${r.tag}</span><span class="ri-week">${r.week}</span></div>
+      <div class="ri-text">${r.text}</div>
+    </li>`).join('');
+  const nsItems = (REASONS.netsuite||[]).map(r => `
     <li class="reason-item">
       <div class="ri-head"><span class="ri-id">${r.id}</span><span class="ri-tag ${r.tagCls}">${r.tag}</span><span class="ri-week">${r.week}</span></div>
       <div class="ri-text">${r.text}</div>
@@ -4122,6 +4159,10 @@ function renderReasonsLog(){
         <div class="reason-card-head"><span>Strategic takeaways</span></div>
         <ul class="reason-list">${takeawayItems}</ul>
       </div>
+    </div>
+    <div class="reason-card gaps" style="grid-column:1/-1">
+      <div class="reason-card-head"><span>NetSuite comments · why earlier bids were lost (2025 bids — reference, not in the 2026 KPIs)</span><span>${(REASONS.netsuite||[]).length} entries · read 26 Nov 2026</span></div>
+      <ul class="reason-list" style="columns:2;column-gap:36px">${nsItems.replace(/<li class="reason-item">/g,'<li class="reason-item" style="break-inside:avoid">')}</ul>
     </div>
   `;
 }
