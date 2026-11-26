@@ -4731,7 +4731,7 @@ function bindDossierDelegation(){
 // Single source of truth for Finance (BD → Finance handover · 2027 pipeline input).
 // pitch = Aimes pitch value in SAR EXCL. VAT, as cited in the weekly report (rule: report first, NetSuite only as fallback).
 // Name, client, status, probability and weighted value are read live from PROJECTS — only the finance fields live here.
-// ns: 'in'     = value taken from the NetSuite pipeline export (Pipeline_9_6_26.xlsx)
+// ns: 'in'     = NetSuite opportunity checked live (SuiteQL, type Opprtnty): status and value agree
 //     'update' = record exists in NetSuite but is stale (probability / stage / superseded)
 //     'check'  = value from weekly report or proposal — not yet confirmed in NetSuite
 //     'missing'= BD has no confirmed price → NetSuite cannot be updated yet
@@ -4739,46 +4739,61 @@ function bindDossierDelegation(){
 const FIN_ASOF = '26 Nov 2026';
 const FINANCE = {
   // Awarded
-  '26_353':{pitch:18528385, derived:true, orig:'NetSuite weighted SAR 13,896,289 at 75% → ÷ 75%', src:'NetSuite export · n°39', ns:'update', nsNote:'In NetSuite at 75% — move to 100% / Closed Won and enter the signed contract value', timing:'Contract signature TBC'},
-  '26_374':{pitch:5600000, derived:true, orig:'NetSuite weighted SAR 4,200,000 at 75% → ÷ 75% · artist production costs approved AED 3,936,023 excl. VAT (Kiwanga 825,341 · Senatore 1,093,861 · Clottey 752,783 · Ward 1,264,038)', src:'NetSuite export · n°25 · n°39', ns:'update', nsNote:'In NetSuite at 75% — move to 100% / Closed Won and enter the contract value', timing:'6 commissions · contract finalisation'},
+  '26_353':{pitch:18528385, derived:false, orig:'NetSuite OPP-0247: WON · 100% · projected total SAR 18,528,385 · no value stated in the weekly reports', src:'NetSuite live 26 Nov', ns:'in', nsNote:'OPP-0247 · WON 100% · SAR 18,528,385 — matches', timing:'Contract signature TBC'},
+  '26_374':{pitch:5600000, derived:true, orig:'NetSuite weighted SAR 4,200,000 at 75% → ÷ 75% · artist production costs approved AED 3,936,023 excl. VAT (Kiwanga 825,341 · Senatore 1,093,861 · Clottey 752,783 · Ward 1,264,038)', src:'NetSuite export · n°25 · n°39', ns:'update', nsNote:'OPP-0300 is WON but its projected total is 0 — enter the contract value', timing:'6 commissions · contract finalisation', flag:'Value shown is derived from the June export (SAR 4.2M at 75%); NetSuite now holds no amount — contract value to confirm'},
   // Awaiting decision — priced
-  '26_234':{pitch:3361747.18, orig:'SAR 3,866,009.26 incl. VAT · revised TP+FP 21 Nov (2 artworks) · earlier offers: 4,202,183.97 (31 Oct) · 9,560,049 (10 Jun, 5 artists)', src:'Weekly report n°44', ns:'check', nsNote:'Oracle Quote 173714 (MAR-NEG-1082) — NetSuite value to align to the 21 Nov offer'},
-  '26_375':{pitch:1953057.82, orig:'SAR 2,162,322.50 incl. VAT · discounted offer 6 Aug · weekly reports give no amount for it (n°29: "revised commercial offer submitted"; n°26: concepts SAR 3,337,685.69 / 2,475,108.59)', src:'Discounted offer 6 Aug (proposal file)', ns:'check', flag:'Not stated in a weekly report · offer BOQ lines add up to SAR 1,817,525.88 and the incl. figure is not +15% — confirm the contractual figure'},
-  '26_376':{pitch:5140634.65, orig:'SAR 5,911,729.85 incl. VAT · financial proposal 2 Jul · margin 55% · no amount in the weekly reports', src:'Financial proposal 2 Jul', ns:'check', flag:'Not stated in a weekly report · 55% margin on pitch budget — verify · no client reply since 12 Jul: final status confirmation (Template B) approved 26 Nov'},
-  '26_381':{pitch:16714030.53, orig:'SAR 17,900,000 incl. VAT (mixed VAT) · pricing model 6 Aug · no amount in the weekly reports', src:'Pricing model 6 Aug', ns:'check', flag:'Not stated in a weekly report · portal-submitted figure to confirm', timing:'La Biennale di Venezia 2027'},
-  '26_383':{pitch:4282215.10, orig:'Report n°31: "Contract Value: SAR 4,282,215.10" (VAT basis not stated) · SAR 4,924,547.36 incl. VAT per financial proposal 23 Aug · margin 26%', src:'Weekly report n°31', ns:'check', flag:'Unofficial loss — awarded to the incumbent as an extension, no official notice (Manal, 24 Nov) · still counted as awaiting until confirmed'},
-  '26_385':{pitch:516643, orig:'OMR 53,043.45 excl. VAT (60,999.97 incl.) · Aimes fee share only · 1 OMR = 9.74 SAR · no amount in the weekly reports', src:'Financial proposal 19 Aug', ns:'check', flag:'Not stated in a weekly report · proposal shows a 15% VAT line; Oman VAT is 5% — confirm. FX rate to confirm · no outcome since 19 Aug: final status via BIG (Template B) approved 26 Nov'},
-  '26_388':{pitch:8670579, orig:'Report n°37: "approximately SAR 8,670,578.57" (VAT basis not stated) · pitch budget file: SAR 8,670,779 excl. / 9,971,395 incl.', src:'Weekly report n°37', ns:'check', flag:'Pitch budget file is SAR 200 higher than the report — confirm which is final', timing:'Award target end Nov / early Dec'},
-  '26_389':{pitch:22703963.18, orig:'Report n°35: "Premium budget: SAR 22,703,963.18 · Lean budget: SAR 3,097,725.93" · SAR 26,109,557.66 incl. VAT entered on Teradix #81484 (premium)', src:'Weekly report n°35 · Teradix', ns:'check', flag:'No client decision since 15 Sep: final status confirmation (Template B) approved 26 Nov'},
-  'WestfieldRA':{pitch:11485981.23, orig:'Report n°35: "Contract value: SAR 11,485,981.23" · ≈ SAR 9.99M if VAT-inclusive · pitch budget SAR 10,000,000 lump sum (Aimes 7.2M / Cultural Impact 2.8M)', src:'Weekly report n°35', ns:'check', flag:'Will be superseded: Cenomi RFP 83239 expands the scope, updated proposal pending (n°44) · VAT basis and Aimes share vs joint total to confirm · PDF lists the ID as 26_387'},
-  '26_390':{pitch:267954.23, orig:'SAR 308,147.37 incl. VAT · rates per deliverable (financial proposal 27 Sep) · bid-bond basis SAR 305,176.27 (email to Finance 13 Sep) · report n°36 states "total contract value of SAR 30,814,737"', src:'Financial proposal 27 Sep', ns:'check', flag:'Report n°36 says SAR 30,814,737 — the same digits as the proposal\'s 308,147.37 with the decimal point moved: confirm with Manal which is right (100× difference) · insurance allowance SAR 900,000 not counted', timing:'3-year framework'},
-  '26_395':{pitch:443769.67, orig:'Report n°42: "Contract Value: 510,335.12 SAR" (VAT basis not stated; = incl. VAT per the financial proposal of 7 Nov) · Ariba Doc257985616 · submitted with Athr', src:'Weekly report n°42 · financial proposal 7 Nov', ns:'check', timing:'Framework agreement'},
+  '26_234':{pitch:3361747.18, orig:'SAR 3,866,009.26 incl. VAT · revised TP+FP 21 Nov (2 artworks) · earlier offers: 4,202,183.97 (31 Oct) · 9,560,049 (10 Jun, 5 artists)', src:'Weekly report n°44', ns:'update', nsNote:'OPP-0264 (26_364): Pitch submitted 25% but value 0 — enter SAR 3,361,747.18'},
+  '26_375':{pitch:1953057.82, orig:'SAR 2,162,322.50 incl. VAT · discounted offer 6 Aug · weekly reports give no amount for it (n°29: "revised commercial offer submitted"; n°26: concepts SAR 3,337,685.69 / 2,475,108.59)', src:'Discounted offer 6 Aug (proposal file)', ns:'in', flag:'Not stated in a weekly report · offer BOQ lines add up to SAR 1,817,525.88 and the incl. figure is not +15% — confirm the contractual figure', nsNote:'OPP-0286 (as 26_373): Pitch submitted 25% · SAR 1,953,057.82 — matches'},
+  '26_376':{pitch:5140634.65, orig:'SAR 5,911,729.85 incl. VAT · financial proposal 2 Jul · margin 55% · no amount in the weekly reports', src:'Financial proposal 2 Jul', ns:'check', flag:'Not stated in a weekly report · 55% margin on pitch budget — verify · no client reply since 12 Jul: final status confirmation (Template B) approved 26 Nov · NetSuite has this bid as LOST since 28 Aug — dashboard still counts it as awaiting: confirm the outcome', nsNote:'OPP-0287: marked LOST · SAR 5,911,729.85 (= incl. VAT figure)'},
+  '26_381':{pitch:16714030.53, orig:'SAR 17,900,000 incl. VAT (mixed VAT) · pricing model 6 Aug · no amount in the weekly reports', src:'Pricing model 6 Aug', ns:'in', flag:'Not stated in a weekly report · portal-submitted figure to confirm', timing:'La Biennale di Venezia 2027', nsNote:'OPP-0295: Pitch submitted 25% · SAR 17,900,000 (= the incl. VAT figure) — matches'},
+  '26_383':{pitch:4282215.10, orig:'Report n°31: "Contract Value: SAR 4,282,215.10" (VAT basis not stated) · SAR 4,924,547.36 incl. VAT per financial proposal 23 Aug · margin 26%', src:'Weekly report n°31', ns:'in', flag:'Unofficial loss — awarded to the incumbent as an extension, no official notice (Manal, 24 Nov) · still counted as awaiting until confirmed', nsNote:'OPP-0294: Pitch submitted 25% · SAR 4,282,215.10 — matches (outcome to update once the loss is official)'},
+  '26_385':{pitch:516643, orig:'OMR 53,043.45 excl. VAT (60,999.97 incl.) · Aimes fee share only · 1 OMR = 9.74 SAR · no amount in the weekly reports', src:'Financial proposal 19 Aug', ns:'update', flag:'Not stated in a weekly report · proposal shows a 15% VAT line; Oman VAT is 5% — confirm. FX rate to confirm · no outcome since 19 Aug: final status via BIG (Template B) approved 26 Nov', nsNote:'OPP-0301: 595,359.71 with currency AED ≈ OMR 60,999.97 incl. VAT converted — align currency and VAT basis'},
+  '26_388':{pitch:8670579, orig:'Report n°37: "approximately SAR 8,670,578.57" (VAT basis not stated) · pitch budget file: SAR 8,670,779 excl. / 9,971,395 incl.', src:'Weekly report n°37', ns:'update', flag:'Pitch budget file is SAR 200 higher than the report — confirm which is final', timing:'Award target end Nov / early Dec', nsNote:'OPP-0290 still Scope/BID received 10%, value 0 (customer: RCU) — move to Pitch submitted and enter the value'},
+  '26_389':{pitch:22703963.18, orig:'Report n°35: "Premium budget: SAR 22,703,963.18 · Lean budget: SAR 3,097,725.93" · SAR 26,109,557.66 incl. VAT entered on Teradix #81484 (premium)', src:'Weekly report n°35 · Teradix', ns:'update', flag:'No client decision since 15 Sep: final status confirmation (Template B) approved 26 Nov', nsNote:'OPP-0289 still Scope/BID received 10%, value 0 — move to Pitch submitted and enter the value'},
+  'WestfieldRA':{pitch:11485981.23, orig:'Report n°35: "Contract value: SAR 11,485,981.23" · ≈ SAR 9.99M if VAT-inclusive · pitch budget SAR 10,000,000 lump sum (Aimes 7.2M / Cultural Impact 2.8M)', src:'Weekly report n°35', ns:'update', flag:'Will be superseded: Cenomi RFP 83239 expands the scope, updated proposal pending (n°44) · VAT basis and Aimes share vs joint total to confirm · PDF lists the ID as 26_387', nsNote:'OPP-0291 (26_387) still Scope/BID received 10%, value 0 — move to Pitch submitted and enter the value'},
+  '26_390':{pitch:267954.23, orig:'SAR 308,147.37 incl. VAT · rates per deliverable (financial proposal 27 Sep) · bid-bond basis SAR 305,176.27 (email to Finance 13 Sep) · report n°36 states "total contract value of SAR 30,814,737"', src:'Financial proposal 27 Sep', ns:'update', flag:'Report n°36 says SAR 30,814,737 — the same digits as the proposal\'s 308,147.37 with the decimal point moved: confirm with Manal which is right (100× difference) · insurance allowance SAR 900,000 not counted', timing:'3-year framework', nsNote:'No opportunity in NetSuite — create'},
+  '26_395':{pitch:443769.67, orig:'Report n°42: "Contract Value: 510,335.12 SAR" (VAT basis not stated; = incl. VAT per the financial proposal of 7 Nov) · Ariba Doc257985616 · submitted with Athr', src:'Weekly report n°42 · financial proposal 7 Nov', ns:'update', timing:'Framework agreement', nsNote:'No 2026 opportunity in NetSuite (OPP-0215 = the Dec 2025 bid 25_337, SAR 1,140,347) — create'},
   // Awaiting — no fixed value / price missing
-  '26_391':{pitch:null, orig:'Rate card C11 (24 Oct): SAR 42,064–137,104 per role per month', src:'Fee schedule C11', ns:'na', nsNote:'No fixed contract value — counted 0', timing:'Framework · revised TP due 28 Nov'},
-  'Paris':{pitch:54585970, orig:'Resubmitted 4 Jun 2026 at the same value as the first bid (Manal, confirmed to Assia 26 Nov) · first bid Nov 2025: Ariba Doc227413832 · re-tender Doc248787297 · report n°20 gives no amount', src:'Ariba (Nov 2025 bid) · Manal 26 Nov', ns:'check', flag:'No client update since the 4 Jun resubmission'},
-  '26_368':{pitch:null, orig:'Price held by BIG', src:'—', ns:'missing', flag:'Ask BIG / Ignacio for the submitted fee · no outcome since 9 Jun: final status via BIG (Template B) approved 26 Nov'},
-  '26_369':{pitch:null, orig:'Price held by Hwadi (lead)', src:'—', ns:'missing', flag:'Ask Hwadi / Ignacio for the submitted fee · likely cancelled — Ignacio to check with Hwadi'},
-  '26_400':{pitch:null, orig:'Submitted by Cultural Impact', src:'—', ns:'missing', flag:'Ask Aya (Cultural Impact) for the submitted fee'},
-  '26_393':{pitch:null, orig:'Pre-qualification (PQQ) — no price', src:'—', ns:'na'},
-  '26_394':{pitch:null, orig:'Pre-qualification (PQQ) — no price', src:'—', ns:'na'},
-  '26_399':{pitch:null, orig:'RFI — no price', src:'—', ns:'na'},
+  '26_391':{pitch:null, orig:'Rate card C11 (24 Oct): SAR 42,064–137,104 per role per month', src:'Fee schedule C11', ns:'na', nsNote:'No opportunity in NetSuite for the framework bid (OPP-0222 = the PQQ, Lead) — create · no fixed contract value', timing:'Framework · revised TP due 28 Nov'},
+  'Paris':{pitch:54585970, orig:'Resubmitted 4 Jun 2026 at the same value as the first bid (Manal, confirmed to Assia 26 Nov) · first bid Nov 2025: Ariba Doc227413832 · re-tender Doc248787297 · report n°20 gives no amount', src:'Ariba (Nov 2025 bid) · Manal 26 Nov', ns:'update', flag:'First bid was lost to Black & White (NetSuite, Feb 2026) · no client update since the 4 Jun resubmission', nsNote:'OPP-0207 (25_338) = the Nov 2025 bid: marked LOST, "awarded to Black & white" (Feb 2026) · no record for the June 2026 re-tender — create'},
+  '26_368':{pitch:null, orig:'Price held by BIG', src:'—', ns:'missing', flag:'Ask BIG / Ignacio for the submitted fee · no outcome since 9 Jun: final status via BIG (Template B) approved 26 Nov', nsNote:'OPP-0282: Pitch submitted 25%, value 0'},
+  '26_369':{pitch:null, orig:'Price held by Hwadi (lead)', src:'—', ns:'missing', flag:'Ask Hwadi / Ignacio for the submitted fee · likely cancelled — Ignacio to check with Hwadi', nsNote:'Only OPP-0271 "International Film Criticism Conference 2026" as Lead, no code, no value'},
+  '26_400':{pitch:null, orig:'Submitted by Cultural Impact', src:'—', ns:'missing', flag:'Ask Aya (Cultural Impact) for the submitted fee', nsNote:'No opportunity in NetSuite — create'},
+  '26_393':{pitch:null, orig:'Pre-qualification (PQQ) — no price', src:'—', ns:'na', nsNote:'No opportunity in NetSuite'},
+  '26_394':{pitch:null, orig:'Pre-qualification (PQQ) — no price', src:'—', ns:'na', nsNote:'No opportunity in NetSuite'},
+  '26_399':{pitch:null, orig:'RFI — no price', src:'—', ns:'na', nsNote:'No opportunity in NetSuite'},
   // Closed 2026 — reference for pricing & hit rate
-  '26_366':{pitch:8685128.80, orig:'Lost on price: winner Enzo Arabia SAR 5,342,072 (−38.5%)', src:'Weekly report n°40', ns:'update', nsNote:'Close as Lost'},
-  '26_384':{pitch:2568756, orig:'Report n°37: "approximately EUR 597,384.52" × 4.30 (rate TBC)', src:'Weekly report n°37', ns:'update', nsNote:'Close as Lost'},
-  '26_396':{pitch:1530656, orig:'AED 1,499,026.20 excl. VAT (incl. 10% contingency) · price ~3× the winner', src:'Weekly report n°42 (value) · n°44 (lost)', ns:'update', nsNote:'Close as Lost'},
-  '26_377':{pitch:null, orig:'Report n°26: SAR 62,318,909.45 incl. VAT (≈ 54.2M excl. at 15%) · cancelled by the client (n°28)', src:'Weekly report n°26', ns:'update', nsNote:'Close as Cancelled'},
-  '26_365':{pitch:null, orig:'NetSuite weighted SAR 483,915 · probability not recorded', src:'NetSuite export (Jun)', ns:'in', nsNote:'Confirm closed as Lost'},
-  '26_356':{pitch:17848242, orig:'SAR 20,525,478.84 incl. VAT on Teradix #76827', src:'Teradix · NetSuite OPP-0250', ns:'update', nsNote:'OPP-0250 superseded by 26_389 + WestfieldRA — close or relink'}
+  '26_366':{pitch:8685128.80, orig:'Lost on price: winner Enzo Arabia SAR 5,342,072 (−38.5%)', src:'Weekly report n°40', ns:'update', nsNote:'OPP-0265 still Pitch submitted 25%, value 0 — close as Lost and enter SAR 8,685,128.80'},
+  '26_384':{pitch:2568756, orig:'Report n°37: "approximately EUR 597,384.52" × 4.30 (rate TBC)', src:'Weekly report n°37', ns:'update', nsNote:'OPP-0293 still Scope/BID received 10%, value 0 — close as Lost'},
+  '26_396':{pitch:1530656, orig:'AED 1,499,026.20 excl. VAT (incl. 10% contingency) · price ~3× the winner', src:'Weekly report n°42 (value) · n°44 (lost)', ns:'update', nsNote:'No opportunity in NetSuite — create and close as Lost'},
+  '26_377':{pitch:null, orig:'Report n°26: SAR 62,318,909.45 incl. VAT (≈ 54.2M excl. at 15%) · cancelled by the client (n°28)', src:'Weekly report n°26', ns:'in', nsNote:'OPP-0288: CANCELLED — matches (value 0 in NetSuite)'},
+  '26_365':{pitch:1935660.59, orig:'NetSuite OPP-0262 projected total SAR 1,935,660.59 (VAT basis not stated) · collaboration with Hasenkamp', src:'NetSuite live 26 Nov', ns:'update', nsNote:'OPP-0262 still Pitch submitted 25% — close as Lost'},
+  '26_356':{pitch:17848242, orig:'SAR 20,525,478.84 incl. VAT on Teradix #76827', src:'Teradix · NetSuite OPP-0250', ns:'update', nsNote:'OPP-0250 still Pitch submitted 25% · SAR 20,525,478.84 (incl. VAT) — superseded by 26_389 + Westfield Riyadh: close or relink'},
+  '26_354':{ns:'update', src:'NetSuite live 26 Nov · NetSuite export (Jun)', orig:'NetSuite OPP-0248: AED 6,735,120.11', nsNote:'OPP-0248 still Pitch submitted 25% — close as Lost'},
+  '26_357':{ns:'update', src:'NetSuite live 26 Nov · NetSuite export (Jun)', orig:'NetSuite OPP-0251: AED 42,283,738', nsNote:'OPP-0251 still Pitch submitted 25% — close as Lost'},
+  '26_343':{ns:'update', src:'NetSuite live 26 Nov · NetSuite export (Jun)', orig:'NetSuite OPP-0234: AED 30,168,978.17', nsNote:'OPP-0234 still Pitch submitted 25% — close as Cancelled'},
+  '26_363':{ns:'update', src:'NetSuite live 26 Nov · NetSuite export (Jun)', orig:'NetSuite OPP-0263: AED 12,455,686.32', nsNote:'OPP-0263 still Pitch submitted 25% — close as Cancelled'},
+  '26_355':{ns:'in', src:'NetSuite live 26 Nov', orig:'NetSuite OPP-0249: AED 893,280.15', nsNote:'OPP-0249: LOST — matches'},
+  '26_358':{ns:'in', src:'NetSuite live 26 Nov', orig:'NetSuite OPP-0257: AED 1,312,495', nsNote:'OPP-0257: LOST — matches'},
+  '26_361':{ns:'in', src:'NetSuite live 26 Nov', orig:'NetSuite OPP-0259: AED 453,968', nsNote:'OPP-0259: LOST — matches'},
+  '26_349':{pitch:2122024, orig:'NetSuite OPP-0240 projected total SAR 2,122,024 (VAT basis not stated) · client maximum budget EUR 400,000 incl. taxes', src:'NetSuite live 26 Nov', ns:'in', nsNote:'OPP-0240: LOST — matches'},
+  '26_352':{pitch:36370105, orig:'NetSuite OPP-0241 projected total SAR 36,370,105 (VAT basis not stated) · co-development with Mistika', src:'NetSuite live 26 Nov', ns:'in', nsNote:'OPP-0241: LOST — matches'},
+  '26_379':{pitch:1271122.6, orig:'NetSuite OPP-0296 projected total SAR 1,271,122.60 (VAT basis not stated)', src:'NetSuite live 26 Nov', ns:'in', nsNote:'OPP-0296: LOST — matches'},
+  '26_367':{pitch:13600173.07, orig:'NetSuite OPP-0280 projected total SAR 13,600,173.07 (VAT basis not stated) · with Hwadi', src:'NetSuite live 26 Nov', ns:'in', nsNote:'OPP-0280: CANCELLED — matches'},
+  '26_372':{pitch:2853905.37, orig:'NetSuite OPP-0285 projected total SAR 2,853,905.37 (VAT basis not stated)', src:'NetSuite live 26 Nov', ns:'in', nsNote:'OPP-0285: CANCELLED — matches'},
+  '26_370':{pitch:null, orig:'No value in NetSuite or in the weekly reports', src:'NetSuite live 26 Nov', ns:'in', nsNote:'OPP-0283: CANCELLED — matches (value 0)'},
+  'AlUlaHorse':{pitch:1007278, orig:'NetSuite OPP-0297 "AFALULA Equine exhibition" projected total SAR 1,007,278 (VAT basis not stated)', src:'NetSuite live 26 Nov', ns:'update', nsNote:'OPP-0297 still Pitch submitted 25% — close as Cancelled'},
+  '26_386':{pitch:null, orig:'No value in NetSuite or in the weekly reports', src:'NetSuite live 26 Nov', ns:'update', nsNote:'OPP-0292 still Scope/BID received 10% — close as Lost'}
 };
 // Leads that left "Bids in preparation" — shown with the reason (26 Nov check)
 const FIN_DORMANT = {
   'RCU_Rome':'Rome exhibition — pursued and submitted as 26_384 AlUla, Wonder of Arabia (Afalula): LOST 22 Oct (same bid, confirmed by Assia 26 Nov)',
   'HC_Paris':'Heritage Commission cancelled its participation (22 Oct)',
-  '26_380':'Postponed by the Italian Embassy — RCU proposes 4 Apr – 15 May 2027; no price submitted yet',
+  '26_380':'Postponed by the Italian Embassy — RCU proposes 4 Apr – 15 May 2027 · NetSuite OPP-0299: Pitch submitted, SAR 66,291.75 (commercial proposal) — not counted as a submission in the BD reports',
   '26_350':'No update since W10', '26_351':'Case study, not a bid', 'PQQ':'No update since W19 · later PQQ tracked as 26_393',
   '26_378':'Proactive proposal on hold', 'Qiddiya':'No update since W12'
 };
-const NS_LABEL = {in:'In NetSuite', update:'Update NetSuite', check:'To confirm in NetSuite', missing:'Price missing', na:'No fixed value'};
+const NS_LABEL = {in:'In NetSuite · matches', update:'Update NetSuite', check:'To confirm', missing:'Price missing', na:'No fixed value'};
 
 function finRow(p){
   let f = FINANCE[p.id] || {};
@@ -4854,9 +4869,9 @@ function renderFinance(){
       <div class="bignum-cell"><span class="lbl">NetSuite actions</span><span class="val">${nCheck+nUpd}</span><span class="delta">${nCheck} to confirm · ${nUpd} to update · ${nFlags} flagged</span></div>
     </div>
     <div class="fin-legend">
-      <span><i class="fin-ns in">In NetSuite</i> value from the NetSuite export</span>
-      <span><i class="fin-ns update">Update NetSuite</i> record exists but stage / probability is stale</span>
-      <span><i class="fin-ns check">To confirm in NetSuite</i> value from weekly report or proposal, not yet seen in NetSuite</span>
+      <span><i class="fin-ns in">In NetSuite · matches</i> record, status and value agree with NetSuite</span>
+      <span><i class="fin-ns update">Update NetSuite</i> record missing, or its stage / probability / value is stale</span>
+      <span><i class="fin-ns check">To confirm</i> NetSuite and the dashboard disagree on the outcome — BD to confirm</span>
       <span><i class="fin-ns missing">Price missing</i> BD must confirm the fee first</span>
       <span><i class="fin-ns na">No fixed value</i> rate card · PQQ · RFI</span>
     </div>
@@ -4887,7 +4902,7 @@ function renderFinance(){
       <div class="dash-card" style="padding:0;overflow:auto">${finTable(g.closed,'closed')}</div>
     </details>
 
-    <p class="fin-foot">Values in SAR excl. VAT. Source rule: weekly report value first, then the submitted financial proposal, NetSuite only as fallback. Sources re-checked against Manal's weekly reports n°20–44 on 26 Nov 2026: quoted figures are verbatim from the reports; where a report gives no amount the source is the proposal file. "Derived" = projected total back-calculated from the NetSuite weighted value. Excluded: 2025 carry-overs (CLM 25_318, 25_330, 25_332, 25_334, 25_335). FX rates marked TBC are BD estimates. Expected decision date and revenue phasing per project are not yet captured — to be added with Finance for the 2027 plan. Data as of ${FIN_ASOF}.</p>`;
+    <p class="fin-foot">Values in SAR excl. VAT. Source rule: weekly report value first, then the submitted financial proposal, NetSuite only as fallback. Sources re-checked against Manal's weekly reports n°20–44 on 26 Nov 2026: quoted figures are verbatim from the reports; where a report gives no amount the source is the proposal file. "Derived" = projected total back-calculated from the NetSuite weighted value. Excluded: 2025 carry-overs (CLM 25_318, 25_330, 25_332, 25_334, 25_335). FX rates marked TBC are BD estimates. Expected decision date and revenue phasing per project are not yet captured — to be added with Finance for the 2027 plan. NetSuite opportunities checked live on 26 Nov 2026: the NetSuite pipeline was last updated on 28 Aug 2026, so bids submitted after that date have no record or a stale one. Data as of ${FIN_ASOF}.</p>`;
 }
 
 function exportFinanceCSV(){
