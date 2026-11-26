@@ -4318,7 +4318,13 @@ function getProjectStatus(p){
   if(last === 's') return 'awaiting';
   if(last === 'c') return 'declined';
   if(last === 'st') return 'stalled';
-  if(last === 'u' || last === 'a') return 'active';
+  if(last === 'u' || last === 'a'){
+    // Dormant rule (26 Nov): a lead not mentioned for more than 6 weeks and not in the current Active Projects is no longer "active"
+    const lastIdx = p.weeks.reduce((m,w,i)=> w ? i : m, -1);
+    const inCards = (REPORTS[0] && REPORTS[0].cards || []).some(c=>c.id===p.id);
+    if(lastIdx < p.weeks.length - 6 && !inCards) return 'stalled';
+    return 'active';
+  }
   return 'stalled';
 }
 
@@ -4366,7 +4372,8 @@ function renderClientList(){
     const lost = c.projects.filter(p => p.status === 'lost').length;
     const awaiting = c.projects.filter(p => p.status === 'awaiting').length;
     const active = c.projects.filter(p => p.status === 'active').length;
-    const declined = c.projects.filter(p => ['declined','stalled'].includes(p.status)).length;
+    const declined = c.projects.filter(p => p.status === 'declined').length;
+    const dormant = c.projects.filter(p => p.status === 'stalled').length;
     totalAcross += c.totalValue;
     totalWon += won; totalLost += lost; totalAwaiting += awaiting;
 
@@ -4376,7 +4383,8 @@ function renderClientList(){
       lost > 0 ? `<span class="chip lost"><b>${lost}</b> lost</span>` : '',
       awaiting > 0 ? `<span class="chip pending"><b>${awaiting}</b> awaiting</span>` : '',
       active > 0 ? `<span class="chip"><b>${active}</b> active</span>` : '',
-      declined > 0 ? `<span class="chip declined"><b>${declined}</b> cancelled/declined</span>` : ''
+      declined > 0 ? `<span class="chip declined"><b>${declined}</b> cancelled/declined</span>` : '',
+      dormant > 0 ? `<span class="chip declined"><b>${dormant}</b> no update / on hold</span>` : ''
     ].filter(Boolean).join('');
 
     const valFmt = formatValue(c.totalValue);
@@ -4745,20 +4753,20 @@ const FINANCE = {
   // Awaiting decision — priced
   '26_234':{pitch:3361747.18, orig:'SAR 3,866,009.26 incl. VAT · revised TP+FP 21 Nov (2 artworks) · earlier offers: 4,202,183.97 (31 Oct) · 9,560,049 (10 Jun, 5 artists)', src:'Weekly report n°44', ns:'check', nsNote:'Oracle Quote 173714 (MAR-NEG-1082) — NetSuite value to align to the 21 Nov offer'},
   '26_375':{pitch:1953057.82, orig:'SAR 2,162,322.50 incl. VAT · discounted offer 6 Aug (replaces 14 Jul concepts 3.34M / 2.48M)', src:'Weekly report n°43', ns:'check', flag:'Offer BOQ lines add up to SAR 1,817,525.88 — confirm the contractual figure'},
-  '26_376':{pitch:5140634.65, orig:'SAR 5,911,729.85 incl. VAT · financial proposal 2 Jul · margin 55%', src:'Financial proposal · n°43 confirmed', ns:'check', flag:'55% margin on pitch budget — verify'},
+  '26_376':{pitch:5140634.65, orig:'SAR 5,911,729.85 incl. VAT · financial proposal 2 Jul · margin 55%', src:'Financial proposal · n°43 confirmed', ns:'check', flag:'55% margin on pitch budget — verify · no client reply since 12 Jul: final status confirmation (Template B) approved 26 Nov'},
   '26_381':{pitch:16714030.53, orig:'SAR 17,900,000 incl. VAT (mixed VAT) · pricing model 6 Aug', src:'Weekly report n°43', ns:'check', flag:'Portal-submitted figure to confirm', timing:'La Biennale di Venezia 2027'},
-  '26_383':{pitch:4282215.10, orig:'SAR 4,924,547.36 incl. VAT · financial proposal 23 Aug · margin 26%', src:'Weekly report n°31', ns:'check'},
-  '26_385':{pitch:516643, orig:'OMR 53,043.45 excl. VAT (60,999.97 incl.) · Aimes fee share only · 1 OMR = 9.74 SAR', src:'Financial proposal 19 Aug · n°43', ns:'check', flag:'Proposal shows a 15% VAT line; Oman VAT is 5% — confirm. FX rate to confirm'},
+  '26_383':{pitch:4282215.10, orig:'SAR 4,924,547.36 incl. VAT · financial proposal 23 Aug · margin 26%', src:'Weekly report n°31', ns:'check', flag:'Unofficial loss — awarded to the incumbent as an extension, no official notice (Manal, 24 Nov) · still counted as awaiting until confirmed'},
+  '26_385':{pitch:516643, orig:'OMR 53,043.45 excl. VAT (60,999.97 incl.) · Aimes fee share only · 1 OMR = 9.74 SAR', src:'Financial proposal 19 Aug · n°43', ns:'check', flag:'Proposal shows a 15% VAT line; Oman VAT is 5% — confirm. FX rate to confirm · no outcome since 19 Aug: final status via BIG (Template B) approved 26 Nov'},
   '26_388':{pitch:8670579, orig:'SAR 9,971,395 incl. VAT · TP+FP 1 Oct', src:'Weekly report n°37', ns:'check', flag:'Pitch budget file says SAR 8,670,779 (+200) — confirm which is final', timing:'Award target end Nov / early Dec'},
-  '26_389':{pitch:22703963.18, orig:'SAR 26,109,557.66 incl. VAT entered on Teradix #81484 = premium option · lean option SAR 3,097,725.93 not entered', src:'Weekly report n°35 · Teradix', ns:'check'},
+  '26_389':{pitch:22703963.18, orig:'SAR 26,109,557.66 incl. VAT entered on Teradix #81484 = premium option · lean option SAR 3,097,725.93 not entered', src:'Weekly report n°35 · Teradix', ns:'check', flag:'No client decision since 15 Sep: final status confirmation (Template B) approved 26 Nov'},
   'WestfieldRA':{pitch:11485981.23, orig:'Report n°35 figure · ≈ SAR 9.99M if VAT-inclusive · pitch budget SAR 10,000,000 lump sum (Aimes 7.2M / Cultural Impact 2.8M)', src:'Weekly report n°35', ns:'check', flag:'VAT basis and Aimes share vs joint total to confirm · PDF lists the ID as 26_387'},
   '26_390':{pitch:267954.23, orig:'SAR 308,147.37 incl. VAT · rates per deliverable · bid-bond basis SAR 305,176.27 (email to Finance 13 Sep)', src:'Financial proposal 27 Sep · n°43', ns:'check', flag:'SAR 30.8M in report n°36 is the tender estimate, not our price · insurance allowance SAR 900,000 not counted', timing:'3-year framework'},
   '26_395':{pitch:443769.67, orig:'SAR 510,335.12 incl. VAT · Ariba Doc257985616 · submitted with Athr', src:'Weekly report n°41–43', ns:'check', timing:'Framework agreement'},
   // Awaiting — no fixed value / price missing
   '26_391':{pitch:null, orig:'Rate card C11 (24 Oct): SAR 42,064–137,104 per role per month', src:'Fee schedule C11', ns:'na', nsNote:'No fixed contract value — counted 0', timing:'Framework · revised TP due 28 Nov'},
   'Paris':{pitch:null, orig:'First bid Nov 2025: SAR 54,585,970 excl. VAT (Ariba Doc227413832) · June 2026 re-tender Doc248787297', src:'Ariba · report n°20', ns:'missing', flag:'2026 re-tender submission and price unconfirmed — ask Manal for the receipt'},
-  '26_368':{pitch:null, orig:'Price held by BIG', src:'—', ns:'missing', flag:'Ask BIG / Ignacio for the submitted fee'},
-  '26_369':{pitch:null, orig:'Price held by Hwadi (lead)', src:'—', ns:'missing', flag:'Ask Hwadi / Ignacio for the submitted fee'},
+  '26_368':{pitch:null, orig:'Price held by BIG', src:'—', ns:'missing', flag:'Ask BIG / Ignacio for the submitted fee · no outcome since 9 Jun: final status via BIG (Template B) approved 26 Nov'},
+  '26_369':{pitch:null, orig:'Price held by Hwadi (lead)', src:'—', ns:'missing', flag:'Ask Hwadi / Ignacio for the submitted fee · likely cancelled — Ignacio to check with Hwadi'},
   '26_400':{pitch:null, orig:'Submitted by Cultural Impact', src:'—', ns:'missing', flag:'Ask Aya (Cultural Impact) for the submitted fee'},
   '26_393':{pitch:null, orig:'Pre-qualification (PQQ) — no price', src:'—', ns:'na'},
   '26_394':{pitch:null, orig:'Pre-qualification (PQQ) — no price', src:'—', ns:'na'},
@@ -4770,6 +4778,14 @@ const FINANCE = {
   '26_377':{pitch:null, orig:'SAR 62,318,909 incl. VAT (≈ 54.2M excl. at 15%)', src:'Weekly report n°26', ns:'update', nsNote:'Close as Cancelled'},
   '26_365':{pitch:null, orig:'NetSuite weighted SAR 483,915 · probability not recorded', src:'NetSuite export (Jun)', ns:'in', nsNote:'Confirm closed as Lost'},
   '26_356':{pitch:17848242, orig:'SAR 20,525,478.84 incl. VAT on Teradix #76827', src:'Teradix · NetSuite OPP-0250', ns:'update', nsNote:'OPP-0250 superseded by 26_389 + WestfieldRA — close or relink'}
+};
+// Leads that left "Bids in preparation" — shown with the reason (26 Nov check)
+const FIN_DORMANT = {
+  'RCU_Rome':'Rome exhibition — pursued and submitted as 26_384 AlUla, Wonder of Arabia (Afalula): LOST 22 Oct · to confirm it is the same bid',
+  'HC_Paris':'Heritage Commission cancelled its participation (22 Oct)',
+  '26_380':'Postponed by the Italian Embassy — RCU proposes 4 Apr – 15 May 2027; no price submitted yet',
+  '26_350':'No update since W10', '26_351':'Case study, not a bid', 'PQQ':'No update since W19 · later PQQ tracked as 26_393',
+  '26_378':'Proactive proposal on hold', 'Qiddiya':'No update since W12'
 };
 const NS_LABEL = {in:'In NetSuite', update:'Update NetSuite', check:'To confirm in NetSuite', missing:'Price missing', na:'No fixed value'};
 
@@ -4794,9 +4810,14 @@ function finGroups(){
   const by = s => rows.filter(r=>r.st===s);
   const awaitingPriced = by('awaiting').filter(r=>r.pitch).sort((a,b)=>b.pitch-a.pitch);
   const awaitingOpen = by('awaiting').filter(r=>!r.pitch);
-  const closed = rows.filter(r=>['lost','declined'].includes(r.st) && (r.pitch || FINANCE[r.p.id])).sort((a,b)=>(b.pitch||0)-(a.pitch||0));
-  const prep = rows.filter(r=>r.st==='active' && r.p.prob);
-  return { won: by('won'), awaitingPriced, awaitingOpen, closed, prep, all: rows };
+  // Closed = every lost bid + every bid cancelled / superseded after submission (also when no price was recorded)
+  const wasSub = r => (r.p.events||[]).some(e=>e.t==='s');
+  const closed = rows.filter(r=> r.st==='lost' || (r.st==='declined' && (wasSub(r) || r.pitch || FINANCE[r.p.id]))).sort((a,b)=>(b.pitch||0)-(a.pitch||0));
+  const prep = rows.filter(r=>r.st==='active');
+  // Active Projects cards with an open deadline that have no PROJECTS entry yet (enter with the next BD report)
+  const prepExtra = (REPORTS[0].cards||[]).filter(c=>c.countdown==='upcoming' && !PROJECTS.some(p=>p.id===c.id));
+  const dormant = rows.filter(r=>r.st==='stalled' && FIN_DORMANT[r.p.id]);
+  return { won: by('won'), awaitingPriced, awaitingOpen, closed, prep, prepExtra, dormant, all: rows };
 }
 
 function finTable(rows, mode){
@@ -4807,7 +4828,7 @@ function finTable(rows, mode){
       <th>Source · original figure</th><th>NetSuite</th></tr></thead><tbody>
     ${rows.map(r=>{
       const p=r.p, f=r.f;
-      const out = mode==='closed' ? `<td>${r.st==='lost'?'Lost':'Cancelled / superseded'}</td>` : `<td class="fin-mono">${r.sub?fmtDate(r.sub):'—'}</td>`;
+      const out = mode==='closed' ? `<td>${r.st==='lost'?'Lost':(p.superseded?'Superseded':'Cancelled')}</td>` : `<td class="fin-mono">${r.sub?fmtDate(r.sub):'—'}</td>`;
       const flag = (f.flag?`<span class="fin-flag">⚠ ${f.flag}</span>`:'') + (r.mismatch?`<span class="fin-flag">⚠ Weighted ${finSAR(p.value)} ≠ pitch × ${p.prob}% (${finSAR(r.expected)}) — check</span>`:'');
       return `<tr class="clickable-proj" data-pid="${p.id}">
         <td><span class="ag-id">${p.id}</span><span class="ag-name">${p.name}</span>${f.timing?`<span class="ag-note">${f.timing}</span>`:''}</td>
@@ -4866,7 +4887,8 @@ function renderFinance(){
 
     <div class="section" style="margin-top:40px">
       <div class="section-head"><span class="section-num">§ FN.04</span><h2 class="section-title">Bids in preparation</h2><span class="section-count">No price yet · enter the pipeline once submitted</span></div>
-      <div class="fin-chips">${g.prep.map(r=>`<span class="fin-chip clickable-proj" data-pid="${r.p.id}"><b>${r.p.id}</b> ${r.p.name} <i>${r.p.client}${r.p.partner?' · w/ '+r.p.partner:''}</i></span>`).join('')}</div>
+      <div class="fin-chips">${g.prep.map(r=>`<span class="fin-chip clickable-proj" data-pid="${r.p.id}"><b>${r.p.id}</b> ${r.p.name} <i>${r.p.client}${r.p.partner?' · w/ '+r.p.partner:''}</i></span>`).join('')}${g.prepExtra.map(c=>`<span class="fin-chip"><b>${c.id}</b> ${c.title} <i>${c.client}</i></span>`).join('')}</div>
+      ${g.dormant.length?`<p class="fin-foot" style="margin-top:14px"><b>No longer in preparation</b> (no update for more than 6 weeks): ${g.dormant.map(r=>`<b>${r.p.id}</b> ${r.p.name} — ${FIN_DORMANT[r.p.id]}`).join(' · ')}</p>`:''}
     </div>
 
     <details class="section fin-closed" style="margin-top:40px">
