@@ -1016,15 +1016,6 @@ tr.fu-red .fu-chip{background:var(--urgent)} tr.fu-amber .fu-chip{background:var
       <div class="bignum-cell pending"><span class="lbl">Awaiting decision</span><span class="val">16</span><span class="delta">42.1% of submitted · 11 to chase (no client update)</span></div>
     </div>
 
-    <div class="section" style="margin-top:8px">
-      <div class="section-head">
-        <span class="section-num">§ OV.00</span>
-        <h2 class="section-title">Weighted Pipeline Value</h2>
-        <span class="section-count">Σ value × NetSuite probability · the one number to track W-o-W</span>
-      </div>
-      <div id="weightedPipeline" class="weighted-pipeline"></div>
-    </div>
-
     <div class="dash-grid" style="margin-top:32px">
       <div class="dash-card">
         <div class="dash-card-head">
@@ -1219,7 +1210,7 @@ const REPORTS = [
       ]},
       {head:'To chase — submitted, no client decision (follow-up policy, 22 Nov)',count:11,items:[
         ['26_356 Westfield by Cenomi — Jeddah & Riyadh','Submitted 23 Apr · no client decision in tenders@','awaiting','TO CHASE'],
-        ['Cultural Activations in the City of Paris (MOC)','First bid 23 Nov 2025 (Ariba Doc227413832, SAR 54.6M excl. VAT) · June 2026 re-tender (Doc248787297): no response from the tenders@ Ariba account and no submission email — only BD report n°20 says resubmitted 4 Jun · submission to verify with Manal','awaiting','TO VERIFY'],
+        ['Cultural Activations in the City of Paris (MOC)','Resubmitted 4 Jun 2026 (re-tender Doc248787297) at the same value as the first bid, SAR 54.6M excl. VAT — confirmed by Manal (26 Nov) · no client update since','awaiting','TO CHASE'],
         ['26_368 District 11 — Urban Core Office Architect (Qiddiya, w/ BIG)','Submitted 9 Jun via BIG · no outcome','awaiting','TO CHASE'],
         ['26_369 Int\'l Film Criticism Conference 2026 (MOC, Hwadi-led)','Submitted 14 Jun · no outcome','awaiting','TO CHASE'],
         ['26_376 Money 20/20 — Emkan Booth Production','Submitted 2 Jul · last client reply 12 Jul: "RFP under review, evaluation ongoing"','awaiting','TO CHASE'],
@@ -3029,7 +3020,7 @@ const PROJECTS = [
   { id:'26_352', name:'Traditional Arts Festival', client:'MOC', extensions:1,
     weeks:['','','','','a','s','a','a','a','l','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','',''],
     events:[{w:5,t:'s',d:'Submitted 15 Feb'},{w:9,t:'l',d:'LOST'}] },
-  { id:'Paris', name:'Cultural Activations in the City of Paris', client:'MOC', prob:25, valueSrc:'to confirm · first bid Ariba Doc227413832 submitted 23 Nov 2025 (2025 bid), SAR 54,585,970 excl. VAT per Ariba (Assia, 21 Nov) · re-tender Doc248787297 (due 4 Jun 2026): no response from the tenders@ Ariba account and no submission email in tenders@ — only BD report n°20 says "resubmitted 4 June" · ask Manal for the submission receipt', subDate:'2026-06-04',
+  { id:'Paris', name:'Cultural Activations in the City of Paris', client:'MOC', value:13646493, prob:25, valueSrc:'resubmitted 4 Jun 2026 at the same value as the first bid (Manal, confirmed to Assia 26 Nov) · SAR 54,585,970 excl. VAT (Ariba Doc227413832, Nov 2025; re-tender Doc248787297) × 25% · to reconcile with NetSuite', subDate:'2026-06-04',
     weeks:['','','','','','','','','','','','','','','','','','','s','a','','','','','','','','','','','','','','','','','','','','','','',''],
     events:[{w:18,t:'s',d:'Resubmitted 4 Jun'}] },
   { id:'26_370', name:'Vision 2030 Exhibition & Accompanying Programs', client:'MOC', partner:'Hwadi', prob:10, subDate:'2026-06-24',
@@ -3872,8 +3863,8 @@ const FU_SRC = 'per meeting with Manal, 24 Nov';
 function fuPartnerName(r){ return r.partner.replace(/ \(lead\)/,''); }
 function fuOwner(r){ return r.partner ? { o:r.owner, n:(r.owner==='TBC'?'Aimes contact for '+fuPartnerName(r)+' to assign':'Aimes contact for '+fuPartnerName(r))+(r.ownerNote?' · '+r.ownerNote:'') } : { o:r.owner, n:r.ownerNote }; }
 const FOLLOWUP = [
-  { id:'Paris', dbc:'Tender email only (MOC general) · Benedetta if she has a contact', client:'MOC', bid:'Cultural Activations in the City of Paris', type:'Gov', owner:'Benedetta', sub:null, subNote:'June 2026 re-tender: not verified (BD report n°20 only) · first bid 23 Nov 2025', last:null, lastNote:'No response from the tenders@ Ariba account for the June re-tender',
-    check:'Submission to verify', action:'Manal to confirm whether / how the June resubmission was sent; if confirmed, apply the Gov cadence', by:'TBC', val:'SAR 54.6M excl. VAT (Nov 2025 bid) — to reconcile with NetSuite' },
+  { id:'Paris', dbc:'Tender email only (MOC general) · Benedetta if she has a contact', client:'MOC', bid:'Cultural Activations in the City of Paris', type:'Gov', owner:'Benedetta', sub:'2026-06-04', subNote:'resubmitted at the same value as the Nov 2025 bid (Manal, 26 Nov)', last:null, lastNote:'None found in tenders@ after the resubmission',
+    val:'SAR 54,585,970 excl. VAT (same as the Nov 2025 bid — Manal, 26 Nov) — to reconcile with NetSuite' },
   { id:'26_369', dbc:'Partner (Hwadi) · Ignacio', client:'MOC', bid:'Int\'l Film Criticism Conference 2026', type:'Gov', partner:'Hwadi (lead)', owner:'Ignacio', sub:'2026-06-14', last:null, lastNote:'None found in tenders@',
     check:'Likely cancelled — Ignacio to check with Hwadi (TBC)', action:'Ignacio to ask Hwadi whether the conference was cancelled ('+FU_SRC+') · no KPI change until confirmed', by:'TBC', tpl:'C', val:'TBC (price held by Hwadi)' },
   { id:'26_376', closeOk:'Assia, 26 Nov', dbc:'TBC — no playbook rule (private client)', client:'Emkan', bid:'Money 20/20 — booth production', type:'Private', owner:'Manal', sub:'2026-07-02', last:{d:'2026-07-12', by:'tenders@ → Wadha Aljunaydil'}, lastNote:'client replied the same day: "RFP under review, evaluation ongoing"',
@@ -4752,19 +4743,19 @@ const FINANCE = {
   '26_374':{pitch:5600000, derived:true, orig:'NetSuite weighted SAR 4,200,000 at 75% → ÷ 75% · artist production costs approved AED 3,936,023 excl. VAT (Kiwanga 825,341 · Senatore 1,093,861 · Clottey 752,783 · Ward 1,264,038)', src:'NetSuite export · n°25 · n°39', ns:'update', nsNote:'In NetSuite at 75% — move to 100% / Closed Won and enter the contract value', timing:'6 commissions · contract finalisation'},
   // Awaiting decision — priced
   '26_234':{pitch:3361747.18, orig:'SAR 3,866,009.26 incl. VAT · revised TP+FP 21 Nov (2 artworks) · earlier offers: 4,202,183.97 (31 Oct) · 9,560,049 (10 Jun, 5 artists)', src:'Weekly report n°44', ns:'check', nsNote:'Oracle Quote 173714 (MAR-NEG-1082) — NetSuite value to align to the 21 Nov offer'},
-  '26_375':{pitch:1953057.82, orig:'SAR 2,162,322.50 incl. VAT · discounted offer 6 Aug (replaces 14 Jul concepts 3.34M / 2.48M)', src:'Weekly report n°43', ns:'check', flag:'Offer BOQ lines add up to SAR 1,817,525.88 — confirm the contractual figure'},
-  '26_376':{pitch:5140634.65, orig:'SAR 5,911,729.85 incl. VAT · financial proposal 2 Jul · margin 55%', src:'Financial proposal · n°43 confirmed', ns:'check', flag:'55% margin on pitch budget — verify · no client reply since 12 Jul: final status confirmation (Template B) approved 26 Nov'},
-  '26_381':{pitch:16714030.53, orig:'SAR 17,900,000 incl. VAT (mixed VAT) · pricing model 6 Aug', src:'Weekly report n°43', ns:'check', flag:'Portal-submitted figure to confirm', timing:'La Biennale di Venezia 2027'},
-  '26_383':{pitch:4282215.10, orig:'SAR 4,924,547.36 incl. VAT · financial proposal 23 Aug · margin 26%', src:'Weekly report n°31', ns:'check', flag:'Unofficial loss — awarded to the incumbent as an extension, no official notice (Manal, 24 Nov) · still counted as awaiting until confirmed'},
-  '26_385':{pitch:516643, orig:'OMR 53,043.45 excl. VAT (60,999.97 incl.) · Aimes fee share only · 1 OMR = 9.74 SAR', src:'Financial proposal 19 Aug · n°43', ns:'check', flag:'Proposal shows a 15% VAT line; Oman VAT is 5% — confirm. FX rate to confirm · no outcome since 19 Aug: final status via BIG (Template B) approved 26 Nov'},
-  '26_388':{pitch:8670579, orig:'SAR 9,971,395 incl. VAT · TP+FP 1 Oct', src:'Weekly report n°37', ns:'check', flag:'Pitch budget file says SAR 8,670,779 (+200) — confirm which is final', timing:'Award target end Nov / early Dec'},
-  '26_389':{pitch:22703963.18, orig:'SAR 26,109,557.66 incl. VAT entered on Teradix #81484 = premium option · lean option SAR 3,097,725.93 not entered', src:'Weekly report n°35 · Teradix', ns:'check', flag:'No client decision since 15 Sep: final status confirmation (Template B) approved 26 Nov'},
-  'WestfieldRA':{pitch:11485981.23, orig:'Report n°35 figure · ≈ SAR 9.99M if VAT-inclusive · pitch budget SAR 10,000,000 lump sum (Aimes 7.2M / Cultural Impact 2.8M)', src:'Weekly report n°35', ns:'check', flag:'VAT basis and Aimes share vs joint total to confirm · PDF lists the ID as 26_387'},
-  '26_390':{pitch:267954.23, orig:'SAR 308,147.37 incl. VAT · rates per deliverable · bid-bond basis SAR 305,176.27 (email to Finance 13 Sep)', src:'Financial proposal 27 Sep · n°43', ns:'check', flag:'SAR 30.8M in report n°36 is the tender estimate, not our price · insurance allowance SAR 900,000 not counted', timing:'3-year framework'},
-  '26_395':{pitch:443769.67, orig:'SAR 510,335.12 incl. VAT · Ariba Doc257985616 · submitted with Athr', src:'Weekly report n°41–43', ns:'check', timing:'Framework agreement'},
+  '26_375':{pitch:1953057.82, orig:'SAR 2,162,322.50 incl. VAT · discounted offer 6 Aug · weekly reports give no amount for it (n°29: "revised commercial offer submitted"; n°26: concepts SAR 3,337,685.69 / 2,475,108.59)', src:'Discounted offer 6 Aug (proposal file)', ns:'check', flag:'Not stated in a weekly report · offer BOQ lines add up to SAR 1,817,525.88 and the incl. figure is not +15% — confirm the contractual figure'},
+  '26_376':{pitch:5140634.65, orig:'SAR 5,911,729.85 incl. VAT · financial proposal 2 Jul · margin 55% · no amount in the weekly reports', src:'Financial proposal 2 Jul', ns:'check', flag:'Not stated in a weekly report · 55% margin on pitch budget — verify · no client reply since 12 Jul: final status confirmation (Template B) approved 26 Nov'},
+  '26_381':{pitch:16714030.53, orig:'SAR 17,900,000 incl. VAT (mixed VAT) · pricing model 6 Aug · no amount in the weekly reports', src:'Pricing model 6 Aug', ns:'check', flag:'Not stated in a weekly report · portal-submitted figure to confirm', timing:'La Biennale di Venezia 2027'},
+  '26_383':{pitch:4282215.10, orig:'Report n°31: "Contract Value: SAR 4,282,215.10" (VAT basis not stated) · SAR 4,924,547.36 incl. VAT per financial proposal 23 Aug · margin 26%', src:'Weekly report n°31', ns:'check', flag:'Unofficial loss — awarded to the incumbent as an extension, no official notice (Manal, 24 Nov) · still counted as awaiting until confirmed'},
+  '26_385':{pitch:516643, orig:'OMR 53,043.45 excl. VAT (60,999.97 incl.) · Aimes fee share only · 1 OMR = 9.74 SAR · no amount in the weekly reports', src:'Financial proposal 19 Aug', ns:'check', flag:'Not stated in a weekly report · proposal shows a 15% VAT line; Oman VAT is 5% — confirm. FX rate to confirm · no outcome since 19 Aug: final status via BIG (Template B) approved 26 Nov'},
+  '26_388':{pitch:8670579, orig:'Report n°37: "approximately SAR 8,670,578.57" (VAT basis not stated) · pitch budget file: SAR 8,670,779 excl. / 9,971,395 incl.', src:'Weekly report n°37', ns:'check', flag:'Pitch budget file is SAR 200 higher than the report — confirm which is final', timing:'Award target end Nov / early Dec'},
+  '26_389':{pitch:22703963.18, orig:'Report n°35: "Premium budget: SAR 22,703,963.18 · Lean budget: SAR 3,097,725.93" · SAR 26,109,557.66 incl. VAT entered on Teradix #81484 (premium)', src:'Weekly report n°35 · Teradix', ns:'check', flag:'No client decision since 15 Sep: final status confirmation (Template B) approved 26 Nov'},
+  'WestfieldRA':{pitch:11485981.23, orig:'Report n°35: "Contract value: SAR 11,485,981.23" · ≈ SAR 9.99M if VAT-inclusive · pitch budget SAR 10,000,000 lump sum (Aimes 7.2M / Cultural Impact 2.8M)', src:'Weekly report n°35', ns:'check', flag:'Will be superseded: Cenomi RFP 83239 expands the scope, updated proposal pending (n°44) · VAT basis and Aimes share vs joint total to confirm · PDF lists the ID as 26_387'},
+  '26_390':{pitch:267954.23, orig:'SAR 308,147.37 incl. VAT · rates per deliverable (financial proposal 27 Sep) · bid-bond basis SAR 305,176.27 (email to Finance 13 Sep) · report n°36 states "total contract value of SAR 30,814,737"', src:'Financial proposal 27 Sep', ns:'check', flag:'Report n°36 says SAR 30,814,737 — the same digits as the proposal\'s 308,147.37 with the decimal point moved: confirm with Manal which is right (100× difference) · insurance allowance SAR 900,000 not counted', timing:'3-year framework'},
+  '26_395':{pitch:443769.67, orig:'Report n°42: "Contract Value: 510,335.12 SAR" (VAT basis not stated; = incl. VAT per the financial proposal of 7 Nov) · Ariba Doc257985616 · submitted with Athr', src:'Weekly report n°42 · financial proposal 7 Nov', ns:'check', timing:'Framework agreement'},
   // Awaiting — no fixed value / price missing
   '26_391':{pitch:null, orig:'Rate card C11 (24 Oct): SAR 42,064–137,104 per role per month', src:'Fee schedule C11', ns:'na', nsNote:'No fixed contract value — counted 0', timing:'Framework · revised TP due 28 Nov'},
-  'Paris':{pitch:null, orig:'First bid Nov 2025: SAR 54,585,970 excl. VAT (Ariba Doc227413832) · June 2026 re-tender Doc248787297', src:'Ariba · report n°20', ns:'missing', flag:'2026 re-tender submission and price unconfirmed — ask Manal for the receipt'},
+  'Paris':{pitch:54585970, orig:'Resubmitted 4 Jun 2026 at the same value as the first bid (Manal, confirmed to Assia 26 Nov) · first bid Nov 2025: Ariba Doc227413832 · re-tender Doc248787297 · report n°20 gives no amount', src:'Ariba (Nov 2025 bid) · Manal 26 Nov', ns:'check', flag:'No client update since the 4 Jun resubmission'},
   '26_368':{pitch:null, orig:'Price held by BIG', src:'—', ns:'missing', flag:'Ask BIG / Ignacio for the submitted fee · no outcome since 9 Jun: final status via BIG (Template B) approved 26 Nov'},
   '26_369':{pitch:null, orig:'Price held by Hwadi (lead)', src:'—', ns:'missing', flag:'Ask Hwadi / Ignacio for the submitted fee · likely cancelled — Ignacio to check with Hwadi'},
   '26_400':{pitch:null, orig:'Submitted by Cultural Impact', src:'—', ns:'missing', flag:'Ask Aya (Cultural Impact) for the submitted fee'},
@@ -4773,9 +4764,9 @@ const FINANCE = {
   '26_399':{pitch:null, orig:'RFI — no price', src:'—', ns:'na'},
   // Closed 2026 — reference for pricing & hit rate
   '26_366':{pitch:8685128.80, orig:'Lost on price: winner Enzo Arabia SAR 5,342,072 (−38.5%)', src:'Weekly report n°40', ns:'update', nsNote:'Close as Lost'},
-  '26_384':{pitch:2568756, orig:'EUR 597,385 × 4.30 (rate TBC)', src:'Weekly report n°37', ns:'update', nsNote:'Close as Lost'},
-  '26_396':{pitch:1530656, orig:'AED 1,499,026.20 excl. VAT (incl. 10% contingency) · price ~3× the winner', src:'Weekly report n°42 · n°44', ns:'update', nsNote:'Close as Lost'},
-  '26_377':{pitch:null, orig:'SAR 62,318,909 incl. VAT (≈ 54.2M excl. at 15%)', src:'Weekly report n°26', ns:'update', nsNote:'Close as Cancelled'},
+  '26_384':{pitch:2568756, orig:'Report n°37: "approximately EUR 597,384.52" × 4.30 (rate TBC)', src:'Weekly report n°37', ns:'update', nsNote:'Close as Lost'},
+  '26_396':{pitch:1530656, orig:'AED 1,499,026.20 excl. VAT (incl. 10% contingency) · price ~3× the winner', src:'Weekly report n°42 (value) · n°44 (lost)', ns:'update', nsNote:'Close as Lost'},
+  '26_377':{pitch:null, orig:'Report n°26: SAR 62,318,909.45 incl. VAT (≈ 54.2M excl. at 15%) · cancelled by the client (n°28)', src:'Weekly report n°26', ns:'update', nsNote:'Close as Cancelled'},
   '26_365':{pitch:null, orig:'NetSuite weighted SAR 483,915 · probability not recorded', src:'NetSuite export (Jun)', ns:'in', nsNote:'Confirm closed as Lost'},
   '26_356':{pitch:17848242, orig:'SAR 20,525,478.84 incl. VAT on Teradix #76827', src:'Teradix · NetSuite OPP-0250', ns:'update', nsNote:'OPP-0250 superseded by 26_389 + WestfieldRA — close or relink'}
 };
@@ -4896,7 +4887,7 @@ function renderFinance(){
       <div class="dash-card" style="padding:0;overflow:auto">${finTable(g.closed,'closed')}</div>
     </details>
 
-    <p class="fin-foot">Values in SAR excl. VAT. Source rule: weekly report value first, NetSuite only as fallback. "Derived" = projected total back-calculated from the NetSuite weighted value. Excluded: 2025 carry-overs (CLM 25_318, 25_330, 25_332, 25_334, 25_335). FX rates marked TBC are BD estimates. Expected decision date and revenue phasing per project are not yet captured — to be added with Finance for the 2027 plan. Data as of ${FIN_ASOF}.</p>`;
+    <p class="fin-foot">Values in SAR excl. VAT. Source rule: weekly report value first, then the submitted financial proposal, NetSuite only as fallback. Sources re-checked against Manal's weekly reports n°20–44 on 26 Nov 2026: quoted figures are verbatim from the reports; where a report gives no amount the source is the proposal file. "Derived" = projected total back-calculated from the NetSuite weighted value. Excluded: 2025 carry-overs (CLM 25_318, 25_330, 25_332, 25_334, 25_335). FX rates marked TBC are BD estimates. Expected decision date and revenue phasing per project are not yet captured — to be added with Finance for the 2027 plan. Data as of ${FIN_ASOF}.</p>`;
 }
 
 function exportFinanceCSV(){
