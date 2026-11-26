@@ -807,6 +807,37 @@ tr.fu-red .fu-chip{background:var(--urgent)} tr.fu-amber .fu-chip{background:var
   .fu-table td:first-child::before,.fu-table td:nth-child(2)::before{display:none}
   .fu-flag{max-width:none}
 }
+
+/* ─── FINANCE VIEW ──────────────────────── */
+.fin-head{display:flex;align-items:flex-end;justify-content:space-between;gap:16px;flex-wrap:wrap;margin-bottom:24px}
+.fin-export{background:var(--ink);color:var(--paper);border:0;font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.12em;text-transform:uppercase;padding:12px 18px;cursor:pointer;border-radius:2px}
+.fin-export:hover{background:var(--accent-deep)}
+.fin-table td{vertical-align:top}
+.fin-table tr.clickable-proj{cursor:pointer}
+.fin-val{font-family:'JetBrains Mono',monospace;font-size:12.5px;font-weight:600;color:var(--ink);white-space:nowrap}
+.fin-mono{font-family:'JetBrains Mono',monospace;font-size:11px;white-space:nowrap}
+.fin-src{font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--accent-deep);letter-spacing:.03em;display:block}
+.fin-sub{display:block;font-size:10.5px;color:var(--ink-2);margin-top:3px;line-height:1.4;font-weight:400;font-family:inherit;white-space:normal}
+.fin-flag{display:block;font-size:10.5px;color:var(--lost);margin-top:5px;line-height:1.4}
+.fin-ns{display:inline-block;font-family:'JetBrains Mono',monospace;font-size:9.5px;letter-spacing:.06em;text-transform:uppercase;padding:3px 7px;border-radius:2px;white-space:nowrap;font-style:normal}
+.fin-ns.in{background:rgba(44,110,63,.12);color:var(--won)}
+.fin-ns.update{background:rgba(214,139,58,.16);color:#9a5a1c}
+.fin-ns.check{background:rgba(200,169,81,.2);color:var(--accent-deep)}
+.fin-ns.missing{background:rgba(193,74,58,.12);color:var(--urgent)}
+.fin-ns.na{background:var(--paper-2);color:var(--stall)}
+.fin-legend{display:flex;flex-wrap:wrap;gap:10px 22px;font-size:11px;color:var(--ink-2);margin:-8px 0 8px}
+.fin-legend span{display:flex;align-items:center;gap:8px}
+.fin-chips{display:flex;flex-wrap:wrap;gap:8px}
+.fin-chip{background:var(--paper);border:1px solid var(--line-strong);padding:8px 12px;font-size:12px;cursor:pointer;border-radius:2px}
+.fin-chip b{font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--accent-deep);margin-right:4px}
+.fin-chip i{display:block;font-style:normal;font-family:'JetBrains Mono',monospace;font-size:9.5px;color:var(--ink-2);text-transform:uppercase;letter-spacing:.04em;margin-top:2px}
+.fin-chip:hover{background:var(--paper-2)}
+.fin-closed summary{cursor:pointer;list-style:none}
+.fin-closed summary::-webkit-details-marker{display:none}
+.fin-closed[open] summary .section-count::after{content:''}
+.fin-foot{margin-top:36px;font-size:11px;color:var(--ink-2);line-height:1.6;font-style:italic;max-width:900px}
+@media (max-width:900px){#financeView .bignum-row{grid-template-columns:repeat(2,1fr)}}
+@media (max-width:640px){.fin-table{min-width:880px}#financeView .bignum-cell .val{font-size:32px}}
 </style>
 </head>
 <body>
@@ -819,6 +850,7 @@ tr.fu-red .fu-chip{background:var(--urgent)} tr.fu-amber .fu-chip{background:var
       <button class="nav-tab active" data-page="reports">Reports <span class="badge">43</span></button>
       <button class="nav-tab" data-page="timelines">Timelines</button>
       <button class="nav-tab" data-page="overall">Overall Data</button>
+      <button class="nav-tab" data-page="finance">Finance</button>
     </div>
     <div class="nav-search">
       <input type="text" id="globalSearch" placeholder="Search projects…" autocomplete="off">
@@ -1115,6 +1147,17 @@ tr.fu-red .fu-chip{background:var(--urgent)} tr.fu-amber .fu-chip{background:var
         <p style="margin-top:18px;font-size:12px;color:var(--ink-2);font-style:italic;line-height:1.5">Conversion under pressure: 16 of 38 submissions still awaiting a decision and 7 cancelled by the client (counting rules aligned 21 Nov: cancellations shown separately, Misk revisions not double-counted · W44: no new submissions — NPUAE lost on price (~3× the winner), Misk revised TP+FP 21 Nov, Westfield Riyadh scope expanded by Cenomi; W43: no new submissions — Diriyah in post-tender clarification, four new RFPs in preparation; W42: three framework/pavilion bids in one week — Diriyah Public Art, MOWC w/ Athr, NPUAE Venice 2027; W41: Aramco Stadium + Misk revised proposal; W40: KSAAL lost on price, AWOA Rome not selected). Five submissions in five weeks (Westfield ×2, KKIA at SAR 30.8M, Villa Hegra, AlUla Rome) lift the base to 34 while 26_343 Etihad (DCAA, SAR 7.7M wtd, chased since March) is cancelled by the client, but the loss rate stays above 30% after W34 (Sikka, Dubai Youth, Al Fahidi — all without documented reasons). Aging pipeline plus undocumented losses is the pattern of the cycle.</p>
       </div>
     </div>
+  </div>
+
+  <div class="page" data-page="finance">
+    <div class="fin-head">
+      <div>
+        <h1 class="tl-page-title">Finance <em>View</em></h1>
+        <p class="tl-page-sub" style="margin-bottom:0">Pitch values for awarded and awaiting bids · single source of truth for Finance · input for the 2027 pipeline</p>
+      </div>
+      <button class="fin-export" onclick="exportFinanceCSV()">⬇ Export CSV</button>
+    </div>
+    <div id="financeView"></div>
   </div>
 
   <div class="foot">
@@ -4685,6 +4728,170 @@ function bindDossierDelegation(){
   });
 }
 
+// ─── FINANCE VIEW ──────────────────────────────
+// Single source of truth for Finance (BD → Finance handover · 2027 pipeline input).
+// pitch = Aimes pitch value in SAR EXCL. VAT, as cited in the weekly report (rule: report first, NetSuite only as fallback).
+// Name, client, status, probability and weighted value are read live from PROJECTS — only the finance fields live here.
+// ns: 'in'     = value taken from the NetSuite pipeline export (Pipeline_9_6_26.xlsx)
+//     'update' = record exists in NetSuite but is stale (probability / stage / superseded)
+//     'check'  = value from weekly report or proposal — not yet confirmed in NetSuite
+//     'missing'= BD has no confirmed price → NetSuite cannot be updated yet
+//     'na'     = no fixed contract value (rate card / PQQ / RFI)
+const FIN_ASOF = '26 Nov 2026';
+const FINANCE = {
+  // Awarded
+  '26_353':{pitch:18528385, derived:true, orig:'NetSuite weighted SAR 13,896,289 at 75% → ÷ 75%', src:'NetSuite export · n°39', ns:'update', nsNote:'In NetSuite at 75% — move to 100% / Closed Won and enter the signed contract value', timing:'Contract signature TBC'},
+  '26_374':{pitch:5600000, derived:true, orig:'NetSuite weighted SAR 4,200,000 at 75% → ÷ 75% · artist production costs approved AED 3,936,023 excl. VAT (Kiwanga 825,341 · Senatore 1,093,861 · Clottey 752,783 · Ward 1,264,038)', src:'NetSuite export · n°25 · n°39', ns:'update', nsNote:'In NetSuite at 75% — move to 100% / Closed Won and enter the contract value', timing:'6 commissions · contract finalisation'},
+  // Awaiting decision — priced
+  '26_234':{pitch:3361747.18, orig:'SAR 3,866,009.26 incl. VAT · revised TP+FP 21 Nov (2 artworks) · earlier offers: 4,202,183.97 (31 Oct) · 9,560,049 (10 Jun, 5 artists)', src:'Weekly report n°44', ns:'check', nsNote:'Oracle Quote 173714 (MAR-NEG-1082) — NetSuite value to align to the 21 Nov offer'},
+  '26_375':{pitch:1953057.82, orig:'SAR 2,162,322.50 incl. VAT · discounted offer 6 Aug (replaces 14 Jul concepts 3.34M / 2.48M)', src:'Weekly report n°43', ns:'check', flag:'Offer BOQ lines add up to SAR 1,817,525.88 — confirm the contractual figure'},
+  '26_376':{pitch:5140634.65, orig:'SAR 5,911,729.85 incl. VAT · financial proposal 2 Jul · margin 55%', src:'Financial proposal · n°43 confirmed', ns:'check', flag:'55% margin on pitch budget — verify'},
+  '26_381':{pitch:16714030.53, orig:'SAR 17,900,000 incl. VAT (mixed VAT) · pricing model 6 Aug', src:'Weekly report n°43', ns:'check', flag:'Portal-submitted figure to confirm', timing:'La Biennale di Venezia 2027'},
+  '26_383':{pitch:4282215.10, orig:'SAR 4,924,547.36 incl. VAT · financial proposal 23 Aug · margin 26%', src:'Weekly report n°31', ns:'check'},
+  '26_385':{pitch:516643, orig:'OMR 53,043.45 excl. VAT (60,999.97 incl.) · Aimes fee share only · 1 OMR = 9.74 SAR', src:'Financial proposal 19 Aug · n°43', ns:'check', flag:'Proposal shows a 15% VAT line; Oman VAT is 5% — confirm. FX rate to confirm'},
+  '26_388':{pitch:8670579, orig:'SAR 9,971,395 incl. VAT · TP+FP 1 Oct', src:'Weekly report n°37', ns:'check', flag:'Pitch budget file says SAR 8,670,779 (+200) — confirm which is final', timing:'Award target end Nov / early Dec'},
+  '26_389':{pitch:22703963.18, orig:'SAR 26,109,557.66 incl. VAT entered on Teradix #81484 = premium option · lean option SAR 3,097,725.93 not entered', src:'Weekly report n°35 · Teradix', ns:'check'},
+  'WestfieldRA':{pitch:11485981.23, orig:'Report n°35 figure · ≈ SAR 9.99M if VAT-inclusive · pitch budget SAR 10,000,000 lump sum (Aimes 7.2M / Cultural Impact 2.8M)', src:'Weekly report n°35', ns:'check', flag:'VAT basis and Aimes share vs joint total to confirm · PDF lists the ID as 26_387'},
+  '26_390':{pitch:267954.23, orig:'SAR 308,147.37 incl. VAT · rates per deliverable · bid-bond basis SAR 305,176.27 (email to Finance 13 Sep)', src:'Financial proposal 27 Sep · n°43', ns:'check', flag:'SAR 30.8M in report n°36 is the tender estimate, not our price · insurance allowance SAR 900,000 not counted', timing:'3-year framework'},
+  '26_395':{pitch:443769.67, orig:'SAR 510,335.12 incl. VAT · Ariba Doc257985616 · submitted with Athr', src:'Weekly report n°41–43', ns:'check', timing:'Framework agreement'},
+  // Awaiting — no fixed value / price missing
+  '26_391':{pitch:null, orig:'Rate card C11 (24 Oct): SAR 42,064–137,104 per role per month', src:'Fee schedule C11', ns:'na', nsNote:'No fixed contract value — counted 0', timing:'Framework · revised TP due 28 Nov'},
+  'Paris':{pitch:null, orig:'First bid Nov 2025: SAR 54,585,970 excl. VAT (Ariba Doc227413832) · June 2026 re-tender Doc248787297', src:'Ariba · report n°20', ns:'missing', flag:'2026 re-tender submission and price unconfirmed — ask Manal for the receipt'},
+  '26_368':{pitch:null, orig:'Price held by BIG', src:'—', ns:'missing', flag:'Ask BIG / Ignacio for the submitted fee'},
+  '26_369':{pitch:null, orig:'Price held by Hwadi (lead)', src:'—', ns:'missing', flag:'Ask Hwadi / Ignacio for the submitted fee'},
+  '26_400':{pitch:null, orig:'Submitted by Cultural Impact', src:'—', ns:'missing', flag:'Ask Aya (Cultural Impact) for the submitted fee'},
+  '26_393':{pitch:null, orig:'Pre-qualification (PQQ) — no price', src:'—', ns:'na'},
+  '26_394':{pitch:null, orig:'Pre-qualification (PQQ) — no price', src:'—', ns:'na'},
+  '26_399':{pitch:null, orig:'RFI — no price', src:'—', ns:'na'},
+  // Closed 2026 — reference for pricing & hit rate
+  '26_366':{pitch:8685128.80, orig:'Lost on price: winner Enzo Arabia SAR 5,342,072 (−38.5%)', src:'Weekly report n°40', ns:'update', nsNote:'Close as Lost'},
+  '26_384':{pitch:2568756, orig:'EUR 597,385 × 4.30 (rate TBC)', src:'Weekly report n°37', ns:'update', nsNote:'Close as Lost'},
+  '26_396':{pitch:1530656, orig:'AED 1,499,026.20 excl. VAT (incl. 10% contingency) · price ~3× the winner', src:'Weekly report n°42 · n°44', ns:'update', nsNote:'Close as Lost'},
+  '26_377':{pitch:null, orig:'SAR 62,318,909 incl. VAT (≈ 54.2M excl. at 15%)', src:'Weekly report n°26', ns:'update', nsNote:'Close as Cancelled'},
+  '26_365':{pitch:null, orig:'NetSuite weighted SAR 483,915 · probability not recorded', src:'NetSuite export (Jun)', ns:'in', nsNote:'Confirm closed as Lost'},
+  '26_356':{pitch:17848242, orig:'SAR 20,525,478.84 incl. VAT on Teradix #76827', src:'Teradix · NetSuite OPP-0250', ns:'update', nsNote:'OPP-0250 superseded by 26_389 + WestfieldRA — close or relink'}
+};
+const NS_LABEL = {in:'In NetSuite', update:'Update NetSuite', check:'To confirm in NetSuite', missing:'Price missing', na:'No fixed value'};
+
+function finRow(p){
+  let f = FINANCE[p.id] || {};
+  const st = getProjectStatus(p);
+  let pitch = f.pitch ?? null, derived = !!f.derived, ns = f.ns;
+  if(pitch === null && !('pitch' in f) && p.value && p.prob){ pitch = p.value / (p.prob/100); derived = true; }
+  if(!ns) ns = (p.value && !p.valueSrc) ? 'in' : (pitch ? 'check' : 'missing');
+  if(!f.nsNote && ns==='in' && ['lost','declined'].includes(st)) f = Object.assign({}, f, {nsNote: st==='lost' ? 'Confirm closed as Lost' : 'Confirm closed as Cancelled'});
+  const wtd = (st==='won') ? (pitch||p.value||0) : (p.value||0);
+  const expected = (pitch && p.prob && st!=='won') ? pitch*p.prob/100 : null;
+  const mismatch = expected!==null && p.value && Math.abs(expected - p.value)/p.value > 0.01;
+  const subEv = (p.events||[]).find(e=>e.t==='s');
+  return { p, f, st, pitch, derived, ns, wtd, mismatch, expected, sub: p.subDate || '' };
+}
+
+function finSAR(v, dp){ if(v===null||v===undefined||v===0) return '—'; return Math.round(v).toLocaleString('en-US'); }
+
+function finGroups(){
+  const rows = PROJECTS.filter(p=>!p.carryover).map(finRow);
+  const by = s => rows.filter(r=>r.st===s);
+  const awaitingPriced = by('awaiting').filter(r=>r.pitch).sort((a,b)=>b.pitch-a.pitch);
+  const awaitingOpen = by('awaiting').filter(r=>!r.pitch);
+  const closed = rows.filter(r=>['lost','declined'].includes(r.st) && (r.pitch || FINANCE[r.p.id])).sort((a,b)=>(b.pitch||0)-(a.pitch||0));
+  const prep = rows.filter(r=>r.st==='active' && r.p.prob);
+  return { won: by('won'), awaitingPriced, awaitingOpen, closed, prep, all: rows };
+}
+
+function finTable(rows, mode){
+  const nsCell = r => `<span class="fin-ns ${r.ns}">${NS_LABEL[r.ns]}</span>${r.f.nsNote?`<span class="fin-sub">${r.f.nsNote}</span>`:''}`;
+  return `<table class="aging-table fin-table"><thead><tr>
+      <th>Project</th><th>Client · partner</th>${mode==='closed'?'<th>Outcome</th>':'<th>Submitted</th>'}
+      <th class="r">Pitch value<br>SAR excl. VAT</th>${mode==='closed'?'':'<th class="r">Prob.</th><th class="r">Weighted<br>SAR</th>'}
+      <th>Source · original figure</th><th>NetSuite</th></tr></thead><tbody>
+    ${rows.map(r=>{
+      const p=r.p, f=r.f;
+      const out = mode==='closed' ? `<td>${r.st==='lost'?'Lost':'Cancelled / superseded'}</td>` : `<td class="fin-mono">${r.sub?fmtDate(r.sub):'—'}</td>`;
+      const flag = (f.flag?`<span class="fin-flag">⚠ ${f.flag}</span>`:'') + (r.mismatch?`<span class="fin-flag">⚠ Weighted ${finSAR(p.value)} ≠ pitch × ${p.prob}% (${finSAR(r.expected)}) — check</span>`:'');
+      return `<tr class="clickable-proj" data-pid="${p.id}">
+        <td><span class="ag-id">${p.id}</span><span class="ag-name">${p.name}</span>${f.timing?`<span class="ag-note">${f.timing}</span>`:''}</td>
+        <td><span class="ag-client">${p.client}</span>${p.partner?`<span class="fin-sub">w/ ${p.partner}</span>`:''}</td>
+        ${out}
+        <td class="r fin-val">${finSAR(r.pitch)}${r.derived?'<span class="fin-sub">derived</span>':''}</td>
+        ${mode==='closed'?'':`<td class="r fin-mono">${r.st==='won'?'100%':(p.prob?p.prob+'%':'—')}</td><td class="r fin-val">${finSAR(r.st==='won'?r.pitch:p.value)}</td>`}
+        <td><span class="fin-src">${f.src||(r.ns==='in'?'NetSuite export (Jun)':'—')}</span>${f.orig?`<span class="fin-sub">${f.orig}</span>`:''}${flag}</td>
+        <td>${nsCell(r)}</td>
+      </tr>`;}).join('')}
+    </tbody></table>`;
+}
+
+function renderFinance(){
+  const el = document.getElementById('financeView');
+  if(!el) return;
+  const g = finGroups();
+  const sum = (rs,k) => rs.reduce((s,r)=>s+(r[k]||0),0);
+  const wonTotal = sum(g.won,'pitch');
+  const awPitch = sum(g.awaitingPriced,'pitch');
+  const awWtd = g.awaitingPriced.reduce((s,r)=>s+(r.p.value||0),0);
+  const live = [...g.won, ...g.awaitingPriced, ...g.awaitingOpen];
+  const nCheck = live.filter(r=>r.ns==='check').length, nUpd = live.filter(r=>r.ns==='update').length;
+  const nMiss = g.awaitingOpen.filter(r=>r.ns==='missing').length;
+  const nFlags = live.filter(r=>r.f.flag||r.mismatch).length;
+  el.innerHTML = `
+    <div class="bignum-row">
+      <div class="bignum-cell won"><span class="lbl">Awarded 2026</span><span class="val">${formatValue(wonTotal)}</span><span class="delta">SAR · ${g.won.length} projects · projected totals, to reconcile</span></div>
+      <div class="bignum-cell pending"><span class="lbl">Awaiting · pitched value</span><span class="val">${formatValue(awPitch)}</span><span class="delta">SAR excl. VAT · ${g.awaitingPriced.length} priced bids</span></div>
+      <div class="bignum-cell"><span class="lbl">Awaiting · weighted</span><span class="val">${formatValue(awWtd)}</span><span class="delta">SAR · pitch × probability</span></div>
+      <div class="bignum-cell lost"><span class="lbl">Price missing</span><span class="val">${nMiss}</span><span class="delta">submitted bids with no confirmed fee</span></div>
+      <div class="bignum-cell"><span class="lbl">NetSuite actions</span><span class="val">${nCheck+nUpd}</span><span class="delta">${nCheck} to confirm · ${nUpd} to update · ${nFlags} flagged</span></div>
+    </div>
+    <div class="fin-legend">
+      <span><i class="fin-ns in">In NetSuite</i> value from the NetSuite export</span>
+      <span><i class="fin-ns update">Update NetSuite</i> record exists but stage / probability is stale</span>
+      <span><i class="fin-ns check">To confirm in NetSuite</i> value from weekly report or proposal, not yet seen in NetSuite</span>
+      <span><i class="fin-ns missing">Price missing</i> BD must confirm the fee first</span>
+      <span><i class="fin-ns na">No fixed value</i> rate card · PQQ · RFI</span>
+    </div>
+
+    <div class="section" style="margin-top:36px">
+      <div class="section-head"><span class="section-num">§ FN.01</span><h2 class="section-title">Awarded</h2><span class="section-count">Secured 2026 · projected totals derived from NetSuite weighted ÷ 75%</span></div>
+      <div class="dash-card" style="padding:0;overflow:auto">${finTable(g.won,'won')}</div>
+    </div>
+
+    <div class="section" style="margin-top:40px">
+      <div class="section-head"><span class="section-num">§ FN.02</span><h2 class="section-title">Awaiting decision · priced</h2><span class="section-count">Largest first · core input for the 2027 pipeline</span></div>
+      <div class="dash-card" style="padding:0;overflow:auto">${finTable(g.awaitingPriced,'open')}</div>
+    </div>
+
+    <div class="section" style="margin-top:40px">
+      <div class="section-head"><span class="section-num">§ FN.03</span><h2 class="section-title">Awaiting decision · value not available</h2><span class="section-count">Partner-held prices, frameworks, PQQs and RFIs</span></div>
+      <div class="dash-card" style="padding:0;overflow:auto">${finTable(g.awaitingOpen,'open')}</div>
+    </div>
+
+    <div class="section" style="margin-top:40px">
+      <div class="section-head"><span class="section-num">§ FN.04</span><h2 class="section-title">Bids in preparation</h2><span class="section-count">No price yet · enter the pipeline once submitted</span></div>
+      <div class="fin-chips">${g.prep.map(r=>`<span class="fin-chip clickable-proj" data-pid="${r.p.id}"><b>${r.p.id}</b> ${r.p.name} <i>${r.p.client}${r.p.partner?' · w/ '+r.p.partner:''}</i></span>`).join('')}</div>
+    </div>
+
+    <details class="section fin-closed" style="margin-top:40px">
+      <summary class="section-head"><span class="section-num">§ FN.05</span><h2 class="section-title">Closed 2026 · lost & cancelled</h2><span class="section-count">Reference for pricing and hit rate · click to expand</span></summary>
+      <div class="dash-card" style="padding:0;overflow:auto">${finTable(g.closed,'closed')}</div>
+    </details>
+
+    <p class="fin-foot">Values in SAR excl. VAT. Source rule: weekly report value first, NetSuite only as fallback. "Derived" = projected total back-calculated from the NetSuite weighted value. Excluded: 2025 carry-overs (CLM 25_318, 25_330, 25_332, 25_334, 25_335). FX rates marked TBC are BD estimates. Expected decision date and revenue phasing per project are not yet captured — to be added with Finance for the 2027 plan. Data as of ${FIN_ASOF}.</p>`;
+}
+
+function exportFinanceCSV(){
+  const g = finGroups();
+  const sect = [['Awarded',g.won],['Awaiting – priced',g.awaitingPriced],['Awaiting – value n/a',g.awaitingOpen],['Closed 2026',g.closed]];
+  const esc = v => `"${String(v??'').replace(/"/g,'""')}"`;
+  const head = ['Section','ID','Project','Client','Partner','Status','Submitted','Pitch value SAR excl VAT','Derived','Probability %','Weighted SAR','Value source','Original figure','NetSuite status','NetSuite note','Flags','Timing'];
+  const lines = [head.map(esc).join(',')];
+  sect.forEach(([name,rows])=>rows.forEach(r=>{
+    const p=r.p,f=r.f;
+    lines.push([name,p.id,p.name,p.client,p.partner||'',r.st,r.sub,r.pitch?Math.round(r.pitch):'',r.derived?'yes':'',r.st==='won'?100:(p.prob||''),r.st==='won'?Math.round(r.pitch||0):(p.value||''),f.src||(r.ns==='in'?'NetSuite export (Jun)':''),f.orig||'',NS_LABEL[r.ns],f.nsNote||'',[f.flag,r.mismatch?'weighted ≠ pitch × prob':''].filter(Boolean).join(' | '),f.timing||''].map(esc).join(','));
+  }));
+  const blob = new Blob(['﻿'+lines.join('\r\n')],{type:'text/csv;charset=utf-8'});
+  const a = document.createElement('a'); a.href = URL.createObjectURL(blob);
+  a.download = 'Aimes_BD_Finance_Pipeline_'+FIN_ASOF.replace(/ /g,'_')+'.csv'; document.body.appendChild(a); a.click(); a.remove();
+}
+
 // ─── INIT ────────────────────────────────────────
 function init(){
   document.querySelectorAll('.nav-tab').forEach(t=>{
@@ -4713,6 +4920,7 @@ function init(){
   renderSubmissionChart();
   bindChartToggle();
   renderWeightedPipeline();
+  renderFinance();
   renderLifecycleMacros();
   renderClientList();
   renderAgingTracker();
